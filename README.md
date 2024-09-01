@@ -1,0 +1,516 @@
+<h1 align="center">PASTEFLOW</h1>
+<p align="center"><strong>A Paste Stack & Paste Queue for Alfred | Pin & Reuse Text</strong></p>
+<p align="center">
+    <img width="300" src="Workflow/assets/images/pasteflow.png">
+</p>
+
+## WHAT IS PASTEFLOW?
+PasteFlow is a handy paste stack (or paste queue) for Alfred. It lets you create a list of pinned text items that you can organize, edit, and use in different ways.
+
+Ever needed to copy text from various places and put it all in one final spot? PasteFlow makes this easy. No more switching back and forth to copy and paste one item at a time. Save time and stay "in flow" by doing all your copying first, then pasting later when you're ready. Since your items are saved in an actual list, you can even take a break, copy other things, and come back to your stack whenever you want.
+
+Thanks to Alfred's triggers, clipboard features, and actions, PasteFlow is a flexible tool that can boost your productivity when working with text.
+
+---
+## HOW TO USE PASTEFLOW?
+If you're already familiar with paste stacks, you can start using PasteFlow right away with its default settings. Here's how to get started:
+
+1. **Add items to your stack:**
+   - Select text and use Pasteflow actions on them.
+   - Set up your preferred hotkeys (green color-coded hotkeys are the most basic/essential).
+   - Use PasteFlow's keyword to add items from your Clipboard to your stack.
+
+2. **Process your saved items:**
+   The easiest way to do this is to set up a hotkey (in green), but you can also use PasteFlow's keyword directly on Alfred's bar.
+   - Paste items to your current window
+   - Add them to your clipboard
+
+3. **View & edit your stack:**
+   - Set up hotkeys (red-coded hotkeys show your entire list)
+   - Enter "Selective Mode" from Alfred's Bar using PasteFlow's keyword
+   - Use Textview Mode (type `:View` with PasteFlow's keyword)
+
+That's all you need to get started! But if you want to explore more, PasteFlow has lots of other cool features to discover.
+
+---
+## FEATURES
+
+### Configuration
+PasteFlow is flexible and adapts to your workflow. Here's how you can set it up:
+
+* **Stack or Queue**: Choose how new items are added - at the top (stack) or bottom (queue). *Read more about the sorting logic.*
+* **Processing Order**: Pick where to start processing items - from the top or bottom. It's all about what feels right for you.
+* **Auto-Clear Options**: Decide if you want items cleared after processing. You can set this for individual items or the entire list when processed at once. *Read more about ways to clear your items.*
+* **Selective Processing**: This setting allows for advanced workflows when inserting or processing individual list items. It works together with your chosen processing order. *Read more about the insertion & processing logic.*
+* **Restart or Stop**: Choose whether to restart processing when you reach the end of your list, or simply stop until you add more items.
+* **Paste Actions**: Optionally, add a line break, comma, space, or press tab after each pasted item from your list.
+* **Merge Formatting**: When processing your entire list at once, choose to merge items with line breaks, commas, or spaces.
+* **List Lifespan**: Use PasteFlow as a temporary list with a timeout, or keep it indefinitely. For long-term lists, there's a custom save directory.
+
+### In Action
+PasteFlow is packed with features to make your workflow smoother:
+
+* **Large Text View**: In the main menu, press CMD L on any item to see your list in large text. You can also copy it (CMD C) or use Alfred's universal actions on it.
+* **Selective Mode Viewing**: In Selective Mode, CMD L shows the full content of an item. Copy or use universal actions here too.
+* **Hidden Features**: Type `:` in Alfred's bar to reveal "secret" options like inverting your list order, clearing it, or editing all contents. Many of these are also in Textview Mode (`:View`). *Read all about the main menu.*
+* **Powerful Selective Mode**: Edit individual items, move them around, remove them, or process them in any order. Some modifier combos let you tweak the whole list without entering Textview Mode. *Read all about Selective Mode.*
+* **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. *Read all about Universal Actions*
+* **Multiple Control Methods**: Use Alfred's bar directly, keyboard shortcuts (color-coded for easy remembering), or send arguments to the external trigger. *Read all about the external trigger.*
+  
+PasteFlow is designed to be a flexible, powerful clipboard companion. Whether you're a pro or just getting started with paste stacks and clipboard managers, it's here to make your workflow smoother and more efficient.
+
+---
+## CLEARING ITEMS
+
+PasteFlow is flexible - you can use it as a temporary text holder or a more permanent list. While it's not meant to replace your clipboard manager, it can complement it nicely. Here's how you can clear items from list:
+
+### Auto-Clearing the List
+PasteFlow offers easy configuration options for automatic clearing:
+
+* **Timeout**: Set a time limit for your list.
+* **Clear Item After Processed**: Remove items once you've used them.
+* **Clear List After Processed**: Wipe the entire list after processing all items at once.
+
+### Manually Clearing the List
+Sometimes you want more control. Here are your options for manual clearing:
+
+* **Quick Clear and Add**: In the main menu, hold CMD while selecting 'Add to List from Clipboard' or 'Split & Add to List'. This clears the list before adding new items.
+* **Main Menu Option**: Type `:Clear` in the main menu.
+* **Hotkey**: Set up a keyboard shortcut (yellow color-coded) to clear your list.
+* **In Textview Mode**: In Textview Mode (`:View` from main menu), use CTRL + Return.
+* **In Selective Mode**: 
+  - Clear individual items: Hold CTRL while selecting (items are removed, not pasted or copied)
+  - Clear entire list: Use CTRL + CMD + Return
+* **External Trigger**: Use the `clearList` argument to clear the list. You can also set a second argument to `1` to clear the list before adding new items.
+
+---
+## THE MAIN MENU
+The main menu is your control center for PasteFlow. Here's some things you can do without even actioning any menu option:
+
+* See your list in large text with CMD L
+* Copy your entire list at once with CMD C
+* Use Alfred's Universal Actions on your full list
+
+*Note: The menu is populated dynamically. For example, you won't see processing options if your list is empty, or the "Next Item" option if all items have been processed and the list isn't set to restart.*
+
+**Main Menu Options and Modifiers**
+* Add to Stack/Queue from Clipboard
+  * CMD: Start fresh by clearing the list before adding
+  * OPT: Add only what's currently in your clipboard
+  * CMD + OPT: Clear the list and add only the current clipboard item
+  * CTRL: Add a range of clipboard items in the "next" position
+  * CTRL + OPT: Add current clipboard item in the "next" position
+
+* Split & Add to Stack/Queue
+  * CMD: Clear the list before adding new items
+  * OPT: Flip the order of your split clipboard before adding
+  * OPT + CMD: Clear the list and add your split clipboard in reverse order
+  * CTRL: Split current clipboard by newlines and add in "next" position
+  * CTRL + OPT: Split current clipboard by newlines, flip the order, and add in "next" position
+
+* Next Item (Pastes by Default)
+  * CMD: Copy the next item instead of pasting
+  * OPT: Paste the next item, but reverse the usual processing order
+  * CMD + OPT: Copy the next item, but reverse the usual processing order
+
+* Merge & Process your Entire Stack/Queue (Pastes by Default)
+  * CMD: Copy your whole list instead of pasting
+  * OPT: Paste your entire list in reverse order
+  * CMD + OPT: Copy your entire list in reverse order
+
+* Selective Processing (Pastes by Default)
+  * CMD: Copy items instead of pasting
+
+* Merge & Process Clipboard (Pastes by Default, Follows Stack/Queue Order)
+  * CMD: Copy merged items instead of pasting
+  * OPT: Paste merged clipboard items in reverse order
+  * CMD + OPT: Copy merged clipboard items in reverse order
+
+There's also a "secret" menu with extra options for your entire list. Just type `:` to access it. These actions are straightforward and don't have modifier combinations.
+
+**The "Secret" Menu Options**:
+* Configuration: Adjust your PasteFlow settings
+* View Stack/Queue (Textview Mode): See your list in Alfred's Textview
+* Clear Stack/Queue: Empty your list
+* Edit (Raw Contents of List in Textview Mode): Make changes to your entire list
+* Invert: Flip the order of your list
+* Keep & Trim (Keep X amount of items): Slim down your list to a specific number of items
+* Reset Next Item Index: Start processing from the beginning again
+
+PasteFlow's main menu is designed to give you quick access to all the tools you need. Whether you're adding items, processing them, or managing your list, everything is just a few keystrokes away!
+
+---
+
+## SELECTIVE MODE
+Selective mode gives you a hands-on experience with your PasteFlow list. It's like having a traditional paste stack/queue at your fingertips, where you can shuffle items around, make edits, or process them in any order you like. 
+
+If you've set PasteFlow to keep processed items, you'll have some visual cues on the icons that show which item is next in line (an icon with red) and which have already been processed (icons with transparency).
+
+Just like in the main menu, Selective Mode lets you do a few things with each item:
+* See the item in large text with CMD L
+* Copy the item with CMD C
+* Use Alfred's Universal Actions on any item
+
+**Modifier Keys for Item Management**
+* CMD: Choose between copying or pasting
+* OPT: Edit the item
+* CTRL: Clear the item
+* SHIFT: Move the item up
+* FN: Move the item down
+
+**Advanced Options**
+* CMD + OPT: Edit your entire list
+* CMD + CTRL: Clear your whole list
+* CMD + FN: Invert the order of your entire list
+* FN + SHIFT: Start processing from the beginning again
+* CMD + CTRL + OPT: Choose which item to process next (great for advanced insertion or processing)
+
+Selective Mode puts you in control. It's designed to be intuitive and powerful, giving you the flexibility to work with your list exactly the way you want.
+
+---
+## Custom Hotkeys
+
+The hotkeys have been color-coded to make setup easier for you:
+
+### Green: Essential & Basics
+These are the must-haves for most users. They let you add items to your list, process them, and access the main menu without needing a keyword.
+
+### Red: Full List Views
+Two options for seeing your entire list:
+* "Selective" mode: Process and edit items one by one
+* "Textview" mode: Get a clean overview of your whole paste stack/queue
+
+### Yellow: Handy Extras
+Not essential, but nice to have:
+* Split selected text and add each line as individual items to your list
+* Add a range of recent clipboard items
+* Paste next item inline with a snippet
+* Quickly clear your list
+* Jump to PasteFlow's configuration
+
+### Blue: Custom Workflow Boosters
+These are some extra features that are more niche for specific workflows.
+
+### Pink: External Trigger
+The external trigger gives you complete control over all of PasteFlow's features.
+
+If you zoom out in Alfred's workflow editor (CMD + Hyphen), you'll notice the hotkeys are loosely grouped into:
+* Insertion actions
+* Processing actions
+* Full-list actions
+* Workflow actions
+
+*Note: PasteFlow is packed with actions, and when combined with different settings, the preset hotkey list could grow huge. Some features, like inverting inserts or processing, are more for advanced users. If you're looking for customization beyond the available hotkeys, I recommend learning to use the external trigger.*
+
+---
+## UNIVERSAL ACTIONS
+PasteFlow comes with two powerful universal actions, each with additional modifier options to fine-tune your workflow:
+
+### Add to List
+This action adds your selected text to your PasteFlow list. Here's what you can do:
+
+* **Default**: Simply adds the item to your list
+* **CMD**: Clears your existing list before adding the new item
+* **CTRL**: Forces the new item into the "next" position in your list
+
+### Split & Add to List
+This action splits your selected text into separate items and adds them to your list. It's super handy for multi-line text. Here are your options:
+
+* **Default**: Splits and adds items to your list
+* **CMD**: Clears your existing list before splitting and adding as new items
+* **OPT**: Splits, inverts the order, then adds items (following your queue/stack sorting logic)
+* **CMD + OPT**: Clears your list, then splits, inverts, and adds new items
+* **CTRL**: Splits and forces insertion of new items into the "next" position
+* **CTRL + OPT**: Splits, inverts the order, then forces insertion into the "next" position
+
+These universal actions give you quick, flexible ways to add content to your PasteFlow list, right from any text you're working with.
+
+---
+## The Sorting Logic
+
+PasteFlow adapts to your preferred way of organizing information. Here's how it works:
+* **Stack**: New items go to the top. Think of it like a pile of plates - the last one you add sits on top.
+* **Queue**: New items go to the bottom. It's like people lining up - newcomers join at the end.
+
+But what happens when you add multiple items at once? That's where it gets interesting:
+* **Clipboard Items**: Most clipboard managers put recent items at the top. If your PasteFlow is set as a queue, it'll flip this order to match your preference.
+* **Split Lists**: When you split a text into individual items, PasteFlow considers how we naturally write - top to bottom. For a stack setup, it'll invert this order.
+
+**Want to change things up? You've got options:**
+* While in stack, use the OPT modifier in Alfred's action or the main menu to add split list items with the most recent at the bottom. If you are in queue mode, you can use the same to insert your split items most recent at the top.
+* The external trigger has a parameter for this too.
+
+Remember, multiple clipboard items sorting stays as-is when inserting. Keep this in mind when choosing between stack and queue for your workflow.
+
+---
+## THE PROCESSING LOGIC
+
+Assuming you already have understood the sorting logic, now let me explain you what the processing order does. Here's a simple breakdown:
+
+### Basic Processing
+* **Stack (Top-to-Bottom)**: Newest to oldest
+* **Stack (Bottom-to-Top)**: Oldest to newest
+* **Queue (Top-to-Bottom)**: Oldest to newest
+* **Queue (Bottom-to-Top)**: Newest to oldest
+
+For most users, this is all you need to know. Keep the "Do Not Change Next Item Index" option on in the configuration, and everything should work smoothly, even in Selective Mode.
+
+### Advanced Insertion and Processing
+PasteFlow's Selective Mode and the "Next Item Index" feature work together for more complex list management:
+
+While in Selective Mode, use CMD + OPT + CTRL when selecting an item to set it as the "next" item. This item will not be processed and simply change it's icon into "red" to indicate it is next in line. There's another way you can do this. By turning off "Do Not Change Next Item Index" in the configuration, processing or clearing an item from the middle of your list automatically updates the "next" item to after the last processed position.
+
+Let's break down how this works in different scenarios:
+**Stack (Top-to-Bottom)**:
+- If you set the "next" item somewhere in the middle of your list, PasteFlow treats all items above it as already processed.
+- New items will be inserted at the "next" item position, not at the top of the list. This is because the sorting logic of the stack & processing order dictate that the user wants to use the most recent item next. 
+- This allows you to continue processing from a specific point in your list, rather than always starting from the top.
+
+**Stack (Bottom-to-Top)**:
+- Setting the "next" item in the middle lets you process from that point upwards.
+- However, new items are still added to the top of the list, maintaining the stack's logic & processing order (where user wants to process recent items last).
+- To insert items elsewhere, use the "Force Next" option when adding new items.
+
+**Queue (Bottom-to-Top)**:
+- When you set the "next" item anywhere in the list, PasteFlow considers all items below it as already processed.
+- New insertions and processing will happen at the "next" item position (since in a queue, bottom to top, the user expects the most recent items first).
+
+**Queue (Top-to-Bottom)**:
+- In this setup, you're expecting to process the oldest items first.
+- New items are always added to the bottom of the queue, regardless of the "next" item position.
+- To insert items elsewhere in the queue, use the "Force Next" option.
+
+Remember, PasteFlow uses visual cues with icon changes to help you understand the state of your list, even though you can't see it in real-time. Getting familiar with these concepts is not essential, but it allows you to leverage PasteFlow's full potential.
+
+---
+## THE EXTERNAL TRIGGER
+
+The external trigger in PasteFlow allows you to use this workflow to its fullest, without sacrificing a single keyboard shortcut. Whether you're using Keyboard Maestro, BetterTouchTool, or other 3rd party apps, you can trigger PasteFlow actions using AppleScript or Alfred's URL scheme by sending arguments.
+
+The external trigger is `cmd` and can receive 4 arguments, comma-separated (without spaces):
+```
+theAction,clearList,invertOrder,insertNext
+```
+
+Only `theAction` is required. 
+
+### `theAction` Options
+
+| Argument Content      | Description                                                  |
+|-----------------------|--------------------------------------------------------------|
+| `inputAddClipRange`   | Input a number of clipboard items to insert in your list     |
+| `!addCurrentClip`     | Add current clipboard to your list (Use `c!` prefix to trigger CMD + C first) |
+| `!addSplitClip`       | Split current clipboard by newlines and add as individual items (Use `c!` prefix to trigger CMD + C first) |
+| `inputPasteClipRange` | Input a number of clipboard items to merge and paste (doesn't affect stack/queue) |
+| `inputCopyClipRange`  | Input a number of clipboard items to merge and copy (doesn't affect stack/queue) |
+| `pasteNext`           | Paste the item in "next" position                            |
+| `copyNext`            | Copy the item in "next" position                             |
+| `pasteStack`          | Merge and paste your entire list                             |
+| `copyStack`           | Merge and copy your entire list                              |
+| `inputPasteItem`      | Open "Selective View" with paste as default                  |
+| `inputCopyItem`       | Open "Selective View" with copy as default                   |
+| `config`              | Open PasteFlow's configuration                               |
+| `viewStack`           | Open your list in Textview Mode                              |
+| `clearList`           | Clear your list                                              |
+| `textEditListX`       | Edit the raw contents of your list                           |
+| `invert`              | Invert the order of items in your list                       |
+| `inputKeep`           | Input a number of items to keep                              |
+| `resetNext`           | Reset the index of your "next" item back to 1                |
+
+### Additional Arguments
+These arguments need to be `0` for false, or `1` for true.
+
+| Argument | Description |
+|----------|-------------|
+| `clearList` | Clear your stack/queue before adding items (Use with `inputAddClipRange`, `!addCurrentClip`, and `!addSplitClip`) |
+| `invertOrder` | Process list in opposite direction of configuration setting (Affects `pasteNext`, `copyNext`, `inputCopyClipRange`, `inputPasteClipRange`, `pasteStack`, `copyStack`, `!addSplitClip`) |
+| `insertNext` | Force insertion of items in the "next" position |
+
+Remember the `invertOrder` argument doesn't affect adding a range of clipboard items to your list. It's recommended to set your list behavior to match this and customize the rest as needed.
+
+Here’s how some commands would look in action:
+* `c!!addCurrentClip,0,0,1` will copy selected text and force insert it in the “next” position. It’s useful to have as an option if your list behaves as “queue” and you are processing it top-to-bottom.
+* `pasteNext,0,1,0` will paste the previous item instead of the next one.
+* `c!!addSplitClip,1` will copy selected text, split it by newlines, clear your current list, and insert it the split items in a new one.
+
+---
+## Closing & Tips
+
+Phew! Thank you for making it this far. After diving into this project, I've got a whole new respect for clipboard manager developers. Who knew the processing and sorting logic for a single paste stack would turn into such a beast? But hey, that complexity opened up a world of cool options.
+
+Here are some tips/ideas you may find useful:
+
+* PasteFlow plays really nicely with [Alfred's clipboard manager](https://www.alfredapp.com/help/features/clipboard/). I'm always using the clipboard merging feature to grab multiple items and toss them into my list (as split items) all at once.
+
+* Alfred's snippets feature also opens up some more possibilities. You can stash your current stack on your clipboard, save it as a snippet, clear your list, start a fresh one, and then bring back your old items from the snippet later on.
+
+* I love using PasteFlow with [Quill](https://github.com/zeitlings/alfred-quill). It's an awesome workflow that with lets you process your list or individual items with transformations. You can this directly from Alfred's bar, sending your list or items with Alfred actions to Quill before pasting.
+
+* There's this fantastic [Sequential Paste](https://alfred.app/workflows/vitor/sequential-paste/) workflow that partly inspired PasteFlow. I still use it when I need to paste something I thought was on my clipboard, but turns out it's one item behind.
+
+* Here's a wild idea that I haven't had the chance to put into practice: use that custom path feature for your stack to save it in your Shortcuts folder. Then you could whip up a Shortcut to view, edit, or add items right from your phone. This basically would mean having a cross-platform paste stack.
+
+* I've got to give a shout-out to CleanClip's paste stack/queue. It's the only one I've seen that can be both a stack and a queue, and it sparked the idea of adding split lists as individual items.
+
+Now, PasteFlow isn't perfect. You can't see your stack/queue in real-time while processing, and it doesn't keep rich text formatting (that's an Alfred's Clipboard Manager limitation). I know I am biased but I've got to say, I think PasteFlow is pretty good and should hit the spot for most users, whether you're just dipping your toes in or diving into the deep end.
+
+If PasteFlow's making your life easier, how about buying me a coffee? I'd be over the moon grateful!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+## INSTALLATION
+1. Check the [latest release](https://github.com/ognistik/alfred-taptix/releases/latest) and install the `.alfredworkflow` file.
+2. [Authorize Taptix](#authorization) for it to work.
+
+---
+## HOW TO USE
+### Initial Setup
+**The welcome screen configuration settings are used each time Taptix starts.** I suggest you keep the defaults at first and change them later—once you familiarize yourself with how the Workflow works. To access the configuration screen again, right-click the workflow in Alfred's sidebar and select "Configure..."
+
+<p align="center">
+  <img width="600" src="Workflow/assets/images/image01.jpg">
+</p>
+
+### Alfred’s Search Bar
+Activate Taptix and modify its settings while running with “taptix” or custom keyword ("tt" by default).
+1. Fuzzy search is supported (e.g., "tt sk" for "Set Keyboard Sound").
+2. Hold CMD on the option "Activate" or "Deactivate" to quickly open Taptix' configuration.
+3. Hold CMD or OPT when selecting "Set Volume" to adjust keyboard or mouse volume separately.
+
+### Hotkeys & External Triggers
+Triggers have been color coded for easy setup:
+* **Green:** Basic toggles for Taptix activation and main menu.
+* **Blue:** By using these hotkeys you can bypass the main menu.
+* **Yellow**: These are external triggers that allow total control of Taptix, and they also allow to change multiple settings at once. **[Read more about the possible arguments](#for-automation-ninjas)**.
+
+*Hotkeys and external triggers are optional, providing quick access to your most-used actions.*
+
+---
+## CUSTOM SOUNDS
+**Want different sounds or to record your own? It's easy!** When you choose a "Custom Path for Sounds" in the workflow setup, Taptix looks for this structure:
+
+```
+CustomPath/keyboards/keyboard name/(audio files)
+CustomPath/mice/mouse name/(audio files)
+```
+
+If `keyboards` and `mice` folders aren't there when Taptix is looking for them (this will also depend on your "Extended Sound Packs" selection), the Workflow creates them with sample sound packs. Just replace the audio files with yours, and add as many keyboard or mouse folders as you like. Audio files must be named exactly like the samples, they should preferably be 24 or 16 bit Wav files , but they can also be mp3s (WAVS will play a tiny bit faster). Stereo and close-up recordings are recommended, and well-trimmed to avoid lag.
+
+**IMPORTANT:**
+* **If you don't want custom sounds, leave this configuration field blank.** The Workflow will use default sounds.
+* **You need both mouse and keyboard sounds to use Taptix.** If you only want keyboard sounds, you can mute the mous in the configuration.
+* **Make sure your keyboard and mouse names in the configuration match your sound pack folders.** Taptix won't start if it can't find them.
+* **To use custom sounds plus the included ones, select the Extended Sound Packs Option** Otherwise, Taptix will use either the default sounds or the ones in the custom path (if one is set). It won't look in both locations. This option is meant to give users the flexibility to only use their own sound packs if they prefer.
+* **It is possible to use a custom keyboard sound pack together with a default mouse pack or viceversa.** Simply select the Extended Sound Packs Option. For each device sound pack, Taptix will look in its default path first. Only if no packs with the specified name are found within the workflow's directory will it look for sounds in the user's custom path.
+
+---
+## CONTRIBUTIONS WELCOME!
+Taptix currently has a limited number of sound packs. **If you have high-quality recordings of your mechanical keyboards or mice, feel free to share them with the community!** You can provide me with a zipped download link (or let me know, you may want to upload to the repo directly).
+
+**I'm more interested in good quality, stereo/closely recorded sound packs than having as many sounds as possible.** I'll be happy to include your contributions (and give you credit) if they meet these standards. 
+
+---
+## FOR AUTOMATION NINJAS
+Taptix has two external triggers (yellow color-coded) which can control the workflow via Alfred's URL scheme or AppleScript. The `mainMenu` external trigger simply opens the main menu. The `cmd` external trigger can receive the following arguments:
+
+| ARGUMENT                 | ACTION                                |
+|--------------------------|---------------------------------------|
+| `toggle`                 | Activates or deactivates Taptix       |
+| `simple_toggle_mouse`    | Mutes/unmutes the mouse               |
+| `simple_toggle_keyboard` | Mutes/unmutes the keyboard            |
+| `set_mouse`              | Set mouse menu options                |
+| `set_keyboard`           | Set keyboard menu options             |
+| `set_volume`             | Set global volume with Alfred’s bar   |
+| `set_mouse_volume`       | Set mouse volume with Alfred’s bar    |
+| `set_keyboard_volume`      | Set keyboard volume with Alfred’s bar |
+
+The `cmd` trigger can also receive any of the following advanced arguments once Taptix is active, and in this way completely bypass the use of Alfred’s bar:
+
+| ADVANCED ARGUMENTS                |
+|-----------------------------------|
+| `set_keyboard Keyboard Sound`   |
+| `set_mouse Mouse Sound`         |
+| `set_volume 4.5`                  |
+| `set_keyboard_volume 5`           |
+| `set_mouse_volume 5`              |
+| `toggle_keyboard`                 |
+| `toggle_mouse`                    |
+| `mute_keyboard`                   |
+| `mute_mouse`                      |
+| `unmute_keyboard`                 |
+| `unmute_mouse`                    |
+| `get_keyboard`                    |
+| `get_mouse`                       |
+| `get_volume`                      |
+| `get_keyboard_volume`             |
+| `get_mouse_volume`                |
+| `quit`                            |
+
+*Note. The `set_keyboard` and `set_mouse` can optionally receive a second argument with the custom path for their sounds with the flag -sp (no double quotes are needed, even if path includes spaces). If no second argument is sent, Taptix will look for the sounds in the same directory of the current keyboard or mouse sounds.*
+
+Furthermore, the `cmd` trigger can receive multiple “Advanced Arguments” comma separated. If you create another workflow specifically for Taptix triggers, or if you want to integrate it with other automation apps, you can use this as a way to trigger custom presets. For example, you can send the following in a single argument: `set_keyboard Nocfree Lite Soft,set_mouse Logitech Master 3S,set_keyboard_volume 9,set_mouse_volume 4`
+
+---
+## AUTHORIZATION
+**Taptix is a small app. Unfortunately, I'm not a developer nor have a way to notarize it.** When you first run the workflow, you'll see a warning. You can either trust the app or compile it from the source code.
+
+<p align="center">
+  <img width="300" src="Workflow/assets/images/image02.jpg">
+</p>
+
+**To trust the app:**
+1. Go to Alfred's Workflows tab.
+2. Find Taptix in the sidebar.
+3. Right-click and reveal the workflow in Finder.
+4. Right-click the "taptix" file and select open.
+5. Click "Open" in the warning dialog.
+
+<p align="center">
+  <img width="300" src="Workflow/assets/images/image03.jpg">
+</p>
+
+*NOTE: If you are on Sequoia, you may need [some extra steps](https://mjtsai.com/blog/2024/07/05/sequoia-removes-gatekeeper-contextual-menu-override/)...*
+
+**When you click "Open" a Terminal window will unsuccessfully attempt to initialize Taptix. Don't worry, this only means you've successfully authorized the app.** You can close Terminal and use the Workflow without issues.
+
+If you opt to compile the app yourself you'll need to clone this repo and have Go in your system. Further instructions in [THIS README](https://github.com/ognistik/alfred-taptix/blob/main/Source/README.md). Once done, simply replace the "taptix" file inside the Workflow's folder with the one you've compiled yourself.
+
+**Sorry for this inconvenience!**
+
+---
+## FAQ
+**Why is there lag?**
+
+Taptix is built in Go, which is actually pretty fast! If you are experiencing an uncomfortable amount of lag, it may be due to using bluetooth with your speakers/headphones. Otherwise, it could also be that the sounds you are using are not well trimmed. If you think this has to do with the Go app itself, feel free to [check it out](https://github.com/ognistik/alfred-taptix/tree/main/Source) and create a pull request if you think it could be optimized.
+
+**I’d like to have a specific audio file play per key instead of randomizing.**
+
+I believe this is possible to customize by modifying the [source code](https://github.com/ognistik/alfred-taptix/tree/main/Source), but the priority for me is that Taptix remains easy and flexible to use. The randomizing feature makes it very simple to create sound packs. If you think of a way to integrate both the randomizing and an optional non-randomizing setting, without making the workflow overly complicated, let me know and we can discuss it. :) 
+
+---
+## THANK YOU
+Up until now I’ve been using the fantastic [Klack](https://tryklack.com/) app for mechanical keyboard sounds. I still think it is the best in the game. However, it lacks mouse sounds and you cannot create your own sound packs: two things that were important for me. I discovered the open-source project [Type Joy](https://github.com/webdevcody/type-joy)—which was inspired by Klack—and thought it looked simple enough to give this a go. Taptix is a fork of Type Joy and a result of many hours of trying to figure out some bugs, adding features, and customizing it so that it would work well inside Alfred. I would have never been able to do this without the help of Sonnet 3.5. I still know very little of how everything works, and almost nothing about Go, to be honest.
+
+Thank you Klack and thank you Type Joy for the inspiration. And thank you so much guys for trying this out!
+
+*If you find Taptix fun or useful, I would greatly appreciate your support by buying me a coffee at [THIS LINK](https://www.buymeacoffee.com/afadingthought). Your generosity would mean the world to me!*
