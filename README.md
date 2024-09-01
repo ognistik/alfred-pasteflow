@@ -307,11 +307,8 @@ For most users, this is all you need to know. Keep the "Do Not Change Next Item 
 
 ### Advanced Insertion and Processing
 
-<p>
-    <img width="200" src="Workflow/assets/images/nextItem.png">
-</p>
-<p style="font-size: 0.8em; color: gray; margin-top: -10px;">
-    The Next Item
+<p align="center">
+    <img width="400" src="Workflow/assets/images/nextItem.png">
 </p>
 
 PasteFlow's Selective Mode and the "Next Item Index" feature work together for more complex list management:
