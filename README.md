@@ -316,7 +316,7 @@ PasteFlow's Selective Mode and the "Next Item Index" feature work together for m
 While in Selective Mode, use CMD + OPT + CTRL when selecting an item to set it as the "next item". This item will not be processed and simply change it's icon into "red" to indicate it is next in line. There's another way you can do this. By turning off "Do Not Change Next Item Index" in the configuration, processing or clearing an item from anywhere your list automatically updates the "next item" to be the one **after** the last processed position.
 
 <details>
-  <summary><b>👇️ Let's break down how this works in different scenarios.</b></summary>
+  <summary><b>👇️ Let's break down how this works in different scenarios:</b></summary>
 
 **Stack (Top-to-Bottom)**:
 - If you set the "next item" somewhere in the middle of your list, PasteFlow treats all items **above** it as already processed.
@@ -384,7 +384,7 @@ Only `theAction` is required.
 ### Additional Arguments
 
 <details>
-  <summary><b>👇️ These arguments need to be `0` for false, or `1` for true.</b></summary>
+  <summary><b>👇️ These arguments need to be `0` for false, or `1` for true:</b></summary>
 
 
 | Argument | Description |
@@ -407,7 +407,7 @@ Here’s how some commands would look in action:
 Phew! Thank you for making it this far. After diving into this project, I've got a whole new respect for clipboard manager developers. Who knew the processing and sorting logic for a single paste stack would turn into such a beast? But hey, that complexity opened up a world of cool options.
 
 <details>
-  <summary><b>👇️ Here are some tips/ideas you may find useful.</b></summary>
+  <summary><b>👇️ Here are some tips/ideas you may find useful:</b></summary>
 
 * PasteFlow plays really nicely with [Alfred's clipboard manager](https://www.alfredapp.com/help/features/clipboard/). I'm always using the clipboard merging feature to grab multiple items and toss them into my list (as split items) all at once.
 
