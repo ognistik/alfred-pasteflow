@@ -706,7 +706,7 @@
 				<key>modifiers</key>
 				<integer>786432</integer>
 				<key>modifiersubtext</key>
-				<string>Split, Invert, &amp; Force Add in "Next" Position</string>
+				<string>Split, Invert, &amp; Force Insert in "Next" Position</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -716,7 +716,7 @@
 				<key>modifiers</key>
 				<integer>262144</integer>
 				<key>modifiersubtext</key>
-				<string>Split &amp; Force Add in "Next" Position</string>
+				<string>Split &amp; Force Insert in "Next" Position</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -1749,7 +1749,7 @@
 				<key>modifiers</key>
 				<integer>262144</integer>
 				<key>modifiersubtext</key>
-				<string>Force Add in "Next" Position</string>
+				<string>Force Insert in "Next" Position</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>

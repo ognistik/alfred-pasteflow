@@ -110,8 +110,8 @@ function run(argv) {
             mods: { 'cmd': {valid: true, variables: {theAction: 'inputAddClipRange', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' & add X number of recent items.'},
                     'alt': {valid: true, variables: {theAction: '!addCurrentClip' }, subtitle: 'Add current clipboard only.'},
                     'cmd+alt': {valid: true, variables: {theAction: '!addCurrentClip', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' & add current clipboard only.'},
-                    'ctrl': {valid: true, variables: {theAction: 'inputAddClipRange', addNext: '1'}, subtitle: 'Add X number of recent items and insert in "next" position.'},
-                    'ctrl+alt': {valid: true, variables: {theAction: '!addCurrentClip', addNext: '1'}, subtitle: 'Add current clipboard only in "next" position.'}
+                    'ctrl': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? {valid: true, variables: {theAction: 'inputAddClipRange', addNext: '1'}, subtitle: 'Add X number of recent items and insert in "next" position.'} : {valid: false},
+                    'ctrl+alt': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ?  {valid: true, variables: {theAction: '!addCurrentClip', addNext: '1'}, subtitle: 'Add current clipboard only in "next" position.'} : {valid: false}
                 }
         });
 
@@ -132,8 +132,8 @@ function run(argv) {
                 'cmd': {valid: true, variables: {theAction: '!addSplitClip', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' & add current clipboard split by newlines.'},
                 'alt': {valid: true, variables: {theAction: '!addSplitClip', invOrder: '1'}, subtitle: 'Add current clipboard split by newlines. ' + (behavior === 'stack' ? 'Invert first (recent at the bottom).' : 'Invert first (recent at the top).')},
                 'alt+cmd': {valid: true, variables: {theAction: '!addSplitClip', invOrder: '1', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' & add current clipboard split by newlines. ' + (behavior === 'stack' ? 'Recent at the bottom.' : 'Recent at the top.')},
-                'ctrl': {valid: true, variables: {theAction: '!addSplitClip', addNext: '1'}, subtitle: 'Add current clipboard in "next" position, split by newlines.'},
-                'ctrl+alt': {valid: true, variables: {theAction: '!addSplitClip', addNext: '1', invOrder: '1'}, subtitle: 'Add current clipboard in "next" position, split by newlines. ' + (behavior === 'stack' ? 'Invert first (recent at the bottom).' : 'Invert first (recent at the top).')}
+                'ctrl': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? {valid: true, variables: {theAction: '!addSplitClip', addNext: '1'}, subtitle: 'Add current clipboard in "next" position, split by newlines.'} : {valid: false},
+                'ctrl+alt': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? {valid: true, variables: {theAction: '!addSplitClip', addNext: '1', invOrder: '1'}, subtitle: 'Add current clipboard in "next" position, split by newlines. ' + (behavior === 'stack' ? 'Invert first (recent at the bottom).' : 'Invert first (recent at the top).')} : {valid: false}
         }
         });
 

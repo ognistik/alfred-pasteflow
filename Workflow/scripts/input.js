@@ -265,17 +265,17 @@ function run(argv) {
             items.push({
                 type: 'default',
                 title: 'Add \"' + query + '\" Recent Clipboard Items to Your' + (theStack.length ? ' ' + behaviorUp : ' New ' + behaviorUp),
-                subtitle: (addNext === 1 ? '"Next" Position Forced | ' : '') + '⌘↩ Clear ' + behaviorUp + ' Before Adding' + (addNext === 1 ? '' : ' • ⌃↩ Insert in "Next" Position'),
+                subtitle: (addNext === 1 ? '"Next" Position Insert Forced | ' : '') + '⌘↩ Clear ' + behaviorUp + ' Before Adding' + (addNext === 1 ? '' : (behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? ' • ⌃↩ Insert in "Next" Position' : '')),
                 variables: { theItems: query, theAction: '!addClipRange' },
                 mods: { 'cmd': {valid: true, variables: {theItems: query, theAction: '!addClipRange', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' before adding.'},
-                        'ctrl': {valid: true, variables: {theItems: query, theAction: '!addClipRange', addNext: '1'}, subtitle: 'Force insertion in "next" position.'}}
-            });
+                        'ctrl': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? {valid: true, variables: {theItems: query, theAction: '!addClipRange', addNext: '1'}, subtitle: 'Force insert in "next" position.'} :  {valid: false},
+                    }});
         } else {
             items.push({
                 valid: false,
                 type: 'default',
                 title: 'Please Insert a Number',
-                subtitle: (addNext === 1 ? '"Next" Position Forced | ' : '') + '⌘↩ Clear ' + behaviorUp + ' Before Adding' + (addNext === 1 ? '' : ' • ⌃↩ Insert in "Next" Position'),
+                subtitle: (addNext === 1 ? '"Next" Position Forced | ' : '') + '⌘↩ Clear ' + behaviorUp + ' Before Adding' + (addNext === 1 ? '' : (behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? ' • ⌃↩ Insert in "Next" Position' : '')),
             });
         }
     }
