@@ -72,14 +72,17 @@ PasteFlow is designed to be a flexible & powerful clipboard companion. Whether y
 
 You can use PasteFlow as a temporary text holder or a more permanent list. Here's how you can clear items from it:
 
-### Auto-Clearing the List
+<details>
+  <summary><b>👇️ Auto-Clearing the List</b></summary>
 PasteFlow offers easy configuration options for automatic clearing:
 
 * **Timeout**: Set a time limit for your list.
 * **Clear Item After Processed**: Remove items once you've used them.
 * **Clear List After Processed**: Wipe the entire list after processing all items at once.
+</details>
 
-### Manually Clearing the List
+<details>
+  <summary><b>👇️ Manually Clearing the List</b></summary>
 If you want to have control of where, how, or when your items are cleared, you have these manual options:
 
 * **Clear and Add**: In the main menu, hold CMD while selecting 'Add to List from Clipboard' or 'Split & Add to List'. This clears the list before adding new items.
@@ -90,6 +93,7 @@ If you want to have control of where, how, or when your items are cleared, you h
   - Clear individual items: Hold CTRL while pressing return (items are removed, not pasted or copied)
   - Clear entire list: Use CTRL + CMD + Return
 * **External Trigger**: Use the `clearList` argument to clear the list. You can also set a second argument to `1` to clear the list before adding new items.
+</details>
 
 ---
 ## THE MAIN MENU
@@ -189,7 +193,7 @@ Selective Mode puts you in control. It's designed to be intuitive and powerful, 
 <details>
   <summary><b>👇️ The hotkeys have been color-coded to make setup easier for you.</b></summary>
 
-### Green: Essential & Basics
+### Green: Essentials & Basics
 These are the must-haves for most users. They let you add items to your list, process them, and access the main menu without needing a keyword.
 
 ### Red: Full List Views
