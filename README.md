@@ -196,10 +196,10 @@ Just like in the main menu, Selective Mode lets you do a few things with each it
   <summary><b>👇️ Advanced Modifier Combos</b></summary>
 
 * CMD + OPT: Edit your entire list
-* CMD + CTRL: Clear your whole list
+* CMD + CTRL + OPT: Clear your whole list
 * CMD + FN: Invert the order of your entire list
 * FN + SHIFT: Start processing from the beginning again
-* CMD + CTRL + OPT: Choose which item to process next (great for advanced insertion or processing)
+* CMD + SHIFT: Choose which item to process next (great for advanced insertion or processing)
 
 </details>
 

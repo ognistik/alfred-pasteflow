@@ -177,6 +177,19 @@ function run(argv) {
         $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
     }
 
+    //Reset Next Item
+    if (theAction.startsWith("inputResetN")) {
+        //First we clear this for it to still display the items next
+        theAction = theAction.slice(11);
+        nextItem = 1;
+
+        //We make these strings in temporary variables
+        tempItem = (parseInt(nextItem)).toString();
+        tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
+        $.NSString.stringWithString(tempItem).writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
+        $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
+    }
+
     //Now let's clear Items
     if (theAction.startsWith("inputClearItem")) {
         //First we clear this for it to still display the items next
@@ -443,14 +456,14 @@ function run(argv) {
                                 theAction: 'inputClearItem' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem')
                             }
                         },
-                        'ctrl+cmd': {
+                        'ctrl+cmd+fn': {
                             subtitle: 'Clear ' + behaviorUp,
                             variables: {
                                 theAction: 'clearList'
                             }
                         },
-                        'ctrl+cmd+alt': {
-                            subtitle: 'Set as Next Item Index',
+                        'shift+cmd': {
+                            subtitle: 'Set as Next Item',
                             variables: {
                                 theAction: 'inputSetN' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem')
                             }
@@ -476,7 +489,7 @@ function run(argv) {
                         'fn+shift': {
                             subtitle: 'Reset Next Item Index',
                             variables: {
-                                theAction: 'resetNext'
+                                theAction: 'inputResetN' +  (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem')
                             }
                         }
                     }
