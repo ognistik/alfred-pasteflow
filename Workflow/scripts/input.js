@@ -169,7 +169,7 @@ function run(argv) {
 
         //We prepare the nextItem
         if (afterSelect === '1') {
-            nextItem = 1;
+            //nextItem = 1;
         } else {
             if (pasteOrder === 'recFirst') {
                 nextItem = theIndex + 1;
@@ -210,7 +210,7 @@ function run(argv) {
 
         //Now we set the nextItem
         if (afterSelect === '1') {
-            nextItem = 1;
+            //nextItem = 1;
         } else {
             if (theAction.startsWith("inputMoveU")){
                 if (pasteOrder === 'recFirst') {

@@ -61,12 +61,16 @@ PasteFlow is packed with features to make your workflow smoother:
 * **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. [***Read all about Universal Actions***](#universal-actions)
 * **Multiple Control Methods**: Use Alfred's bar directly, keyboard shortcuts ([color-coded for easy remembering](#custom-hotkeys)), or send arguments to the external trigger. [***Read all about the external trigger.***](#the-external-trigger)
   
-PasteFlow is designed to be a flexible, powerful clipboard companion. Whether you're a pro or just getting started with paste stacks and clipboard managers, it's here to make your copy/paste tasks more efficient. Feel free to read below for more detailed information on all the features, and do not forget to [check out some tips and ideas that you may also find useful.](#closing--tips)
+PasteFlow is designed to be a flexible & powerful clipboard companion. Whether you're a pro or just getting started with paste stacks and clipboard managers, it's here to make your copy/paste tasks more efficient. Feel free to read below for more detailed information on all the features, and do not forget to [check out some tips and ideas that you may also find useful.](#closing--tips)
+
+<p align="center">
+  <img width="600" src="Workflow/assets/images/002.jpg">
+</p>
 
 ---
 ## CLEARING ITEMS
 
-PasteFlow is flexible - you can use it as a temporary text holder or a more permanent list. While it's not meant to replace your clipboard manager, it can complement it nicely. Here's how you can clear items from list:
+You can use PasteFlow as a temporary text holder or a more permanent list. Here's how you can clear items from it:
 
 ### Auto-Clearing the List
 PasteFlow offers easy configuration options for automatic clearing:
@@ -76,14 +80,14 @@ PasteFlow offers easy configuration options for automatic clearing:
 * **Clear List After Processed**: Wipe the entire list after processing all items at once.
 
 ### Manually Clearing the List
-Sometimes you want more control. Here are your options for manual clearing:
+If you want to have control of where, how, or when your items are cleared, you have these manual options:
 
-* **Quick Clear and Add**: In the main menu, hold CMD while selecting 'Add to List from Clipboard' or 'Split & Add to List'. This clears the list before adding new items.
+* **Clear and Add**: In the main menu, hold CMD while selecting 'Add to List from Clipboard' or 'Split & Add to List'. This clears the list before adding new items.
 * **Main Menu Option**: Type `:Clear` in the main menu.
 * **Hotkey**: Set up a keyboard shortcut (yellow color-coded) to clear your list.
 * **In Textview Mode**: In Textview Mode (`:View` from main menu), use CTRL + Return.
 * **In Selective Mode**: 
-  - Clear individual items: Hold CTRL while selecting (items are removed, not pasted or copied)
+  - Clear individual items: Hold CTRL while pressing return (items are removed, not pasted or copied)
   - Clear entire list: Use CTRL + CMD + Return
 * **External Trigger**: Use the `clearList` argument to clear the list. You can also set a second argument to `1` to clear the list before adding new items.
 
@@ -95,22 +99,22 @@ The main menu is your control center for PasteFlow. Here's some things you can d
 * Copy your entire list at once with CMD C
 * Use Alfred's Universal Actions on your full list
 
-*Note: The menu is populated dynamically. For example, you won't see processing options if your list is empty, or the "Next Item" option if all items have been processed and the list isn't set to restart.*
+*Note: The menu is populated dynamically. For example, you won't see processing some options if your list is empty, the "Next Item" processing option won't be available if all items have been processed and the list isn't set to restart, or you will not have the "insert in next position" modifier [if it makes no difference](#advanced-insertion-and-processing)...*
 
 **Main Menu Options and Modifiers**
 * Add to Stack/Queue from Clipboard
   * CMD: Start fresh by clearing the list before adding
   * OPT: Add only what's currently in your clipboard
   * CMD + OPT: Clear the list and add only the current clipboard item
-  * CTRL: Add a range of clipboard items in the "next" position
-  * CTRL + OPT: Add current clipboard item in the "next" position
+  * CTRL: Insert a range of clipboard items in the "next" position
+  * CTRL + OPT: Add current clipboard item inserting it in the "next" position
 
 * Split & Add to Stack/Queue
   * CMD: Clear the list before adding new items
   * OPT: Flip the order of your split clipboard before adding
   * OPT + CMD: Clear the list and add your split clipboard in reverse order
-  * CTRL: Split current clipboard by newlines and add in "next" position
-  * CTRL + OPT: Split current clipboard by newlines, flip the order, and add in "next" position
+  * CTRL: Split current clipboard by newlines and insert in "next" position
+  * CTRL + OPT: Split current clipboard by newlines, flip the order, and insert in "next" position
 
 * Next Item (Pastes by Default)
   * CMD: Copy the next item instead of pasting
@@ -141,6 +145,10 @@ There's also a "secret" menu with extra options for your entire list. Just type 
 * Keep & Trim (Keep X amount of items): Slim down your list to a specific number of items
 * Reset Next Item Index: Start processing from the beginning again
 
+<p align="center">
+  <img width="600" src="Workflow/assets/images/003.jpg">
+</p>
+
 PasteFlow's main menu is designed to give you quick access to all the tools you need. Whether you're adding items, processing them, or managing your list, everything is just a few keystrokes away!
 
 ---
@@ -149,6 +157,10 @@ PasteFlow's main menu is designed to give you quick access to all the tools you 
 Selective mode gives you a hands-on experience with your PasteFlow list. It's like having a traditional paste stack/queue at your fingertips, where you can shuffle items around, make edits, or process them in any order you like. 
 
 If you've set PasteFlow to keep processed items, you'll have some visual cues on the icons that show which item is next in line (an icon with red) and which have already been processed (icons with transparency).
+
+<p align="center">
+  <img width="600" src="Workflow/assets/images/004.jpg">
+</p>
 
 Just like in the main menu, Selective Mode lets you do a few things with each item:
 * See the item in large text with CMD L
@@ -204,7 +216,7 @@ If you zoom out in Alfred's workflow editor (CMD + Hyphen), you'll notice the ho
 * Full-list actions
 * Workflow actions
 
-*Note: PasteFlow is packed with actions, and when combined with different settings, the preset hotkey list could grow huge. Some features, like inverting inserts or processing, are more for advanced users. If you're looking for customization beyond the available hotkeys, I recommend learning to use the external trigger.*
+*Note: PasteFlow has offers a lot of processing actions, and when combined with different settings, the preset hotkey list could grow huge. Some features, like inverting inserts or processing, are more for advanced users—so I didn't include those as hotkeys. If you're looking for customization beyond the available hotkeys, I recommend learning to use [the external trigger.](#the-external-trigger)*
 
 ---
 ## UNIVERSAL ACTIONS
