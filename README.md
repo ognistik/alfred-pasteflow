@@ -17,13 +17,13 @@ If you're already familiar with paste stacks, you can start using PasteFlow righ
 
 1. **Add items to your stack:**
    - Select text and use Pasteflow actions on them.
-   - Set up your preferred hotkeys (green [color-coded hotkeys](#custom-hotkeys) are the most basic/essential).
+   - Set up your preferred hotkeys (green color-coded hotkeys are the most basic/essential).
    - Use PasteFlow's keyword to add items from your Clipboard to your stack.
 
 2. **Process your saved items:**
    The easiest way to do this is to set up a hotkey (in green), but you can also use PasteFlow's keyword directly on Alfred's bar.
    - Paste items to your current window
-   - Add them to your clipboard
+   - Copy items back to your clipboard
 
 3. **View & edit your stack:**
    - Set up hotkeys (red-coded hotkeys show your entire list)
@@ -38,10 +38,10 @@ That's all you need to get started! But if you want to explore more, PasteFlow h
 ### Configuration
 PasteFlow is flexible and adapts to your workflow. Here's how you can set it up:
 
-* **Stack or Queue**: Choose how new items are added - at the top (stack) or bottom (queue). *Read more about the sorting logic.*
+* **Stack or Queue**: Choose how new items are added - at the top (stack) or bottom (queue). [*Read more about the sorting logic.*](#the-sorting-logic)
 * **Processing Order**: Pick where to start processing items - from the top or bottom. It's all about what feels right for you.
-* **Auto-Clear Options**: Decide if you want items cleared after processing. You can set this for individual items or the entire list when processed at once. *Read more about ways to clear your items.*
-* **Selective Processing**: This setting allows for advanced workflows when inserting or processing individual list items. It works together with your chosen processing order. *Read more about the insertion & processing logic.*
+* **Selective Processing**: This setting allows for advanced workflows when inserting or processing individual list items. It works together with your chosen processing order. [*Read more about the insertion & processing logic.*](#the-processing-logic)
+* **Auto-Clear Options**: Decide if you want items cleared after processing. You can set this for individual items or the entire list when processed at once. [*Read more about ways to clear your items.*](#clearing-items)
 * **Restart or Stop**: Choose whether to restart processing when you reach the end of your list, or simply stop until you add more items.
 * **Paste Actions**: Optionally, add a line break, comma, space, or press tab after each pasted item from your list.
 * **Merge Formatting**: When processing your entire list at once, choose to merge items with line breaks, commas, or spaces.
@@ -52,12 +52,12 @@ PasteFlow is packed with features to make your workflow smoother:
 
 * **Large Text View**: In the main menu, press CMD L on any item to see your list in large text. You can also copy it (CMD C) or use Alfred's universal actions on it.
 * **Selective Mode Viewing**: In Selective Mode, CMD L shows the full content of an item. Copy or use universal actions here too.
-* **Hidden Features**: Type `:` in Alfred's bar to reveal "secret" options like inverting your list order, clearing it, or editing all contents. Many of these are also in Textview Mode (`:View`). *Read all about the main menu.*
-* **Powerful Selective Mode**: Edit individual items, move them around, remove them, or process them in any order. Some modifier combos let you tweak the whole list without entering Textview Mode. *Read all about Selective Mode.*
-* **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. *Read all about Universal Actions*
-* **Multiple Control Methods**: Use Alfred's bar directly, keyboard shortcuts (color-coded for easy remembering), or send arguments to the external trigger. *Read all about the external trigger.*
+* **Hidden Features**: Type `:` in Alfred's bar to reveal "secret" options like inverting your list order, clearing it, or editing all contents. Many of these are also directly available in Textview Mode (`:View`). [*Read all about the main menu.*](#the-main-menu)
+* **Powerful Selective Mode**: Edit individual items, move them around, remove them, or process them in any order. Some modifier combos let you tweak the whole list without entering Textview Mode. [*Read all about Selective Mode.*](#selective-mode)
+* **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. [*Read all about Universal Actions*](#universal-actions)
+* **Multiple Control Methods**: Use Alfred's bar directly, [keyboard shortcuts](#custom-hotkeys) (color-coded for easy remembering), or send arguments to the external trigger. [*Read all about the external trigger.*](#the-external-trigger)
   
-PasteFlow is designed to be a flexible, powerful clipboard companion. Whether you're a pro or just getting started with paste stacks and clipboard managers, it's here to make your workflow smoother and more efficient.
+PasteFlow is designed to be a flexible, powerful clipboard companion. Whether you're a pro or just getting started with paste stacks and clipboard managers, it's here to make your workflow smoother and more efficient. Feel free to read below for more detailed information on all the features, and do not forget to [check out some tips and ideas that you may also find useful.](#closing--tips)
 
 ---
 ## CLEARING ITEMS
@@ -168,7 +168,7 @@ Just like in the main menu, Selective Mode lets you do a few things with each it
 Selective Mode puts you in control. It's designed to be intuitive and powerful, giving you the flexibility to work with your list exactly the way you want.
 
 ---
-## Custom Hotkeys
+## CUSTOM HOTKEYS
 
 The hotkeys have been color-coded to make setup easier for you:
 
@@ -226,7 +226,7 @@ This action splits your selected text into separate items and adds them to your 
 These universal actions give you quick, flexible ways to add content to your PasteFlow list, right from any text you're working with.
 
 ---
-## The Sorting Logic
+## THE SORTING LOGIC
 
 PasteFlow adapts to your preferred way of organizing information. Here's how it works:
 * **Stack**: New items go to the top. Think of it like a pile of plates - the last one you add sits on top.
@@ -281,6 +281,8 @@ Let's break down how this works in different scenarios:
 - To insert items elsewhere in the queue, use the "Force Next" option.
 
 Remember, PasteFlow uses visual cues with icon changes to help you understand the state of your list, even though you can't see it in real-time. Getting familiar with these concepts is not essential, but it allows you to leverage PasteFlow's full potential.
+
+*Important. Note that the actions that modify the contents of your list (most of the options in the "secret" menu) will reset the "Next Item Index" regardless of the "Selective Processing" behavior set in the configuration.*
 
 ---
 ## THE EXTERNAL TRIGGER
