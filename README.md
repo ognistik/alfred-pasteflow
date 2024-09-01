@@ -186,7 +186,8 @@ Selective Mode puts you in control. It's designed to be intuitive and powerful, 
 ---
 ## CUSTOM HOTKEYS
 
-The hotkeys have been color-coded to make setup easier for you:
+<details>
+  <summary><b>👇️ The hotkeys have been color-coded to make setup easier for you.</b></summary>
 
 ### Green: Essential & Basics
 These are the must-haves for most users. They let you add items to your list, process them, and access the main menu without needing a keyword.
@@ -209,6 +210,7 @@ These are some extra features that are more niche for specific workflows.
 
 ### Pink: External Trigger
 The external trigger gives you complete control over all of PasteFlow's features.
+</details>
 
 If you zoom out in Alfred's workflow editor (CMD + Hyphen), you'll notice the hotkeys are loosely grouped into:
 * Insertion actions
@@ -366,7 +368,8 @@ Here’s how some commands would look in action:
 
 Phew! Thank you for making it this far. After diving into this project, I've got a whole new respect for clipboard manager developers. Who knew the processing and sorting logic for a single paste stack would turn into such a beast? But hey, that complexity opened up a world of cool options.
 
-Here are some tips/ideas you may find useful:
+<details>
+  <summary><b>👇️ Here are some tips/ideas you may find useful.</b></summary>
 
 * PasteFlow plays really nicely with [Alfred's clipboard manager](https://www.alfredapp.com/help/features/clipboard/). I'm always using the clipboard merging feature to grab multiple items and toss them into my list (as split items) all at once.
 
@@ -379,7 +382,8 @@ Here are some tips/ideas you may find useful:
 * Here's a wild idea that I haven't had the chance to put into practice: use that custom path feature for your stack to save it in your Shortcuts folder. Then you could whip up a Shortcut to view, edit, or add items right from your phone. This basically would mean having a cross-platform paste stack.
 
 * I've got to give a shout-out to CleanClip's paste stack/queue. It's the only one I've seen that can be both a stack and a queue, and it sparked the idea of adding split lists as individual items.
+</details>
 
-Now, PasteFlow isn't perfect. You can't see your stack/queue in real-time while processing, and it doesn't keep rich text formatting (that's an Alfred's Clipboard Manager limitation). I know I am biased but I've got to say, I think PasteFlow is pretty good and should hit the spot for most users, whether you're just dipping your toes in or diving into the deep end.
+Now, I know PasteFlow isn't perfect. You can't see your stack/queue in real-time while processing, and it doesn't keep rich text formatting (that's an Alfred's Clipboard Manager limitation). I know I am biased but I've got to say, I think PasteFlow is pretty good and should hit the spot for most users, whether you're just dipping your toes in or diving into the deep end.
 
 If PasteFlow's making your life easier, how about [buying me a coffee](https://www.buymeacoffee.com/afadingthought)? I'd be over the moon grateful!
