@@ -5,7 +5,7 @@
 </p>
 
 ## WHAT IS PASTEFLOW?
-PasteFlow is a handy paste stack (or paste queue) for Alfred. It lets you create a list of pinned text items that you can organize, edit, and use in different ways.
+PasteFlow is a handy paste stack (or paste queue) for [Alfred](https://alfredapp.com/). It lets you create a list of pinned text items that you can organize, edit, and use in different ways.
 
 Ever needed to copy text from various places and put it all in one final spot? PasteFlow makes this easy. No more switching back and forth to copy and paste one item at a time. Save time and stay "in flow" by doing all your copying first, then pasting later when you're ready. Since your items are saved in an actual list, you can even take a break, copy other things, and come back to your stack whenever you want.
 
@@ -17,7 +17,7 @@ If you're already familiar with paste stacks, you can start using PasteFlow righ
 
 1. **Add items to your stack:**
    - Select text and use Pasteflow actions on them.
-   - Set up your preferred hotkeys (green color-coded hotkeys are the most basic/essential).
+   - Set up your preferred hotkeys (green [color-coded hotkeys](#custom-hotkeys) are the most basic/essential).
    - Use PasteFlow's keyword to add items from your Clipboard to your stack.
 
 2. **Process your saved items:**
