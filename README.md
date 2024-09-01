@@ -55,7 +55,7 @@ PasteFlow is packed with features to make your workflow smoother:
 * **Hidden Features**: Type `:` in Alfred's bar to reveal "secret" options like inverting your list order, clearing it, or editing all contents. Many of these are also directly available in Textview Mode (`:View`). [*Read all about the main menu.*](#the-main-menu)
 * **Powerful Selective Mode**: Edit individual items, move them around, remove them, or process them in any order. Some modifier combos let you tweak the whole list without entering Textview Mode. [*Read all about Selective Mode.*](#selective-mode)
 * **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. [*Read all about Universal Actions*](#universal-actions)
-* **Multiple Control Methods**: Use Alfred's bar directly, [keyboard shortcuts](#custom-hotkeys) (color-coded for easy remembering), or send arguments to the external trigger. [*Read all about the external trigger.*](#the-external-trigger)
+* **Multiple Control Methods**: Use Alfred's bar directly, keyboard shortcuts ([color-coded for easy remembering](#custom-hotkeys)), or send arguments to the external trigger. [*Read all about the external trigger.*](#the-external-trigger)
   
 PasteFlow is designed to be a flexible, powerful clipboard companion. Whether you're a pro or just getting started with paste stacks and clipboard managers, it's here to make your workflow smoother and more efficient. Feel free to read below for more detailed information on all the features, and do not forget to [check out some tips and ideas that you may also find useful.](#closing--tips)
 
