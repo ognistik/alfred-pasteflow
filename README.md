@@ -247,14 +247,22 @@ If you zoom out in Alfred's workflow editor (CMD + Hyphen), you'll notice the ho
 PasteFlow comes with two powerful universal actions, each with additional modifier options to fine-tune your workflow:
 
 ### Add to List
-This action adds your selected text to your PasteFlow list. Here's what you can do:
+This action adds your selected text to your PasteFlow list. 
+
+<details>
+  <summary><b>👇️ Here's what you can do:</b></summary>
 
 * **Default**: Simply adds the item to your list
 * **CMD**: Clears your existing list before adding the new item
 * **CTRL**: Forces the new item into the "next" position in your list
 
+</details>
+
 ### Split & Add to List
-This action splits your selected text into separate items and adds them to your list. It's super handy for multi-line text. Here are your options:
+This action splits your selected text into separate items and adds them to your list. It's super handy for multi-line text. 
+
+<details>
+  <summary><b>👇️ Here are your options:</b></summary>
 
 * **Default**: Splits and adds items to your list
 * **CMD**: Clears your existing list before splitting and adding as new items
@@ -262,6 +270,8 @@ This action splits your selected text into separate items and adds them to your 
 * **CMD + OPT**: Clears your list, then splits, inverts, and adds new items
 * **CTRL**: Splits and forces insertion of new items into the "next" position
 * **CTRL + OPT**: Splits, inverts the order, then forces insertion into the "next" position
+  
+</summary>
 
 These universal actions give you quick, flexible ways to add content to your PasteFlow list, right from any text you're working with.
 
@@ -296,6 +306,12 @@ Assuming you already have understood the sorting logic, now let me explain you w
 For most users, this is all you need to know. Keep the "Do Not Change Next Item Index" option on in the configuration, and everything should work smoothly, even in Selective Mode.
 
 ### Advanced Insertion and Processing
+
+<p align="center">
+    <img width="300" src="Workflow/assets/images/nextItem.png">
+    <i>The Next Item</i>
+</p>
+
 PasteFlow's Selective Mode and the "Next Item Index" feature work together for more complex list management:
 
 While in Selective Mode, use CMD + OPT + CTRL when selecting an item to set it as the "next item". This item will not be processed and simply change it's icon into "red" to indicate it is next in line. There's another way you can do this. By turning off "Do Not Change Next Item Index" in the configuration, processing or clearing an item from anywhere your list automatically updates the "next item" to be the one **after** the last processed position.
@@ -304,7 +320,7 @@ While in Selective Mode, use CMD + OPT + CTRL when selecting an item to set it a
   <summary><b>👇️ Let's break down how this works in different scenarios.</b></summary>
 
 **Stack (Top-to-Bottom)**:
-- If you set the "next" item somewhere in the middle of your list, PasteFlow treats all items **above** it as already processed.
+- If you set the "next item" somewhere in the middle of your list, PasteFlow treats all items **above** it as already processed.
 - New items will automatically be inserted at the "next item" position, **not at the top of the list**. This is because the sorting logic of the stack & processing order dictate that **the user wants to use the most recent item next.**
 - This allows you to continue processing from a specific point in your list, rather than always starting from the top.
 
@@ -319,8 +335,9 @@ While in Selective Mode, use CMD + OPT + CTRL when selecting an item to set it a
 
 **Queue (Top-to-Bottom)**:
 - In this setup, you're expecting to **process the oldest items first**.
-- New items are always **added to the bottom of the queue**, regardless of the "next" item position.
+- New items are always **added to the bottom of the queue**, regardless of the "next item" position.
 - To insert items elsewhere in the queue, use the "Force Next" option.
+  
 </details>
 
 Remember, PasteFlow uses visual cues with icon changes to help you understand the state of your list, even though you can't see it in real-time. Getting familiar with these concepts is not essential, but it allows you to leverage PasteFlow's full potential.
