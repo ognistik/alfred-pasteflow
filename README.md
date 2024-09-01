@@ -271,7 +271,7 @@ This action splits your selected text into separate items and adds them to your 
 * **CTRL**: Splits and forces insertion of new items into the "next" position
 * **CTRL + OPT**: Splits, inverts the order, then forces insertion into the "next" position
   
-</summary>
+</details>
 
 These universal actions give you quick, flexible ways to add content to your PasteFlow list, right from any text you're working with.
 
@@ -309,7 +309,9 @@ For most users, this is all you need to know. Keep the "Do Not Change Next Item 
 
 <p align="center">
     <img width="300" src="Workflow/assets/images/nextItem.png">
-    <i>The Next Item</i>
+</p>
+<p align="center">
+<i>The Next Item</i>
 </p>
 
 PasteFlow's Selective Mode and the "Next Item Index" feature work together for more complex list management:
