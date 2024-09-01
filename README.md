@@ -311,8 +311,9 @@ theAction,clearList,invertOrder,insertNext
 ```
 
 Only `theAction` is required. 
+
 <details>
-  <summary>theAction Options</summary>
+  <summary><b>theAction Options</b></summary>
 
 | Argument Content      | Description                                                  |
 |-----------------------|--------------------------------------------------------------|
@@ -338,13 +339,17 @@ Only `theAction` is required.
 </details>
 
 ### Additional Arguments
-These arguments need to be `0` for false, or `1` for true.
+
+<details>
+  <summary><b>These arguments need to be `0` for false, or `1` for true.</b></summary>
+
 
 | Argument | Description |
 |----------|-------------|
 | `clearList` | Clear your stack/queue before adding items (Use with `inputAddClipRange`, `!addCurrentClip`, and `!addSplitClip`) |
 | `invertOrder` | Process list in opposite direction of configuration setting (Affects `pasteNext`, `copyNext`, `inputCopyClipRange`, `inputPasteClipRange`, `pasteStack`, `copyStack`, `!addSplitClip`) |
 | `insertNext` | Force insertion of items in the "next" position |
+</details>
 
 Remember the `invertOrder` argument doesn't affect adding a range of clipboard items to your list. It's recommended to set your list behavior to match this and customize the rest as needed.
 
