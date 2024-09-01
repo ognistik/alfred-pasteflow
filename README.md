@@ -276,7 +276,9 @@ PasteFlow's Selective Mode and the "Next Item Index" feature work together for m
 
 While in Selective Mode, use CMD + OPT + CTRL when selecting an item to set it as the "next item". This item will not be processed and simply change it's icon into "red" to indicate it is next in line. There's another way you can do this. By turning off "Do Not Change Next Item Index" in the configuration, processing or clearing an item from anywhere your list automatically updates the "next item" to be the one **after** the last processed position.
 
-Let's break down how this works in different scenarios:
+<details>
+  <summary><b>👇️ Let's break down how this works in different scenarios.</b></summary>
+
 **Stack (Top-to-Bottom)**:
 - If you set the "next" item somewhere in the middle of your list, PasteFlow treats all items **above** it as already processed.
 - New items will automatically be inserted at the "next item" position, **not at the top of the list**. This is because the sorting logic of the stack & processing order dictate that **the user wants to use the most recent item next.**
@@ -295,6 +297,7 @@ Let's break down how this works in different scenarios:
 - In this setup, you're expecting to **process the oldest items first**.
 - New items are always **added to the bottom of the queue**, regardless of the "next" item position.
 - To insert items elsewhere in the queue, use the "Force Next" option.
+</details>
 
 Remember, PasteFlow uses visual cues with icon changes to help you understand the state of your list, even though you can't see it in real-time. Getting familiar with these concepts is not essential, but it allows you to leverage PasteFlow's full potential.
 
@@ -313,7 +316,7 @@ theAction,clearList,invertOrder,insertNext
 Only `theAction` is required. 
 
 <details>
-  <summary><b>theAction Options</b></summary>
+  <summary><b>👇️ theAction Options</b></summary>
 
 | Argument Content      | Description                                                  |
 |-----------------------|--------------------------------------------------------------|
@@ -341,7 +344,7 @@ Only `theAction` is required.
 ### Additional Arguments
 
 <details>
-  <summary><b>These arguments need to be `0` for false, or `1` for true.</b></summary>
+  <summary><b>👇️ These arguments need to be `0` for false, or `1` for true.</b></summary>
 
 
 | Argument | Description |
