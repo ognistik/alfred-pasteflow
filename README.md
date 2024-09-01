@@ -74,7 +74,8 @@ You can use PasteFlow as a temporary text holder or a more permanent list. Here'
 
 <details>
   <summary><b>👇️ Auto-Clearing the List</b></summary>
-PasteFlow offers easy configuration options for automatic clearing:
+
+*PasteFlow offers easy configuration options for automatic clearing:*
 
 * **Timeout**: Set a time limit for your list.
 * **Clear Item After Processed**: Remove items once you've used them.
@@ -83,7 +84,8 @@ PasteFlow offers easy configuration options for automatic clearing:
 
 <details>
   <summary><b>👇️ Manually Clearing the List</b></summary>
-If you want to have control of where, how, or when your items are cleared, you have these manual options:
+
+*If you want to have control of where, how, or when your items are cleared, you have these manual options:*
 
 * **Clear and Add**: In the main menu, hold CMD while selecting 'Add to List from Clipboard' or 'Split & Add to List'. This clears the list before adding new items.
 * **Main Menu Option**: Type `:Clear` in the main menu.
@@ -105,7 +107,9 @@ The main menu is your control center for PasteFlow. Here's some things you can d
 
 *Note: The menu is populated dynamically. For example, you won't see processing some options if your list is empty, the "Next Item" processing option won't be available if all items have been processed and the list isn't set to restart, or you will not have the "insert in next position" modifier [if it makes no difference](#advanced-insertion-and-processing)...*
 
-**Main Menu Options and Modifiers**
+<details>
+  <summary><b>👇️ Main Menu Options and Modifiers</b></summary>
+
 * Add to Stack/Queue from Clipboard
   * CMD: Start fresh by clearing the list before adding
   * OPT: Add only what's currently in your clipboard
@@ -138,9 +142,17 @@ The main menu is your control center for PasteFlow. Here's some things you can d
   * OPT: Paste merged clipboard items in reverse order
   * CMD + OPT: Copy merged clipboard items in reverse order
 
+</details>
+
+<p align="center">
+  <img width="600" src="Workflow/assets/images/003.jpg">
+</p>
+
 There's also a "secret" menu with extra options for your entire list. Just type `:` to access it. These actions are straightforward and don't have modifier combinations.
 
-**The "Secret" Menu Options**:
+<details>
+  <summary><b>👇️ The "Secret" Menu Options:</b></summary>
+
 * Configuration: Adjust your PasteFlow settings
 * View Stack/Queue (Textview Mode): See your list in Alfred's Textview
 * Clear Stack/Queue: Empty your list
@@ -149,9 +161,7 @@ There's also a "secret" menu with extra options for your entire list. Just type 
 * Keep & Trim (Keep X amount of items): Slim down your list to a specific number of items
 * Reset Next Item Index: Start processing from the beginning again
 
-<p align="center">
-  <img width="600" src="Workflow/assets/images/003.jpg">
-</p>
+</details>
 
 PasteFlow's main menu is designed to give you quick access to all the tools you need. Whether you're adding items, processing them, or managing your list, everything is just a few keystrokes away!
 
