@@ -311,8 +311,8 @@ theAction,clearList,invertOrder,insertNext
 ```
 
 Only `theAction` is required. 
-
-### `theAction` Options
+<details>
+  <summary>theAction Options</summary>
 
 | Argument Content      | Description                                                  |
 |-----------------------|--------------------------------------------------------------|
@@ -334,6 +334,8 @@ Only `theAction` is required.
 | `invert`              | Invert the order of items in your list                       |
 | `inputKeep`           | Input a number of items to keep                              |
 | `resetNext`           | Reset the index of your "next" item back to 1                |
+
+</details>
 
 ### Additional Arguments
 These arguments need to be `0` for false, or `1` for true.
