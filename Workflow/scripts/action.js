@@ -421,31 +421,6 @@ function run(argv) {
         });
     }
 
-    if (theAction === 'setNextItem') {
-        //Simple.
-        if (pasteOrder === 'recFirst') {
-            nextItem = Number(query) + 1;
-        } else {
-            nextItem = theStack.length - Number(query);
-        }
-
-        //We make these strings
-        nextItem = (parseInt(nextItem)).toString();
-        theStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
-
-        $.NSString.stringWithString(nextItem).writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
-        $.NSString.stringWithString(theStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
-        
-        return JSON.stringify({
-            alfredworkflow: {
-                arg: 'Your next item index has been updated.',
-                variables: {
-                    theResult: ''
-                }
-            }
-        });
-    }
-
     if (theAction === 'clearList') {
         //Now we clear the list
         theStack = '';

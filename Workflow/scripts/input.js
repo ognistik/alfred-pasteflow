@@ -137,7 +137,7 @@ function run(argv) {
         $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
     }
 
-    //Edits of the entire list
+    //Edits to the entire list
     if (theAction.startsWith("Ledit")) {
         //First we clear this for it to still display the items next
         theAction = theAction.slice(5);
@@ -156,6 +156,24 @@ function run(argv) {
 
         //We save back into our file with a temp variable
         tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
+        $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
+    }
+
+    //Let's Set the Next Item manually
+    if (theAction.startsWith("inputSetN")) {
+        //First we clear this for it to still display the items next
+        theAction = theAction.slice(9);
+
+        if (pasteOrder === 'recFirst') {
+            nextItem = theIndex + 1;
+        } else {
+            nextItem = theStack.length - theIndex;
+        }
+
+        //We make these strings in temporary variables
+        tempItem = (parseInt(nextItem)).toString();
+        tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
+        $.NSString.stringWithString(tempItem).writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
         $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
     }
 
@@ -434,7 +452,7 @@ function run(argv) {
                         'ctrl+cmd+alt': {
                             subtitle: 'Set as Next Item Index',
                             variables: {
-                                theAction: 'setNextItem'
+                                theAction: 'inputSetN' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem')
                             }
                         },
                         shift:{

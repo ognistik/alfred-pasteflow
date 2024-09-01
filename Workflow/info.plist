@@ -5772,7 +5772,7 @@ export session_var=$((RANDOM % 9000000 + 1))
 				</array>
 			</dict>
 			<key>description</key>
-			<string>This will define the order of copying/pasting items from your list.</string>
+			<string>This will define the order of processing (copying/pasting) items from your list.</string>
 			<key>label</key>
 			<string>Processing Order</string>
 			<key>type</key>
@@ -5791,7 +5791,7 @@ export session_var=$((RANDOM % 9000000 + 1))
 				<string>Clear Item After Processed</string>
 			</dict>
 			<key>description</key>
-			<string>Select if you want to remove the item from your list after you copy or paste it.</string>
+			<string>Select if you want to remove an item from your list after you copy or paste it it.</string>
 			<key>label</key>
 			<string></string>
 			<key>type</key>
@@ -5803,46 +5803,39 @@ export session_var=$((RANDOM % 9000000 + 1))
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<true/>
+				<false/>
 				<key>required</key>
 				<false/>
 				<key>text</key>
-				<string>Do Not Change "Next Item" Index</string>
+				<string>Clear List After Processed (at once)</string>
 			</dict>
 			<key>description</key>
-			<string>The "Selective" feature lets you bypass the order of your list. If you uncheck this option, the "Next Item" will be the item above or below your processed item based on your 'processing order.' It's useful to skip multiple items at once and resume processing by order, or insert at a specific place. However, deselecting without restarting (option below) may cause unprocessed items. Edits to the list reset "next item," regardless of selection.</string>
+			<string>For cases where your entire list is merged and processed at once.</string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>groupClear</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<false/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Do Not Update "Next Item"</string>
+			</dict>
+			<key>description</key>
+			<string>By default, while in Selective Mode, if you process an item in any position of your list, it will update the “next item” index.</string>
 			<key>label</key>
 			<string>Selective Processing</string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
 			<string>afterSelect</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string>restart</string>
-				<key>pairs</key>
-				<array>
-					<array>
-						<string>Restart</string>
-						<string>restart</string>
-					</array>
-					<array>
-						<string>Do Nothing</string>
-						<string>stop</string>
-					</array>
-				</array>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>label</key>
-			<string>After Processing Entire List</string>
-			<key>type</key>
-			<string>popupbutton</string>
-			<key>variable</key>
-			<string>afterAll</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -5886,6 +5879,32 @@ export session_var=$((RANDOM % 9000000 + 1))
 			<key>config</key>
 			<dict>
 				<key>default</key>
+				<string>restart</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Restart</string>
+						<string>restart</string>
+					</array>
+					<array>
+						<string>Do Nothing</string>
+						<string>stop</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>When processing your list one item at a time.</string>
+			<key>label</key>
+			<string>After Processing Your List</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>afterAll</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
 				<string>\n</string>
 				<key>pairs</key>
 				<array>
@@ -5904,7 +5923,7 @@ export session_var=$((RANDOM % 9000000 + 1))
 				</array>
 			</dict>
 			<key>description</key>
-			<string>Whenever the entire list is processed all at once, or when multiple clipboard items are merged for paste/copy.</string>
+			<string>For cases where the entire list is processed all at once, or when multiple clipboard items are merged for paste/copy.</string>
 			<key>label</key>
 			<string>Merge List Using</string>
 			<key>type</key>
@@ -5915,27 +5934,8 @@ export session_var=$((RANDOM % 9000000 + 1))
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>default</key>
-				<false/>
-				<key>required</key>
-				<false/>
-				<key>text</key>
-				<string>Clear List After Processed</string>
-			</dict>
-			<key>description</key>
-			<string>Whenever the entire list is merged and processed at once.</string>
-			<key>label</key>
-			<string></string>
-			<key>type</key>
-			<string>checkbox</string>
-			<key>variable</key>
-			<string>groupClear</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>defaultvalue</key>
-				<integer>10</integer>
+				<integer>15</integer>
 				<key>markercount</key>
 				<integer>15</integer>
 				<key>maxvalue</key>
@@ -5988,7 +5988,7 @@ export session_var=$((RANDOM % 9000000 + 1))
 				<false/>
 			</dict>
 			<key>description</key>
-			<string>If none selected, your list will be stored in the workflow's cache folder (which is meant to be temporary).</string>
+			<string>If no custom directory is set, your list will be created in the workflow's cache folder.</string>
 			<key>label</key>
 			<string>Custom Directory</string>
 			<key>type</key>
@@ -6033,6 +6033,25 @@ export session_var=$((RANDOM % 9000000 + 1))
 			<string>checkbox</string>
 			<key>variable</key>
 			<string>dnp</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<false/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Do not Auto-Update</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string></string>
 		</dict>
 	</array>
 	<key>version</key>

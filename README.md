@@ -7,7 +7,7 @@
 ## WHAT IS PASTEFLOW?
 PasteFlow is a handy paste stack (or paste queue) for [Alfred](https://alfredapp.com/). It lets you create a list of pinned text items that you can organize, edit, and use in different ways.
 
-Ever needed to copy text from various places and put it all in one final spot? PasteFlow makes this easy. No more switching back and forth to copy and paste one item at a time. Save time and stay "in flow" by doing all your copying first, then pasting later when you're ready. Since your items are saved in an actual list, you can even take a break, copy other things, and come back to your stack whenever you want.
+Ever needed to copy text from various places and put it all in one final spot? PasteFlow makes this easy. No more switching back and forth to copy and paste one item at a time. Save time and stay *in flow* by doing all your copying first, then pasting later when you're ready. Since your items are saved in an actual list, you can even take a break, copy other things, and come back to your stack whenever you want.
 
 Thanks to Alfred's triggers, clipboard features, and actions, PasteFlow is a flexible tool that can boost your productivity when working with text.
 
@@ -56,7 +56,7 @@ PasteFlow is packed with features to make your workflow smoother:
 
 * **Large Text View**: In the main menu, press CMD L on any item to see your list in large text. You can also copy it (CMD C) or use Alfred's universal actions on it.
 * **Selective Mode Viewing**: In Selective Mode, CMD L shows the full content of an item. Copy or use universal actions here too.
-* **Hidden Features**: Type `:` in Alfred's bar to reveal "secret" options like inverting your list order, clearing it, or editing all contents. Many of these are also directly available in Textview Mode (`:View`). [***Read all about the main menu.***](#the-main-menu)
+* **Hidden Menu**: Type `:` in Alfred's bar (with PasteFlow's keyword) to reveal extra options like inverting your list order, clearing it, or editing all contents. Many of these are also directly available in Textview Mode (`:View`). [***Read all about the main menu.***](#the-main-menu)
 * **Powerful Selective Mode**: Edit individual items, move them around, remove them, or process them in any order. Some modifier combos let you tweak the whole list without entering Textview Mode. [***Read all about Selective Mode.***](#selective-mode)
 * **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. [***Read all about Universal Actions***](#universal-actions)
 * **Multiple Control Methods**: Use Alfred's bar directly, keyboard shortcuts ([color-coded for easy remembering](#custom-hotkeys)), or send arguments to the external trigger. [***Read all about the external trigger.***](#the-external-trigger)
@@ -240,11 +240,15 @@ If you zoom out in Alfred's workflow editor (CMD + Hyphen), you'll notice the ho
 * Full-list actions
 * Workflow actions
 
-*Note: PasteFlow has offers a lot of processing actions, and when combined with different settings, the preset hotkey list could grow huge. Some features, like inverting inserts or processing, are more for advanced users—so I didn't include those as hotkeys. If you're looking for customization beyond the available hotkeys, I recommend learning to use [the external trigger.](#the-external-trigger)*
+*Note: PasteFlow offers a lot of processing actions, and when combined with different settings, the preset hotkey list could grow huge. Some features, like inverting inserts or processing, are for more advanced users—so I didn't include those as hotkeys. If you're looking for customization beyond the available hotkeys, I recommend learning to use [the external trigger.](#the-external-trigger)*
 
 ---
 ## UNIVERSAL ACTIONS
 PasteFlow comes with two powerful universal actions, each with additional modifier options to fine-tune your workflow:
+
+<p align="center">
+  <img width="600" src="Workflow/assets/images/005.jpg">
+</p>
 
 ### Add to List
 This action adds your selected text to your PasteFlow list. 
@@ -308,7 +312,7 @@ For most users, this is all you need to know. Keep the "Do Not Change Next Item 
 ### Advanced Insertion and Processing
 
 <p>
-    <img width="400" src="Workflow/assets/images/nextItem.jpeg" alt="Next Item">
+    <img width="400" src="Workflow/assets/images/nextItem.jpeg">
 </p>
 
 PasteFlow's Selective Mode and the "Next Item Index" feature work together for more complex list management:
