@@ -144,10 +144,6 @@ The main menu is your control center for PasteFlow. Here's some things you can d
 
 </details>
 
-<p align="center">
-  <img width="600" src="Workflow/assets/images/003.jpg">
-</p>
-
 There's also a "secret" menu with extra options for your entire list. Just type `:` to access it. These actions are straightforward and don't have modifier combinations.
 
 <details>
@@ -160,6 +156,10 @@ There's also a "secret" menu with extra options for your entire list. Just type 
 * Invert: Flip the order of your list
 * Keep & Trim (Keep X amount of items): Slim down your list to a specific number of items
 * Reset Next Item Index: Start processing from the beginning again
+
+<p align="center">
+  <img width="600" src="Workflow/assets/images/003.jpg">
+</p>
 
 </details>
 
@@ -181,19 +181,27 @@ Just like in the main menu, Selective Mode lets you do a few things with each it
 * Copy the item with CMD C
 * Use Alfred's Universal Actions on any item
 
-**Modifier Keys for Item Management**
+<details>
+  <summary><b>👇️ Modifier Keys for Item Management</b></summary>
+
 * CMD: Choose between copying or pasting
 * OPT: Edit the item
 * CTRL: Clear the item
 * SHIFT: Move the item up
 * FN: Move the item down
 
-**Advanced Options**
+</details>
+
+<details>
+  <summary><b>👇️ Advanced Modifier Combos</b></summary>
+
 * CMD + OPT: Edit your entire list
 * CMD + CTRL: Clear your whole list
 * CMD + FN: Invert the order of your entire list
 * FN + SHIFT: Start processing from the beginning again
 * CMD + CTRL + OPT: Choose which item to process next (great for advanced insertion or processing)
+
+</details>
 
 Selective Mode puts you in control. It's designed to be intuitive and powerful, giving you the flexibility to work with your list exactly the way you want.
 
