@@ -151,7 +151,7 @@ function run(argv) {
             },
             //response: 'this is\n---\na tet',
             response: '# PasteFlow • Your ' + behaviorUp + '\n---\n' + theStack + '\n---',
-            footer: "↩ • Close • ⌘↩ Merge & Copy • ⌘⌥↩ Merge & Paste • ⌥↩ Edit • ⌃↩ Clear Contents • ⇧↩ Invert Contents",
+            footer: "↩ • Close • ⌘↩ Merge & Copy • ⌘⌥↩ Merge & Paste • ⌥↩ Edit • ⌘⌥⌃↩ Clear Contents • ⇧↩ Invert Contents",
     });
     }
 }

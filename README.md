@@ -30,7 +30,7 @@ If you're already familiar with paste stacks, you can start using PasteFlow righ
    - Enter "Selective Mode" from Alfred's Bar using PasteFlow's keyword
    - Use Textview Mode (type `:View` with PasteFlow's keyword)
 
-That's all you need to get started! But if you want to explore more, PasteFlow has lots of other cool features.
+That's all you need to get started! But if you want to explore more, PasteFlow has lots of other useful and powerful features.
 
 <p align="center">
   <img width="600" src="Workflow/assets/images/001.jpg">
@@ -56,7 +56,7 @@ PasteFlow is packed with features to make your workflow smoother:
 
 * **Large Text View**: In the main menu, press CMD L on any item to see your list in large text. You can also copy it (CMD C) or use Alfred's universal actions on it.
 * **Selective Mode Viewing**: In Selective Mode, CMD L shows the full content of an item. Copy or use universal actions here too.
-* **Hidden Menu**: Type `:` in Alfred's bar (with PasteFlow's keyword) to reveal extra options like inverting your list order, clearing it, or editing all contents. Many of these are also directly available in Textview Mode (`:View`). [***Read all about the main menu.***](#the-main-menu)
+* **Hidden Menu**: Type `:` in Alfred's bar (with PasteFlow's keyword) to reveal extra options like inverting your list order, clearing it, or editing all its raw contents. Many of these are also directly available in Textview Mode (`:View`). [***Read all about the main menu.***](#the-main-menu)
 * **Powerful Selective Mode**: Edit individual items, move them around, remove them, or process them in any order. Some modifier combos let you tweak the whole list without entering Textview Mode. [***Read all about Selective Mode.***](#selective-mode)
 * **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. [***Read all about Universal Actions***](#universal-actions)
 * **Multiple Control Methods**: Use Alfred's bar directly, keyboard shortcuts ([color-coded for easy remembering](#custom-hotkeys)), or send arguments to the external trigger. [***Read all about the external trigger.***](#the-external-trigger)
@@ -90,7 +90,7 @@ You can use PasteFlow as a temporary text holder or a more permanent list. Here'
 * **Clear and Add**: In the main menu, hold CMD while selecting 'Add to List from Clipboard' or 'Split & Add to List'. This clears the list before adding new items.
 * **Main Menu Option**: Type `:Clear` in the main menu.
 * **Hotkey**: Set up a keyboard shortcut (yellow color-coded) to clear your list.
-* **In Textview Mode**: In Textview Mode (`:View` from main menu), use CTRL + Return.
+* **In Textview Mode**: In Textview Mode (`:View` from main menu), use CMD + CTRL + OPT + Return.
 * **In Selective Mode**: 
   - Clear individual items: Hold CTRL while pressing return (items are removed, not pasted or copied)
   - Clear entire list: Use CTRL + CMD + Return
@@ -105,7 +105,7 @@ The main menu is your control center for PasteFlow. Here's some things you can d
 * Copy your entire list at once with CMD C
 * Use Alfred's Universal Actions on your full list
 
-*Note: The menu is populated dynamically. For example, you won't see processing some options if your list is empty, the "Next Item" processing option won't be available if all items have been processed and the list isn't set to restart, or you will not have the "insert in next position" modifier [if it makes no difference](#advanced-insertion-and-processing)...*
+*Note: Pasteflow's menus are populated dynamically. For example, you won't see some processing options if your list is empty, the "Next Item" processing option won't be available if all items have been processed and the list isn't set to restart, or you will not have the "insert in next position" modifier [if it makes no difference](#advanced-insertion-and-processing)...*
 
 <details>
   <summary><b>👇️ Main Menu Options and Modifiers</b></summary>
@@ -294,7 +294,7 @@ But what happens when you add multiple items at once? That's where it gets inter
 * While in stack, use the OPT modifier in Alfred's action or the main menu to add split list items with the most recent at the bottom. If you are in queue mode, you can use the same to insert your split items most recent at the top.
 * The external trigger has a parameter for this too.
 
-Remember, multiple clipboard items sorting stays as-is when inserting. Keep this in mind when choosing between stack and queue for your workflow.
+Remember, multiple clipboard items follow the stack or queue sorting logic when inserting. Unlike split items, there’s no extra setting to change this. Keep this in mind when choosing between stack and queue for your workflow.
 
 ---
 ## THE PROCESSING LOGIC
@@ -307,7 +307,7 @@ Assuming you already have understood the sorting logic, now let me explain you w
 * **Queue (Top-to-Bottom)**: Oldest to newest
 * **Queue (Bottom-to-Top)**: Newest to oldest
 
-For most users, this is all you need to know. Keep the "Do Not Change Next Item Index" option on in the configuration, and everything should work smoothly, even in Selective Mode.
+For most users, this is all you need to know. However, if you enjoy using Selective Mode and are interested in processing or inserting items not only at the top or bottom but also in the middle of your list, there are ways to do that.
 
 ### Advanced Insertion and Processing
 
@@ -317,7 +317,7 @@ For most users, this is all you need to know. Keep the "Do Not Change Next Item 
 
 PasteFlow's Selective Mode and the "Next Item Index" feature work together for more complex list management:
 
-While in Selective Mode, use CMD + OPT + CTRL when selecting an item to set it as the "next item". This item will not be processed and simply change it's icon into "red" to indicate it is next in line. There's another way you can do this. By turning off "Do Not Change Next Item Index" in the configuration, processing or clearing an item from anywhere your list automatically updates the "next item" to be the one **after** the last processed position.
+While in Selective Mode, use CMD + SHIFT when selecting an item to set it as the "next item". This item will not be processed and simply change it's icon into a red variation to indicate it is next in line. There's another way you can do this. Processing or clearing an item from anywhere your list will also automatically update the "next item" to be the one **after** the last processed position (you can choose a different setting for this in the configuration). What makes this a bit challenging, is that the "next item" can behave differently depending on your configuration.
 
 <details>
   <summary><b>👇️ Let's break down how this works in different scenarios:</b></summary>
@@ -330,7 +330,7 @@ While in Selective Mode, use CMD + OPT + CTRL when selecting an item to set it a
 **Stack (Bottom-to-Top)**:
 - Setting the "next item" in the middle lets you process from that point upwards.
 - However, new items are still **added to the top of the list**, maintaining the stack's logic & processing order (where **user wants to process recent items last**).
-- To insert items elsewhere, use the "Force Insert Next" option when adding new items.
+- To insert items elsewhere, use the "Force Insert in Next" option when adding new items.
 
 **Queue (Bottom-to-Top)**:
 - When you set the "next item" anywhere in the list, PasteFlow considers all items **below** it as already processed.
@@ -350,9 +350,10 @@ Remember, PasteFlow uses visual cues with icon changes to help you understand th
 ---
 ## THE EXTERNAL TRIGGER
 
-The external trigger in PasteFlow allows you to use this workflow to its fullest, without sacrificing a single keyboard shortcut. Whether you're using Keyboard Maestro, BetterTouchTool, or other 3rd party apps, you can trigger PasteFlow actions using AppleScript or Alfred's URL scheme by sending arguments.
+The external trigger in PasteFlow allows you to use every feature without sacrificing a single keyboard shortcut. Whether you're using Keyboard Maestro, BetterTouchTool, or other 3rd party apps, you can trigger PasteFlow actions using AppleScript or Alfred's URL scheme by sending arguments.
 
 The external trigger is `cmd` and can receive 4 arguments, comma-separated (without spaces):
+
 ```
 theAction,clearList,invertOrder,insertNext
 ```
@@ -408,7 +409,7 @@ Here’s how some commands would look in action:
 ---
 ## Closing & Tips
 
-Phew! Thank you for making it this far. After diving into this project, I've got a whole new respect for clipboard manager developers. Who knew the processing and sorting logic for a single paste stack would turn into such a beast? But hey, that complexity opened up a world of cool options.
+Phew! Thank you for making it this far. After diving into this project, I've got a whole new respect for clipboard manager developers. Who knew the processing and sorting logic for a simple paste stack would turn into such a beast? But hey, that complexity opened up a world of cool options.
 
 <details>
   <summary><b>👇️ Here are some tips/ideas you may find useful:</b></summary>
@@ -421,9 +422,9 @@ Phew! Thank you for making it this far. After diving into this project, I've got
 
 * There's this fantastic [Sequential Paste](https://alfred.app/workflows/vitor/sequential-paste/) workflow that partly inspired PasteFlow. I still use it when I need to paste something I thought was on my clipboard, but turns out it's one item behind.
 
-* Here's a wild idea that I haven't had the chance to put into practice: use that custom path feature for your stack to save it in your Shortcuts folder. Then you could whip up a Shortcut to view, edit, or add items right from your phone. This basically would mean having a cross-platform paste stack.
+* Here's an idea that I haven't had the chance to put into practice: use that custom path feature for your stack to save it in your Shortcuts folder. Then you could whip up a Shortcut to view, edit, or add items right from your phone. This basically would mean having a cross-platform paste stack.
 
-* I've got to give a shout-out to CleanClip's paste stack/queue. It's the only one I've seen that can be both a stack and a queue, and it sparked the idea of adding split lists as individual items.
+* I've got to give a shout-out to [CleanClip's](https://cleanclip.cc/) paste stack/queue. It's the only one I've seen that can be both a stack and a queue, and it sparked the idea of adding split lists as individual items.
 </details>
 
 Now, I know PasteFlow isn't perfect. You can't see your stack/queue in real-time while processing, and it doesn't keep rich text formatting (that's an Alfred's Clipboard Manager limitation). I know I am biased but I've got to say, I think PasteFlow is pretty good and should hit the spot for most users, whether you're just dipping your toes in or diving into the deep end.
