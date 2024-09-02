@@ -349,6 +349,16 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>9105FCF7-752C-4C66-8283-3B012012202B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>4328C9B7-E0AB-40C7-ABAC-0B609AC500C4</key>
 		<array>
@@ -1026,6 +1036,21 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9105FCF7-752C-4C66-8283-3B012012202B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D64712C2-8B7F-483A-A985-F7B50013E458</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>1F5F9EEF-1022-4A98-87DB-C497F8551399</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -4289,6 +4314,105 @@ export session_var=$((RANDOM % 9000000 + 1))
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
+readonly remote_info_plist='https://raw.githubusercontent.com/ognistik/alfred-pasteflow/main/Workflow/info.plist'
+readonly workflow_url='https://raw.githubusercontent.com/ognistik/alfred-pasteflow/main/PasteFlow.alfredworkflow'
+readonly download_type='direct'
+readonly frequency_check='4'
+
+
+
+# FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
+function abort {
+  echo "${1}" &gt;&amp;2
+  exit 1
+}
+
+function url_exists {
+  curl --silent --location --output /dev/null --fail --range 0-0 "${1}"
+}
+
+function notification {
+  local -r notificator="$(find . -type f -name 'notificator')"
+
+  if [[ -f "${notificator}" &amp;&amp; "$(/usr/bin/file --brief --mime-type "${notificator}")" == 'text/x-shellscript' ]]; then
+    "${notificator}" --message "${1}" --title "${alfred_workflow_name}" --subtitle 'A new version is available'
+    return
+  fi
+
+  osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new version is available\""
+}
+
+# Local sanity checks
+readonly local_info_plist='info.plist'
+readonly local_version="$(/usr/libexec/PlistBuddy -c 'print version' "${local_info_plist}")"
+
+[[ -n "${local_version}" ]] || abort 'You need to set a workflow version in the configuration sheet.'
+[[ "${download_type}" =~ ^(direct|page|github_release)$ ]] || abort "'download_type' (${download_type}) needs to be one of 'direct', 'page', or 'github_release'."
+[[ "${frequency_check}" =~ ^[0-9]+$ ]] || abort "'frequency_check' (${frequency_check}) needs to be a number."
+
+# Check for updates
+if [[ $(find "${local_info_plist}" -mtime +"${frequency_check}"d) ]]; then
+  # Remote sanity check
+  if ! url_exists "${remote_info_plist}"; then
+    abort "'remote_info_plist' (${remote_info_plist}) appears to not be reachable."
+  fi
+
+  readonly tmp_file="$(mktemp)"
+  curl --silent --location --output "${tmp_file}" "${remote_info_plist}"
+  readonly remote_version="$(/usr/libexec/PlistBuddy -c 'print version' "${tmp_file}")"
+  rm "${tmp_file}"
+
+  if [[ "${local_version}" == "${remote_version}" ]]; then
+    touch "${local_info_plist}" # Reset timer by touching local file
+    exit 0
+  fi
+
+  if [[ "${download_type}" == 'page' ]]; then
+    notification 'Opening download page…'
+    open "${workflow_url}"
+    exit 0
+  fi
+
+  readonly download_url="$(
+    if [[ "${download_type}" == 'github_release' ]]; then
+      osascript -l JavaScript -e 'function run(argv) { return JSON.parse(argv[0])["assets"].find(asset =&gt; asset["browser_download_url"].endsWith(".alfredworkflow"))["browser_download_url"] }' "$(curl --silent "https://api.github.com/repos/${workflow_url}/releases/latest")"
+    else
+      echo "${workflow_url}"
+    fi
+  )"
+
+  if url_exists "${download_url}"; then
+    notification 'Downloading and installing…'
+    readonly download_name="$(basename "${download_url}")"
+    curl --silent --location --output "${HOME}/Downloads/${download_name}" "${download_url}"
+    open "${HOME}/Downloads/${download_name}"
+  else
+    abort "'workflow_url' (${download_url}) appears to not be reachable."
+  fi
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D64712C2-8B7F-483A-A985-F7B50013E458</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -4350,6 +4474,38 @@ export session_var=$((RANDOM % 9000000 + 1))
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
 			<string>4C1F7B21-1E74-4175-8BDB-C6648B1E25D0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:noUpdate}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>6</integer>
+						<key>matchstring</key>
+						<string></string>
+						<key>outputlabel</key>
+						<string>CheckUpdate</string>
+						<key>uid</key>
+						<string>1F5F9EEF-1022-4A98-87DB-C497F8551399</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>9105FCF7-752C-4C66-8283-3B012012202B</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -4734,7 +4890,71 @@ export session_var=$((RANDOM % 9000000 + 1))
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string># PASTEFLOW
+**A Paste Stack &amp; Paste Queue for Alfred | Pin &amp; Reuse Text.**
+![](assets/images/pasteflow-s.png)
+
+[~ Visit on Github~ ](https://github.com/ognistik/alfred-pasteflow)
+
+## WHAT IS IT?
+PasteFlow is a handy paste stack (or paste queue) for [Alfred](https://alfredapp.com/). It lets you create a list of pinned text items that you can organize, edit, and use in different ways.
+
+Ever needed to copy text from various places and put it all in one final spot? PasteFlow makes this easy. No more switching back and forth to copy and paste one item at a time. Save time and stay *in flow* by doing all your copying first, then pasting later when you're ready. Since your items are saved in an actual list, you can even take a break, copy other things, and come back to your stack whenever you want.
+
+Thanks to Alfred's triggers, clipboard features, and actions, PasteFlow is a flexible tool that can boost your productivity when working with text.
+
+---
+
+## HOW TO USE?
+If you're already familiar with paste stacks, you can start using PasteFlow right away with its default settings. Here's how to get started:
+
+1. **Add items to your stack:**
+   - Select text and use Pasteflow actions on them.
+   - Set up your preferred hotkeys (green color-coded hotkeys are the most basic/essential).
+   - Use PasteFlow's keyword to add items from your Clipboard to your stack.
+
+2. **Process your saved items:**
+   The easiest way to do this is to set up a hotkey (in green), but you can also use PasteFlow's keyword directly on Alfred's bar.
+   - Paste items to your current window
+   - Copy items back to your clipboard
+
+3. **View &amp; edit your stack:**
+   - Set up hotkeys (red-coded hotkeys show your entire list)
+   - Enter "Selective Mode" from Alfred's Bar using PasteFlow's keyword
+   - Use Textview Mode (type `:View` with PasteFlow's keyword)
+
+That's all you need to get started! But if you want to explore more, PasteFlow has lots of other useful and powerful features.
+
+![](assets/images/001.jpg)
+
+---
+## FEATURES
+
+### Configuration
+PasteFlow is flexible and adapts to your workflow. Here's how you can set it up:
+
+* **Stack or Queue**: Choose how new items are added - at the top (stack) or bottom (queue). [***Read more about the sorting logic.***](https://github.com/ognistik/alfred-pasteflow/#the-sorting-logic)
+* **Processing Order**: Pick where to start processing items - from the top or bottom. It's all about what feels right for you.
+* **Selective Processing**: This setting allows for advanced workflows when inserting or processing individual list items. It works together with your chosen processing order. [***Read more about the insertion &amp; processing logic.***](https://github.com/ognistik/alfred-pasteflow/#the-processing-logic)
+* **Auto-Clear Options**: Decide if you want items cleared after processing. You can set this for individual items or the entire list when processed at once. [***Read more about ways to clear your items.***](https://github.com/ognistik/alfred-pasteflow/#clearing-items)
+* **Restart or Stop**: Choose whether to restart processing when you reach the end of your list, or simply stop until you add more items.
+* **Paste Actions**: Optionally, add a line break, comma, space, or press tab after each pasted item from your list.
+* **Merge Formatting**: When processing your entire list at once, choose to merge items with line breaks, commas, or spaces.
+* **List Lifespan**: Use PasteFlow as a temporary list with a timeout, or keep it indefinitely. For long-term lists, there's a custom save directory.
+
+### In Action
+PasteFlow is packed with features to make your workflow smoother:
+
+* **Large Text View**: In the main menu, press CMD L on any item to see your list in large text. You can also copy it (CMD C) or use Alfred's universal actions on it.
+* **Selective Mode Viewing**: In Selective Mode, CMD L shows the full content of an item. Copy or use universal actions here too.
+* **Hidden Menu**: Type `:` in Alfred's bar (with PasteFlow's keyword) to reveal extra options like inverting your list order, clearing it, or editing all its raw contents. Many of these are also directly available in Textview Mode (`:View`). [***Read all about the main menu.***](https://github.com/ognistik/alfred-pasteflow/#the-main-menu)
+* **Powerful Selective Mode**: Edit individual items, move them around, remove them, or process them in any order. Some modifier combos let you tweak the whole list without entering Textview Mode. [***Read all about Selective Mode.***](https://github.com/ognistik/alfred-pasteflow/#selective-mode)
+* **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. [***Read all about Universal Actions***](https://github.com/ognistik/alfred-pasteflow/#universal-actions)
+* **Multiple Control Methods**: Use Alfred's bar directly, keyboard shortcuts ([color-coded for easy remembering](https://github.com/ognistik/alfred-pasteflow/#custom-hotkeys)), or send arguments to the external trigger. [***Read all about the external trigger.***](https://github.com/ognistik/alfred-pasteflow/#the-external-trigger)
+
+![](assets/images/004.jpg)
+  
+PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Whether you're a pro or just getting started with paste stacks and clipboard managers, it's here to make your copy/paste tasks more efficient. Feel free to [**read the entire documentation over at Github**](https://github.com/ognistik/alfred-pasteflow) for more detailed information on all the features, and do not forget to [check out some tips and ideas that you may also find useful.](https://github.com/ognistik/alfred-pasteflow/#closing--tips)</string>
 	<key>uidata</key>
 	<dict>
 		<key>046D9B0F-A2D4-4173-85B3-103C9DCB9502</key>
@@ -5284,6 +5504,13 @@ export session_var=$((RANDOM % 9000000 + 1))
 			<key>ypos</key>
 			<real>2860</real>
 		</dict>
+		<key>9105FCF7-752C-4C66-8283-3B012012202B</key>
+		<dict>
+			<key>xpos</key>
+			<real>1475</real>
+			<key>ypos</key>
+			<real>2665</real>
+		</dict>
 		<key>95F67E75-0DD2-4D9A-B14C-988F4A590833</key>
 		<dict>
 			<key>colorindex</key>
@@ -5528,6 +5755,15 @@ export session_var=$((RANDOM % 9000000 + 1))
 			<real>410</real>
 			<key>ypos</key>
 			<real>1110</real>
+		</dict>
+		<key>D64712C2-8B7F-483A-A985-F7B50013E458</key>
+		<dict>
+			<key>note</key>
+			<string>OneUpdater</string>
+			<key>xpos</key>
+			<real>1545</real>
+			<key>ypos</key>
+			<real>2635</real>
 		</dict>
 		<key>D7E6985A-86A6-435E-A6FE-16823D8CD77C</key>
 		<dict>
@@ -6051,7 +6287,7 @@ export session_var=$((RANDOM % 9000000 + 1))
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
-			<string></string>
+			<string>noUpdate</string>
 		</dict>
 	</array>
 	<key>version</key>
