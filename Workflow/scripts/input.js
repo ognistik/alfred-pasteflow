@@ -159,7 +159,7 @@ function run(argv) {
         $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
     }
 
-    //Let's Set the Next Item manually
+    //Let's Set the Next Item With Mods
     if (theAction.startsWith("inputSetN")) {
         //First we clear this for it to still display the items next
         theAction = theAction.slice(9);
@@ -245,21 +245,31 @@ function run(argv) {
         } else {
             if (theAction.startsWith("inputMoveU")){
                 if (pasteOrder === 'recFirst') {
-                    nextItem = theIndex + 1;
+                    nextItem = theIndex;
+                    if (nextItem < 1) {
+                        //nextItem = 2;
+                        nextItem = theStack.length;
+                    }
                 } else {
-                    nextItem = (theStack.length + 2) - theIndex;
-                    if (nextItem > (theStack.length + 1)) {
-                        nextItem = 2;
+                    nextItem = (theStack.length + 1) - theIndex;
+                    if (nextItem > (theStack.length)) {
+                        nextItem = 1;
                     }
                 }
             } else {
                 if (pasteOrder === 'recFirst') {
-                    nextItem = theIndex + 3;
-                    if (nextItem > (theStack.length + 1)) {
-                        nextItem = 2;
+                    nextItem = theIndex + 2;
+                    //if (nextItem > (theStack.length + 1)) {
+                    if (nextItem > (theStack.length)) {
+                        //nextItem = 2;
+                        nextItem = 1;
                     }
                 } else {
-                    nextItem = theStack.length - theIndex;
+                    nextItem = theStack.length - (theIndex + 1);
+                    if (nextItem < 1) {
+                        //nextItem = 2;
+                        nextItem = theStack.length;
+                    }
                 }
             }
         }
