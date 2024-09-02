@@ -466,7 +466,7 @@ function run(argv) {
                                 theAction: 'inputClearItem' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem')
                             }
                         },
-                        'ctrl+cmd+fn': {
+                        'alt+ctrl+cmd': {
                             subtitle: 'Clear ' + behaviorUp,
                             variables: {
                                 theAction: 'clearList'
