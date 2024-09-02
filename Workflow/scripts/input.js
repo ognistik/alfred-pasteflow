@@ -508,7 +508,7 @@ function run(argv) {
                 //This sets the icon for next item and already processed items
                 if (index === theIndex) {
                     itemObject.icon = {
-                        "path": "./nextItem.png"
+                        "path": "./assets/images/nextItem.png"
                     };
                 } else {
                     if (pasteOrder === 'recFirst' && index < theIndex) {
