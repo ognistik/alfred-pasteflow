@@ -1,8 +1,11 @@
 <h1 align="center">PASTEFLOW</h1>
 <p align="center"><strong>A Paste Stack & Paste Queue for Alfred | Pin & Reuse Text</strong></p>
 <p align="center">
+  <a href="https://youtu.be/2TWJGcTVy3A">
     <img width="300" src="Workflow/assets/images/pasteflow.png">
+  </a>
 </p>
+<p align="center"><em><a href="https://youtu.be/2TWJGcTVy3A">~ Video Overview & Setup ~</a></em></p>
 
 ## WHAT IS PASTEFLOW?
 PasteFlow is a handy paste stack (or paste queue) for [Alfred](https://alfredapp.com/). It lets you create a list of pinned text items that you can organize, edit, and use in different ways.
