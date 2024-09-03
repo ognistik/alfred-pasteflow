@@ -128,61 +128,30 @@ function run(argv) {
         }
     }
 
-    //In this case theStack was already updated above, we just notify the user
-    if (theAction === 'editView'){
-        return JSON.stringify({
-            alfredworkflow: {
-                arg: 'Your ' + behavior + ' has been updated.',
-                variables: {
-                    theResult: ''
-                }
-            }
-        });
-    }
-
-    //Simple invert action, there's two more variations of this on input field ot textview_
-    if (theAction === 'invert'){
-        theStack.reverse();
-        //This  means theStack was edited and has to replace the one in file
-
-        //We convert back to string before saving
-        theStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
-        $.NSString.stringWithString(theStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
-        $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
-
-        return JSON.stringify({
-            alfredworkflow: {
-                arg: 'Your ' + behavior + ' has been inverted.',
-                variables: {
-                    theResult: ''
-                }
-            }
-        });
-    }
-
-    //Whether the behavior is to split or not, IF we are adding to the stack we want to make query an array before we do an insert
-    if (theAction === 'addSplitClip') {
-        //Let's split and make this an array.
-        query = query.split('\n').filter(line => line.trim());
-        //Let's fix the logic of split items in for the stack, so most recent (lowest) line is at the top
-        //The following also means that if invOrder is 1, then the split items should stay inverted
-        if (behavior === 'stack' && invOrder === 0 || behavior === 'queue' && invOrder === 1) {
-            query.reverse();
-        }
-    } else if (theAction.startsWith('add')) {
-        //This will take care of multiple or single clipboard items
-        //let items = query.split('✈Ͽ ').slice(1);
-        let items = query.match(/^✈Ͽ .+(?:\n(?!✈Ͽ ).+)*/gm);
-        if (items) {
-            items = items.map(item => item.replace(/^✈Ͽ /, ''));
-        } else {
-            items = []; // or handle as needed
-        }
-        query = items.map(item => item.trim());
-        //The logic of the clipboard order for `addClipRange` is already set by the formatCb script...
-    }
-
     if (theAction.startsWith('add')) {
+
+        //Whether the behavior is to split or not, IF we are adding to the stack we want to make query an array before we do an insert
+        if (theAction === 'addSplitClip') {
+            //Let's split and make this an array.
+            query = query.split('\n').filter(line => line.trim());
+            //Let's fix the logic of split items in for the stack, so most recent (lowest) line is at the top
+            //The following also means that if invOrder is 1, then the split items should stay inverted
+            if (behavior === 'stack' && invOrder === 0 || behavior === 'queue' && invOrder === 1) {
+                query.reverse();
+            }
+        } else {
+            //This will take care of multiple or single clipboard items
+            //let items = query.split('✈Ͽ ').slice(1);
+            let items = query.match(/^✈Ͽ .+(?:\n(?!✈Ͽ ).+)*/gm);
+            if (items) {
+                items = items.map(item => item.replace(/^✈Ͽ /, ''));
+            } else {
+                items = []; // or handle as needed
+            }
+            query = items.map(item => item.trim());
+            //The logic of the clipboard order for `addClipRange` is already set by the formatCb script...
+        }
+
         //For the stack, new items should go either at the "next" position if grabbing from the top, or at the very top (the most recent) position otherwise (user expects oldest first)
         if (behavior === 'stack') {
             if (pasteOrder === 'recFirst' ) {
@@ -230,9 +199,35 @@ function run(argv) {
         //We convert back to string before saving
         theStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
         $.NSString.stringWithString(theStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
-    }
+    } else if (theAction === 'editView'){
+        //In this case theStack was simply updated above, we just notify the user
+        return JSON.stringify({
+            alfredworkflow: {
+                arg: 'Your ' + behavior + ' has been updated.',
+                variables: {
+                    theResult: ''
+                }
+            }
+        });
+    } else if (theAction === 'invert'){
+        //Simple invert action, there's two more variations of this on input field ot textview_
+        theStack.reverse();
+        //This  means theStack was edited and has to replace the one in file
 
-    if (theAction === 'copyClipRange' || theAction === 'pasteClipRange') {
+        //We convert back to string before saving
+        theStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
+        $.NSString.stringWithString(theStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
+        $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
+
+        return JSON.stringify({
+            alfredworkflow: {
+                arg: 'Your ' + behavior + ' has been inverted.',
+                variables: {
+                    theResult: ''
+                }
+            }
+        });
+    } else if (theAction === 'copyClipRange' || theAction === 'pasteClipRange') {
         //let items = query.split('✈Ͽ ').slice(1);
         let items = query.match(/^✈Ͽ .+(?:\n(?!✈Ͽ ).+)*/gm).map(item => item.replace(/^✈Ͽ /, ''));
         query = items.map(item => item.trim());
@@ -257,9 +252,7 @@ function run(argv) {
                 }
             }
         });
-    }
-
-    if (theAction === 'pasteNext' || theAction === 'copyNext') {
+    } else if (theAction === 'pasteNext' || theAction === 'copyNext') {
         //If nextItem is still within theStack... which means it is NOT set to restart, will do nothing.
         if (nextItem <= theStack.length) {
             
@@ -318,9 +311,7 @@ function run(argv) {
                 }
             }
         });
-    }
-
-    if (theAction === 'pasteStack' || theAction === 'copyStack') {
+    } else if (theAction === 'pasteStack' || theAction === 'copyStack') {
 
         groupAfter = groupAfter.replace(/\\n/g, '\n');
                 if (groupAfter === 'comma'){
@@ -353,9 +344,7 @@ function run(argv) {
                 }
             }
         });
-    }
-
-    if (theAction === 'pasteItem' || theAction === 'copyItem') {
+    } else if (theAction === 'pasteItem' || theAction === 'copyItem') {
         theResult = theStack[Number(query)];
 
         if (singleClear === '1') {
@@ -401,9 +390,7 @@ function run(argv) {
                 }
             }
         });
-    }
-
-    if (theAction === 'resetNext') {
+    } else if (theAction === 'resetNext') {
         //Simple
         nextItem = '1';
         theStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
@@ -419,9 +406,7 @@ function run(argv) {
                 }
             }
         });
-    }
-
-    if (theAction === 'clearList') {
+    } else if (theAction === 'clearList') {
         //Now we clear the list
         theStack = '';
         nextItem = '1';
@@ -438,9 +423,7 @@ function run(argv) {
                 }
             }
         });
-    }
-
-    if (theAction === 'keepRecent' || theAction === 'keepOldest') {
+    } else if (theAction === 'keepRecent' || theAction === 'keepOldest') {
         remove = theStack.length - Number(theResult)
         if (behavior === 'stack') {
             if (theAction === 'keepRecent') {
