@@ -9,14 +9,9 @@ function run(argv) {
     var theAction = $.getenv('theAction');
     var behavior = $.getenv('behavior');
     var thePath = $.getenv('thePath') || $.getenv('alfred_workflow_cache');
-    var singleClear = $.getenv('singleClear');
-    var afterSelect = $.getenv('afterSelect');
     var afterAll = $.getenv('afterAll');
-    var groupClear = $.getenv('groupClear');
-    var groupAfter = $.getenv('groupAfter');
     var timeout = $.getenv('timeout');
     var noTimeout = $.getenv('noTimeout');
-    var pasteOrder = $.getenv('pasteOrder');
 
     //Those cases where the stack has to be reset
     try {
@@ -24,12 +19,6 @@ function run(argv) {
     } catch (error) {
         clearStack = '0';
     }
-
-    //We prepare the variable we will return sometimes
-    let theResult;
-
-    // Prepare Notifications
-    let theArg;
 
     // Let's Uppercase this
     let behaviorUp;
@@ -137,7 +126,7 @@ function run(argv) {
     }
 
     if (theAction === 'textEditListP' || theAction === 'textEditListC' || theAction === 'textEditListX'){
-        theStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
+        theStack = theStack.map(item => `✈Ͽ ${item}`).join('\n\n');
         if (theAction !== 'textEditListX') {
             return JSON.stringify({
                 variables: {

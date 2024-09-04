@@ -50,6 +50,11 @@ function run(argv) {
 
     //Splits, makes array, and counts how many items in theStack
     //let splitItems = theStack.split('✈Ͽ ').slice(1);
+
+    //Another option that works and seems simpler is the following inside the condition below:
+    //const regex = /^✈Ͽ (.*(?:\n(?!✈Ͽ ).*)*)/gm;
+    //theStackArray = theStack.match(regex).map(item => item.slice(3).replace(/\n+$/, '').trim());
+
     if (theStack !== '') {
         let rawQuery = theStack;
         theStackArray = [];

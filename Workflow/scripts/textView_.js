@@ -83,13 +83,12 @@ function run(argv) {
         nextItem = 1;
         $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
     } else if (theAction === 'VeditView'){
-        //This  means theStack was edited and has to replace the one in file
-        $.NSString.stringWithString(theResult).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
-        
-        //This should reset nextView index to avoid issues
-        $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
+        //This  means theStack was edited (V for View) and has to replace the one in file. But let's do that at the end of this condition
         theStack = theResult;
 
+        //This should reset nextView index to avoid issues
+        $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
+        
         //Let's change theAction to display this
         theAction = 'viewStack';
 
@@ -121,6 +120,12 @@ function run(argv) {
         } else {
             theStack = [];
         }
+
+        //Now that we have cleaned up trailing empty line breaks, we save in file
+        tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
+        $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
+
+
     } else if (theAction === 'Vinvert'){
         //This  means theStack needs to be inverted, saved, and then showed...
         //So we prepare our array

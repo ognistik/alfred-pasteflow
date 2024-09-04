@@ -105,10 +105,6 @@ function run(argv) {
         $.NSString.stringWithString('').writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
         nextItem = 1;
         $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
-    } else if (theAction === 'editView'){
-        //This  means theStack was edited and has to replace the one in file
-        $.NSString.stringWithString(theResult).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
-        $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
     } else {
         //Otherwise, we split theStack and place it back in theStack as an array
         //let items = theStack.split('✈Ͽ ').slice(1);
@@ -137,6 +133,14 @@ function run(argv) {
             }
         } else {
             theStack = [];
+        }
+
+        //This  means theStack was edited and has to replace the one in file
+        if (theAction === 'editView'){
+            //We do this here to save the cleaned up array as string
+            tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
+            $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
+            $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
         }
         
         //If all stack items have been processed and config is set to restart,
