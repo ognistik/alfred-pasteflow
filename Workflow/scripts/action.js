@@ -112,13 +112,32 @@ function run(argv) {
     } else {
         //Otherwise, we split theStack and place it back in theStack as an array
         //let items = theStack.split('✈Ͽ ').slice(1);
-        let items = theStack.match(/^✈Ͽ .+(?:\n(?!✈Ͽ ).+)*/gm);
-        if (items) {
-            items = items.map(item => item.replace(/^✈Ͽ /, ''));
+        if (theStack !== '') {
+            let rawQuery = theStack;
+            theStack = [];
+
+            // Split the rawQuery into lines
+            let lines = rawQuery.split('\n');
+            let currentItem = '';
+            
+            for (let line of lines) {
+                if (line.startsWith('✈Ͽ ')) {
+                    if (currentItem) {
+                        theStack.push(currentItem.trim());
+                    }
+                    currentItem = line.slice(3); // Remove the '✈Ͽ ' prefix
+                } else {
+                    currentItem += '\n' + line;
+                }
+            }
+
+            // Add the last item
+            if (currentItem) {
+                theStack.push(currentItem.trim());
+            }
         } else {
-            items = []; // or handle as needed
+            theStack = [];
         }
-        theStack = items.map(item => item.trim());
         
         //If all stack items have been processed and config is set to restart,
         //we do that here... We are basically going back to the beginning.
@@ -142,13 +161,33 @@ function run(argv) {
         } else {
             //This will take care of multiple or single clipboard items
             //let items = query.split('✈Ͽ ').slice(1);
-            let items = query.match(/^✈Ͽ .+(?:\n(?!✈Ͽ ).+)*/gm);
-            if (items) {
-                items = items.map(item => item.replace(/^✈Ͽ /, ''));
+            if (query !== '') {
+                let rawQuery = query;
+                query = [];
+    
+                // Split the rawQuery into lines
+                let lines = rawQuery.split('\n');
+                let currentItem = '';
+                
+                for (let line of lines) {
+                    if (line.startsWith('✈Ͽ ')) {
+                        if (currentItem) {
+                            query.push(currentItem.trim());
+                        }
+                        currentItem = line.slice(3); // Remove the '✈Ͽ ' prefix
+                    } else {
+                        currentItem += '\n' + line;
+                    }
+                }
+    
+                // Add the last item
+                if (currentItem) {
+                    query.push(currentItem.trim());
+                }
             } else {
-                items = []; // or handle as needed
+                query = [];
             }
-            query = items.map(item => item.trim());
+            
             //The logic of the clipboard order for `addClipRange` is already set by the formatCb script...
         }
 
@@ -229,8 +268,33 @@ function run(argv) {
         });
     } else if (theAction === 'copyClipRange' || theAction === 'pasteClipRange') {
         //let items = query.split('✈Ͽ ').slice(1);
-        let items = query.match(/^✈Ͽ .+(?:\n(?!✈Ͽ ).+)*/gm).map(item => item.replace(/^✈Ͽ /, ''));
-        query = items.map(item => item.trim());
+        if (query !== '') {
+            let rawQuery = query;
+            query = [];
+
+            // Split the rawQuery into lines
+            let lines = rawQuery.split('\n');
+            let currentItem = '';
+            
+            for (let line of lines) {
+                if (line.startsWith('✈Ͽ ')) {
+                    if (currentItem) {
+                        query.push(currentItem.trim());
+                    }
+                    currentItem = line.slice(3); // Remove the '✈Ͽ ' prefix
+                } else {
+                    currentItem += '\n' + line;
+                }
+            }
+
+            // Add the last item
+            if (currentItem) {
+                query.push(currentItem.trim());
+            }
+        } else {
+            query = [];
+        }
+
         //Let's fix the logic of multiple clipboard items for the queue option, so most recent item is at the bottom
         if (invOrder === 1) {
             query.reverse();

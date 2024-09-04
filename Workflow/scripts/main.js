@@ -50,13 +50,33 @@ function run(argv) {
 
     //Splits, makes array, and counts how many items in theStack
     //let splitItems = theStack.split('✈Ͽ ').slice(1);
-    let splitItems = theStack.match(/^✈Ͽ .+(?:\n(?!✈Ͽ ).+)*/gm);
-    if (splitItems) {
-        splitItems = splitItems.map(item => item.replace(/^✈Ͽ /, ''));
+    if (theStack !== '') {
+        let rawQuery = theStack;
+        theStackArray = [];
+
+        // Split the rawQuery into lines
+        let lines = rawQuery.split('\n');
+        let currentItem = '';
+        
+        for (let line of lines) {
+            if (line.startsWith('✈Ͽ ')) {
+                if (currentItem) {
+                    theStackArray.push(currentItem.trim());
+                }
+                currentItem = line.slice(3); // Remove the '✈Ͽ ' prefix
+            } else {
+                currentItem += '\n' + line;
+            }
+        }
+
+        // Add the last item
+        if (currentItem) {
+            theStackArray.push(currentItem.trim());
+        }
     } else {
-        splitItems = []; // or handle as needed
+        theStackArray = [];
     }
-    theStackArray = splitItems.map(singleItem => singleItem.trim());
+
     var itemCount = theStack ? theStackArray.length : 0;
 
     var nextItem = 1;

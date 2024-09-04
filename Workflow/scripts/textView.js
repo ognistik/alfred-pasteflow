@@ -89,13 +89,32 @@ function run(argv) {
     } else {
         //Otherwise, we split theStack and place it back in theStack as an array
         //let items = theStack.split('✈Ͽ ').slice(1);
-        let items = theStack.match(/^✈Ͽ .+(?:\n(?!✈Ͽ ).+)*/gm);
-        if (items) {
-            items = items.map(item => item.replace(/^✈Ͽ /, ''));
+        if (theStack !== '') {
+            let rawQuery = theStack;
+            theStack = [];
+
+            // Split the rawQuery into lines
+            let lines = rawQuery.split('\n');
+            let currentItem = '';
+            
+            for (let line of lines) {
+                if (line.startsWith('✈Ͽ ')) {
+                    if (currentItem) {
+                        theStack.push(currentItem.trim());
+                    }
+                    currentItem = line.slice(3); // Remove the '✈Ͽ ' prefix
+                } else {
+                    currentItem += '\n' + line;
+                }
+            }
+
+            // Add the last item
+            if (currentItem) {
+                theStack.push(currentItem.trim());
+            }
         } else {
-            items = []; // or handle as needed
+            theStack = [];
         }
-        theStack = items.map(item => item.trim());
         
         //If all stack items have been processed and config is set to restart,
         //we do that here... We are basically going back to the beginning.

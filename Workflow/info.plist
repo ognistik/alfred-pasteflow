@@ -450,6 +450,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>49A5954C-2E4D-46FA-8D43-BBFDE41FD242</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>35594F6D-684B-416C-A1D4-33B8AE683A31</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>4A2CB407-E3A1-4F1D-8236-DBFB9EB233FE</key>
 		<array>
 			<dict>
@@ -1358,19 +1371,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>CAF352C6-1BCC-4030-A147-A73BD69D5D1B</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>35594F6D-684B-416C-A1D4-33B8AE683A31</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>CCD1E2F9-9A76-4687-9E17-EEA6C724BDE2</key>
 		<array>
 			<dict>
@@ -1635,7 +1635,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>CAF352C6-1BCC-4030-A147-A73BD69D5D1B</string>
+				<string>49A5954C-2E4D-46FA-8D43-BBFDE41FD242</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -3118,7 +3118,7 @@
 			<key>type</key>
 			<string>alfred.workflow.output.dispatchkeycombo</string>
 			<key>uid</key>
-			<string>CAF352C6-1BCC-4030-A147-A73BD69D5D1B</string>
+			<string>49A5954C-2E4D-46FA-8D43-BBFDE41FD242</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -4921,7 +4921,7 @@ fi</string>
 
 [~ Visit on Github~ ](https://github.com/ognistik/alfred-pasteflow) | [~ Video Overview ~](https://youtu.be/2TWJGcTVy3A)
 
-
+*Updating? Read the [Latest Release Notes](https://github.com/ognistik/alfred-pasteflow/releases/latest)*
 
 
 ## WHAT IS IT?
@@ -5165,7 +5165,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>35594F6D-684B-416C-A1D4-33B8AE683A31</key>
 		<dict>
 			<key>xpos</key>
-			<real>885</real>
+			<real>930</real>
 			<key>ypos</key>
 			<real>2410</real>
 		</dict>
@@ -5292,6 +5292,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<key>ypos</key>
 			<real>2035</real>
 		</dict>
+		<key>49A5954C-2E4D-46FA-8D43-BBFDE41FD242</key>
+		<dict>
+			<key>xpos</key>
+			<real>745</real>
+			<key>ypos</key>
+			<real>2380</real>
+		</dict>
 		<key>4A2CB407-E3A1-4F1D-8236-DBFB9EB233FE</key>
 		<dict>
 			<key>colorindex</key>
@@ -5355,7 +5362,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>5B070AF3-3DBE-40E3-87D7-13ED55C748BB</key>
 		<dict>
 			<key>xpos</key>
-			<real>940</real>
+			<real>980</real>
 			<key>ypos</key>
 			<real>2410</real>
 		</dict>
@@ -5741,13 +5748,6 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<key>ypos</key>
 			<real>2600</real>
 		</dict>
-		<key>CAF352C6-1BCC-4030-A147-A73BD69D5D1B</key>
-		<dict>
-			<key>xpos</key>
-			<real>745</real>
-			<key>ypos</key>
-			<real>2380</real>
-		</dict>
 		<key>CCD1E2F9-9A76-4687-9E17-EEA6C724BDE2</key>
 		<dict>
 			<key>xpos</key>
@@ -5810,7 +5810,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>DE91EA2A-6993-46DC-946D-1C1B85E8FBF5</key>
 		<dict>
 			<key>xpos</key>
-			<real>1020</real>
+			<real>1035</real>
 			<key>ypos</key>
 			<real>2470</real>
 		</dict>
@@ -5838,7 +5838,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>E57A980C-244C-4C03-A4D7-E390EA0D0378</key>
 		<dict>
 			<key>xpos</key>
-			<real>2110</real>
+			<real>2120</real>
 			<key>ypos</key>
 			<real>2515</real>
 		</dict>
@@ -6332,7 +6332,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-pasteflow</string>
 </dict>
