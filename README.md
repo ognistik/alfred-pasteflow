@@ -126,6 +126,9 @@ The main menu is your control center for PasteFlow. Here's some things you can d
   * CMD + OPT: Clear the list and add only the current clipboard item
   * CTRL: Insert a range of clipboard items in the "next" position
   * CTRL + OPT: Add current clipboard item inserting it in the "next" position
+  * FN: Add manually from recent clipboard items (select to add).
+  * CMD + FN: Add manually from recent clipboard items (select to add). Clear before adding.
+  * CTRL + FN: Add manually from recent clipboard items in "next" position.
 
 * Split & Add to Stack/Queue
   * CMD: Clear the list before adding new items
@@ -393,6 +396,7 @@ Only `theAction` is required.
 | `invert`              | Invert the order of items in your list                       |
 | `inputKeep`           | Input a number of items to keep                              |
 | `resetNext`           | Reset the index of your "next" item back to 1                |
+| `clipFilter`          | Add manually from recent clipboard items                     |
 
 </details>
 
