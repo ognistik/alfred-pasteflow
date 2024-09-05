@@ -321,16 +321,39 @@ function run(argv) {
             }
         });
     } else if (theAction === 'pasteNext' || theAction === 'copyNext') {
-        //If nextItem is still within theStack... which means it is NOT set to restart, will do nothing.
+        //If nextItem is still above this... which means it is NOT set to restart, it will do nothing (just notify).
         if (nextItem <= theStack.length) {
-            
             let theIndex;
             // If grabbing from the bottom, we do a calculation to get the equivalent index
-            if (pasteOrder === 'recLast' || invOrder === 1) {
-                theIndex = theStack.length - (nextItem - 1) - 1;
-            } else {
-                //The arrays index starts at 0, so we adjust that.
-                theIndex = (nextItem - 1);
+            if (pasteOrder === 'recLast') {
+                //But things get tricky if grabbing from the bottom and grabbing in the opposite direction
+                if (invOrder === 1) {
+                    if (nextItem === 1) {
+                        //If processing is at the very beginning position... and want the previous item, we go to the last item,
+                        //which actually is the very first (since we are grabbing from bottom index 0 is the last item).
+                        theIndex = 0;
+                    } else {
+                        //Anywhere else this calculation will grab the correct previous item
+                        theIndex = theStack.length - (nextItem - 1);
+                    }
+                } else {
+                    //In normal processing order this grabs the equivalent next item from our recLast order
+                    theIndex = theStack.length - (nextItem - 1) - 1;
+                }
+            } else { 
+                //Normal grabbing order, but grabbing previous instead of next
+                if (invOrder === 1) {
+                    if (nextItem === 1) {
+                        //We have to grab the last... but since Arrays start at cero
+                        theIndex = theStack.length - 1;
+                    } else {
+                        //For anywhere in our list, grabbing previous
+                        theIndex = (nextItem - 1) - 1;
+                    }
+                } else {
+                    //The arrays index starts at 0, so we adjust that. Finally a simple one.
+                    theIndex = (nextItem - 1);
+                }
             }
 
             //We grab the corresponding item from theStack
@@ -340,13 +363,35 @@ function run(argv) {
             if (singleClear === '1') {
                 //We simply remove the index of theResult from the array...
                 theStack.splice(theIndex, 1);
+
                 //nextItem has been read as a number until now, we need it as string prior to saving
-                //in this case, by the way, the number stays the same. The items here are the ones moving
-                nextItem = (parseInt(nextItem)).toString();
+                if (invOrder === 1) {
+                    //Grabbing previous doesn't move the next-item if it's on the "first" position
+                    if (nextItem === 1) {
+                        nextItem = (parseInt(nextItem)).toString();
+                    } else {
+                        //In the middle of the list, it does move down (or up, whatever that means depending the case)
+                        nextItem = (parseInt(nextItem)-1).toString();
+                    }
+                } else {
+                    //in this case the number stays the same. The items here are the ones moving
+                    nextItem = (parseInt(nextItem)).toString();
+                }
             } else {
-                //Only if the item is not cleared, is that nextItem should increase
+                //Only if the item is not cleared, is that nextItem should increase... or decrease
                 //We take this chance to make it a string
-                nextItem = (parseInt(nextItem) + 1).toString();
+                if (invOrder === 1) {
+                    //Grabbing from the bottom, and if we were at the "first" position it means we grabbed the last...
+                    if (nextItem === 1) {
+                        nextItem = theStack.length.toString();
+                    } else {
+                        //Otherwise, it's like this in the middle of the list grabbing fromt he bottom
+                        nextItem = (parseInt(nextItem) - 1).toString();
+                    }
+                } else {
+                     //Originally this was the only command. Works great for moving forward.
+                    nextItem = (parseInt(nextItem) + 1).toString();
+                }
             }
             
             if (Number(nextItem) > theStack.length) {
