@@ -177,6 +177,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>2934A0DA-1EE7-48E7-9FF3-0365A82E5446</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E07CEE84-A0C3-4561-9D8D-124E599CB8BA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>2BBE494E-81C4-42D2-8124-3AA2F9C43748</key>
 		<array>
 			<dict>
@@ -1107,6 +1120,29 @@
 				<false/>
 			</dict>
 		</array>
+		<key>9A87E6A1-D02C-4C51-BC9C-C0BCDD09E918</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E07CEE84-A0C3-4561-9D8D-124E599CB8BA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>57059166-54C2-4DD7-A59F-C55CE430C8E1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>9DAA5CCB-FB51-4B7D-BC35-B22A61AE5A01</key>
 		<array>
 			<dict>
@@ -1332,6 +1368,55 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B8F61D98-B998-4A7C-9C60-49B48543B3CD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>AC5F1553-CC00-4C70-A0AC-1F0DCDE0E04A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>253AE73D-54D8-4524-B859-15278F156F53</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>2934A0DA-1EE7-48E7-9FF3-0365A82E5446</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>3F09302C-949B-4462-B35F-679D4D4201D6</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D80B7035-7251-43FB-84D4-A3FFCF516D7B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C4149169-5380-4515-A050-FDF84E22A932</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>9A87E6A1-D02C-4C51-BC9C-C0BCDD09E918</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>BB7422BE-2C49-4CA7-8177-7568043C8083</key>
 		<array>
 			<dict>
@@ -1452,23 +1537,13 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>AC5F1553-CC00-4C70-A0AC-1F0DCDE0E04A</string>
+				<string>B8F61D98-B998-4A7C-9C60-49B48543B3CD</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
 				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>D80B7035-7251-43FB-84D4-A3FFCF516D7B</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string>Add to List &amp; Loop</string>
-				<key>vitoclose</key>
-				<true/>
 			</dict>
 		</array>
 		<key>CDC52DC6-FB2D-439B-9EDD-8916E086FAB4</key>
@@ -1667,6 +1742,16 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>E07CEE84-A0C3-4561-9D8D-124E599CB8BA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>CDA9D19B-A5C8-4206-ADCA-C6AA220E8837</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -1674,16 +1759,6 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>5CFD91A1-5B1A-4F65-BA4B-0F7C296DF5F7</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>E07CEE84-A0C3-4561-9D8D-124E599CB8BA</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -4332,26 +4407,6 @@ export session_var=$((RANDOM % 9000000 + 1))
 			<key>config</key>
 			<dict>
 				<key>argument</key>
-				<string>✈Ͽ {query}</string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>theAction</key>
-					<string>addCurrentClip</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>AC5F1553-CC00-4C70-A0AC-1F0DCDE0E04A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
 				<string>Your {var:behavior} is empty.</string>
 				<key>passthroughargument</key>
 				<false/>
@@ -4433,56 +4488,22 @@ export session_var=$((RANDOM % 9000000 + 1))
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Please wait...</string>
-				<key>script</key>
-				<string>export query="$1"
-export session_var=2
-./scripts/fuzzy_.py /bin/zsh scripts/directCB.zsh</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>inboundconfig</key>
-			<dict>
-				<key>externalid</key>
-				<string>clipgrab</string>
+				<key>argument</key>
+				<string>✈Ͽ {query}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>theAction</key>
+					<string>addCurrentClip</string>
+				</dict>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>CDA9D19B-A5C8-4206-ADCA-C6AA220E8837</string>
+			<string>AC5F1553-CC00-4C70-A0AC-1F0DCDE0E04A</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -4536,6 +4557,120 @@ export session_var=2
 			<string>E07CEE84-A0C3-4561-9D8D-124E599CB8BA</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:clipFilter}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>close</string>
+						<key>outputlabel</key>
+						<string>AddClose</string>
+						<key>uid</key>
+						<string>253AE73D-54D8-4524-B859-15278F156F53</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:clipFilter}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>nextClose</string>
+						<key>outputlabel</key>
+						<string>AddNextClose</string>
+						<key>uid</key>
+						<string>3F09302C-949B-4462-B35F-679D4D4201D6</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:clipFilter}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>loop</string>
+						<key>outputlabel</key>
+						<string>AddLoop</string>
+						<key>uid</key>
+						<string>C4149169-5380-4515-A050-FDF84E22A932</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>AddNextLoop</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>B8F61D98-B998-4A7C-9C60-49B48543B3CD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Please wait...</string>
+				<key>script</key>
+				<string>export query="$1"
+export session_var=2
+./scripts/fuzzy_.py /bin/zsh scripts/directCB.zsh</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>inboundconfig</key>
+			<dict>
+				<key>externalid</key>
+				<string>clipgrab</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>CDA9D19B-A5C8-4206-ADCA-C6AA220E8837</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -4734,6 +4869,28 @@ fi</string>
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>✈Ͽ {query}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>addNext</key>
+					<string>1</string>
+					<key>theAction</key>
+					<string>addCurrentClip</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>2934A0DA-1EE7-48E7-9FF3-0365A82E5446</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
@@ -4770,25 +4927,6 @@ fi</string>
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>9105FCF7-752C-4C66-8283-3B012012202B</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>externaltriggerid</key>
-				<string>clipgrab</string>
-				<key>passinputasargument</key>
-				<false/>
-				<key>passvariables</key>
-				<true/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>5D64EFE9-C640-46CF-B4ED-9A967F176260</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -4837,30 +4975,29 @@ fi</string>
 			<integer>1</integer>
 		</dict>
 		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>clearStack</key>
-					<string>0</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>57059166-54C2-4DD7-A59F-C55CE430C8E1</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
 			<string>E9FFCA57-2ACB-418C-BC74-4EB85106F2D7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>clipgrab</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>5D64EFE9-C640-46CF-B4ED-9A967F176260</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -4905,6 +5042,30 @@ fi</string>
 			<key>config</key>
 			<dict>
 				<key>argument</key>
+				<string>✈Ͽ {query}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key></key>
+					<string></string>
+					<key>addNext</key>
+					<string>1</string>
+					<key>theAction</key>
+					<string>addCurrentClip</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>9A87E6A1-D02C-4C51-BC9C-C0BCDD09E918</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
 				<string>'{query}', {variables}</string>
 				<key>cleardebuggertext</key>
 				<false/>
@@ -4915,6 +5076,28 @@ fi</string>
 			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
 			<string>D4F60BA6-ACDF-4C62-9683-CAB5BE71EF1F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>addNext</key>
+					<string>0</string>
+					<key>clearStack</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>57059166-54C2-4DD7-A59F-C55CE430C8E1</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -5462,6 +5645,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<key>ypos</key>
 			<real>2530</real>
 		</dict>
+		<key>2934A0DA-1EE7-48E7-9FF3-0365A82E5446</key>
+		<dict>
+			<key>xpos</key>
+			<real>2585</real>
+			<key>ypos</key>
+			<real>2655</real>
+		</dict>
 		<key>29C8F4E1-56BA-4798-8A41-C5ED80EF98AE</key>
 		<dict>
 			<key>xpos</key>
@@ -5719,9 +5909,9 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>57059166-54C2-4DD7-A59F-C55CE430C8E1</key>
 		<dict>
 			<key>xpos</key>
-			<real>2645</real>
+			<real>2655</real>
 			<key>ypos</key>
-			<real>2695</real>
+			<real>2735</real>
 		</dict>
 		<key>5B070AF3-3DBE-40E3-87D7-13ED55C748BB</key>
 		<dict>
@@ -5740,9 +5930,9 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>5D64EFE9-C640-46CF-B4ED-9A967F176260</key>
 		<dict>
 			<key>xpos</key>
-			<real>2740</real>
+			<real>2745</real>
 			<key>ypos</key>
-			<real>2665</real>
+			<real>2705</real>
 		</dict>
 		<key>5E575758-B815-4E9B-BA06-1965FC6FFB18</key>
 		<dict>
@@ -5942,6 +6132,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<key>ypos</key>
 			<real>2765</real>
 		</dict>
+		<key>9A87E6A1-D02C-4C51-BC9C-C0BCDD09E918</key>
+		<dict>
+			<key>xpos</key>
+			<real>2585</real>
+			<key>ypos</key>
+			<real>2715</real>
+		</dict>
 		<key>9DAA5CCB-FB51-4B7D-BC35-B22A61AE5A01</key>
 		<dict>
 			<key>colorindex</key>
@@ -6049,9 +6246,9 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>AC5F1553-CC00-4C70-A0AC-1F0DCDE0E04A</key>
 		<dict>
 			<key>xpos</key>
-			<real>2545</real>
+			<real>2530</real>
 			<key>ypos</key>
-			<real>2605</real>
+			<real>2625</real>
 		</dict>
 		<key>B0E1A726-0402-4990-9D9A-A430A978DABA</key>
 		<dict>
@@ -6075,6 +6272,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<real>600</real>
 			<key>ypos</key>
 			<real>2035</real>
+		</dict>
+		<key>B8F61D98-B998-4A7C-9C60-49B48543B3CD</key>
+		<dict>
+			<key>xpos</key>
+			<real>2410</real>
+			<key>ypos</key>
+			<real>2630</real>
 		</dict>
 		<key>BB7422BE-2C49-4CA7-8177-7568043C8083</key>
 		<dict>
@@ -6145,9 +6349,9 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<key>note</key>
 			<string>ClipboardFilter</string>
 			<key>xpos</key>
-			<real>2335</real>
+			<real>2275</real>
 			<key>ypos</key>
-			<real>2620</real>
+			<real>2630</real>
 		</dict>
 		<key>CDC52DC6-FB2D-439B-9EDD-8916E086FAB4</key>
 		<dict>
@@ -6211,9 +6415,9 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>D80B7035-7251-43FB-84D4-A3FFCF516D7B</key>
 		<dict>
 			<key>xpos</key>
-			<real>2545</real>
+			<real>2530</real>
 			<key>ypos</key>
-			<real>2695</real>
+			<real>2685</real>
 		</dict>
 		<key>DE91EA2A-6993-46DC-946D-1C1B85E8FBF5</key>
 		<dict>
@@ -6225,7 +6429,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>E07CEE84-A0C3-4561-9D8D-124E599CB8BA</key>
 		<dict>
 			<key>xpos</key>
-			<real>2645</real>
+			<real>2655</real>
 			<key>ypos</key>
 			<real>2625</real>
 		</dict>

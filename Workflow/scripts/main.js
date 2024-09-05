@@ -138,7 +138,7 @@ function run(argv) {
                     'ctrl': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? {valid: true, variables: {theAction: 'inputAddClipRange', addNext: '1'}, subtitle: 'Add X number of recent items and insert in "next" position.'} : {valid: false},
                     'ctrl+alt': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ?  {valid: true, variables: {theAction: '!addCurrentClip', addNext: '1'}, subtitle: 'Add current clipboard only in "next" position.'} : {valid: false},
                     'fn': {valid: true, variables: {theAction: 'clipFilter' }, subtitle: 'Add manually from recent clipboard items.'},
-                    'fn+cmd': {valid: true, variables: {theAction: 'clipFilter', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' add manually from recent clipboard items.'},
+                    'fn+cmd': {valid: true, variables: {theAction: 'clipFilter', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' & add manually from recent clipboard items.'},
                     'fn+ctrl': {valid: true, variables: {theAction: 'clipFilter', addNext: '1'}, subtitle: 'Add manually from recent clipboard items in "next" position.'},
                 }
         });

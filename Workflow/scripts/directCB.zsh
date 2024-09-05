@@ -26,7 +26,27 @@ fi
       'copy', item,
       'largetype', item
     ),
-    'subtitle', '↩ Add to List & Close • ⌘↩ Add to List & Loop')))
+    'variables', JSON_OBJECT(
+      'clipFilter', 'close'
+    ),
+    'mods', JSON_OBJECT(
+      'cmd', JSON_OBJECT(
+        'subtitle', 'Add & Loop',
+        'variables', JSON_OBJECT(
+          'clipFilter', 'loop')
+      ),
+      'ctrl', JSON_OBJECT(
+        'subtitle', 'Add in \"Next\" & Close',
+        'variables', JSON_OBJECT(
+          'clipFilter', 'nextClose')
+      ),
+      'cmd+ctrl', JSON_OBJECT(
+        'subtitle', 'Add in \"Next\" & Loop',
+        'variables', JSON_OBJECT(
+          'clipFilter', 'nextLoop')
+      )
+    ),
+    'subtitle', '↩ Add & Close • ⌘↩ Add & Loop • ⌃↩ Add in \"Next\" & Close • ⌘⌃↩ Add in \"Next\" & Loop')))
   AS JSON_RESULT FROM (
     SELECT item
     FROM clipboard
