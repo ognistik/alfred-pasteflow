@@ -227,21 +227,13 @@ function run(argv) {
                             : `You only have 1 item in your ${behavior}.`,
                         variables: { theAction: 'copyNext' }
                     },
-                    ...(nextItem === 1 && itemCount > 1 ? {
+                    ...(itemCount > 1 ? {
                         alt: {
-                            subtitle: `Paste next. Process ${behavior} item ${pasteOrder === 'recFirst' ? 'bottom-to-top' : 'top-to-bottom'} (${
-                                    (behavior === 'stack' && pasteOrder === 'recLast') || (behavior === 'queue' && pasteOrder === 'recFirst')
-                                        ? 'use the most recent'
-                                        : 'use the oldest'
-                                        }).`,
+                            subtitle: `Paste next. Process ${behavior} item ${pasteOrder === 'recFirst' ? 'bottom-to-top' : 'top-to-bottom'} (opposite direction).`,
                             variables: { theAction: 'pasteNext', invOrder: '1' }
                         },
                         'cmd+alt': {
-                            subtitle: `Copy next. Process ${behavior} item ${pasteOrder === 'recFirst' ? 'bottom-to-top' : 'top-to-bottom'} (${
-                                    (behavior === 'stack' && pasteOrder === 'recLast') || (behavior === 'queue' && pasteOrder === 'recFirst')
-                                        ? 'use the most recent'
-                                        : 'use the oldest'
-                                        }).`,
+                            subtitle: `Copy next. Process ${behavior} item ${pasteOrder === 'recFirst' ? 'bottom-to-top' : 'top-to-bottom'} (opposite direction).`,
                             variables: { theAction: 'copyNext', invOrder: '1' }
                         }
                     } : {})
