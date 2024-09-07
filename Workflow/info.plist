@@ -45,6 +45,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>0D18BFD1-BCA8-46FB-8672-52B68CA644B5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>15B8CE88-9144-45D8-9411-B7126C35BBF1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>0EE0E6E3-873A-46C7-8ED9-086B0F5B1B43</key>
 		<array>
 			<dict>
@@ -63,6 +76,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>C590B4B0-48F0-4776-9D2F-7C90BC8B37D0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>15B8CE88-9144-45D8-9411-B7126C35BBF1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7BAC5E6E-DC81-4C54-AFEC-0FEA8767566D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -203,6 +229,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>29C8F4E1-56BA-4798-8A41-C5ED80EF98AE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>15B8CE88-9144-45D8-9411-B7126C35BBF1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>29FA2DBF-EC93-4888-A8B5-F1F00C225FDF</key>
 		<array>
 			<dict>
@@ -288,6 +327,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>5B070AF3-3DBE-40E3-87D7-13ED55C748BB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>3580AD0B-1F35-4718-AF52-4BA800D14482</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>15B8CE88-9144-45D8-9411-B7126C35BBF1</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -874,6 +926,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>7BAC5E6E-DC81-4C54-AFEC-0FEA8767566D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D511DD66-EBB9-47F5-BDEA-58BCF6A987A8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>7C11D51A-608C-497F-85FF-3C5B450A2FC2</key>
 		<array>
 			<dict>
@@ -1164,6 +1229,32 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>CCD1E2F9-9A76-4687-9E17-EEA6C724BDE2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>963BA907-C6DD-465F-AB82-92FE1CDA3CDB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>15B8CE88-9144-45D8-9411-B7126C35BBF1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>96BA62A2-1B1C-435C-B4FE-21A0DA894276</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3580AD0B-1F35-4718-AF52-4BA800D14482</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1855,7 +1946,18 @@
 			</dict>
 		</array>
 		<key>EA26CD5E-AD62-4033-A2D6-EECB16CA8787</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>15B8CE88-9144-45D8-9411-B7126C35BBF1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>EA2BFB99-3D0F-4F51-84A7-4D317A08A79A</key>
 		<array>
 			<dict>
@@ -4303,7 +4405,7 @@ export session_var=$((RANDOM % 9000000 + 1))
 				<key>inputtype</key>
 				<integer>1</integer>
 				<key>loadingtext</key>
-				<string></string>
+				<string>Loading...</string>
 				<key>outputmode</key>
 				<integer>0</integer>
 				<key>scriptinput</key>
@@ -5421,6 +5523,14 @@ fi</string>
 			<integer>3</integer>
 		</dict>
 		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>3580AD0B-1F35-4718-AF52-4BA800D14482</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>config</key>
 			<dict>
 				<key>autopaste</key>
@@ -5649,6 +5759,46 @@ fi</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{clipboard:0}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>D511DD66-EBB9-47F5-BDEA-58BCF6A987A8</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>seconds</key>
+				<string>.3</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.delay</string>
+			<key>uid</key>
+			<string>7BAC5E6E-DC81-4C54-AFEC-0FEA8767566D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>15B8CE88-9144-45D8-9411-B7126C35BBF1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string># PASTEFLOW
@@ -5765,7 +5915,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>0D18BFD1-BCA8-46FB-8672-52B68CA644B5</key>
 		<dict>
 			<key>xpos</key>
-			<real>4885</real>
+			<real>4660</real>
 			<key>ypos</key>
 			<real>3025</real>
 		</dict>
@@ -5786,6 +5936,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<real>465</real>
 			<key>ypos</key>
 			<real>645</real>
+		</dict>
+		<key>15B8CE88-9144-45D8-9411-B7126C35BBF1</key>
+		<dict>
+			<key>xpos</key>
+			<real>5325</real>
+			<key>ypos</key>
+			<real>3210</real>
 		</dict>
 		<key>17596F70-1D24-462D-AE97-8D58998331BB</key>
 		<dict>
@@ -5880,7 +6037,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>29C8F4E1-56BA-4798-8A41-C5ED80EF98AE</key>
 		<dict>
 			<key>xpos</key>
-			<real>4640</real>
+			<real>4925</real>
 			<key>ypos</key>
 			<real>2995</real>
 		</dict>
@@ -5951,6 +6108,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<real>930</real>
 			<key>ypos</key>
 			<real>2610</real>
+		</dict>
+		<key>3580AD0B-1F35-4718-AF52-4BA800D14482</key>
+		<dict>
+			<key>xpos</key>
+			<real>5085</real>
+			<key>ypos</key>
+			<real>2995</real>
 		</dict>
 		<key>36C0DDF1-6896-4D4A-9559-9806CFF655A0</key>
 		<dict>
@@ -6253,6 +6417,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<real>660</real>
 			<key>ypos</key>
 			<real>175</real>
+		</dict>
+		<key>7BAC5E6E-DC81-4C54-AFEC-0FEA8767566D</key>
+		<dict>
+			<key>xpos</key>
+			<real>5380</real>
+			<key>ypos</key>
+			<real>3210</real>
 		</dict>
 		<key>7C11D51A-608C-497F-85FF-3C5B450A2FC2</key>
 		<dict>
@@ -6638,6 +6809,15 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<real>3555</real>
 			<key>ypos</key>
 			<real>2920</real>
+		</dict>
+		<key>D511DD66-EBB9-47F5-BDEA-58BCF6A987A8</key>
+		<dict>
+			<key>note</key>
+			<string>Restore Clipboard</string>
+			<key>xpos</key>
+			<real>5440</real>
+			<key>ypos</key>
+			<real>3180</real>
 		</dict>
 		<key>D5365422-558B-498B-9778-4D59B358703B</key>
 		<dict>

@@ -207,12 +207,13 @@ function run(argv) {
 
     //Now we process the actions
     if (theAction === 'viewStack'){
+        itemCount = theStack.length;
         theStack = theStack.map(item => `\`\`\`\n${item}\n\`\`\``).join('\n---\n');
         return JSON.stringify({
             variables: {
             },
             //response: 'this is\n---\na tet',
-            response: '# PasteFlow • Your ' + behaviorUp + '\n---\n' + theStack + '\n---',
+            response: '# PasteFlow • ' + itemCount + (itemCount === 1 ? ' Item' : ' Items') + '\n---\n' + theStack + '\n---',
             footer: "↩ • Close • ⌘↩ Merge & Copy • ⌘⌥↩ Merge & Paste • ⌥↩ Edit • ⌘⌥⌃↩ Clear Contents • ⇧↩ Invert Contents",
     });
     }

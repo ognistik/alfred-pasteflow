@@ -22,6 +22,9 @@ fi
     'type', 'default',
     'autocomplete', item,
     'action', item,
+    'icon', JSON_OBJECT(
+      'path', './assets/images/clipFilter.png'
+    ),
     'text', JSON_OBJECT(
       'copy', item,
       'largetype', item
