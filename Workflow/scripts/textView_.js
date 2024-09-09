@@ -208,7 +208,8 @@ function run(argv) {
     //Now we process the actions
     if (theAction === 'viewStack'){
         itemCount = theStack.length;
-        theStack = theStack.map(item => `\`\`\`\n${item}\n\`\`\``).join('\n---\n');
+        //theStack = theStack.map(item => `\`\`\`\n${item}\n\`\`\``).join('\n---\n');
+        theStack = theStack.map((item, index) => `## Item ${index + 1}\n${item}\n`).join('\n---\n');
         return JSON.stringify({
             variables: {
             },
