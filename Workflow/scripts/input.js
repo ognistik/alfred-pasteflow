@@ -247,6 +247,10 @@ function run(argv) {
             }
         }
 
+        if (afterAll === 'restart' && nextItem > theStack.length) {
+            nextItem = 1;
+        }
+
     //We save back into our files with temp variables
         tempItem = (parseInt(nextItem)).toString();
         tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
