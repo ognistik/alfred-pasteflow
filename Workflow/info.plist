@@ -1771,7 +1771,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>069B1B67-BB9E-427D-8C91-48D2669D611C</string>
+				<string>EA2BEDBD-CBC5-448D-A743-BD7F093F5029</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1950,6 +1950,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>15B8CE88-9144-45D8-9411-B7126C35BBF1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>EA2BEDBD-CBC5-448D-A743-BD7F093F5029</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>069B1B67-BB9E-427D-8C91-48D2669D611C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -5271,6 +5284,19 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>unstackview</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>EA2BEDBD-CBC5-448D-A743-BD7F093F5029</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string>✈Ͽ {query}</string>
 				<key>passthroughargument</key>
@@ -6926,6 +6952,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<real>4490</real>
 			<key>ypos</key>
 			<real>3175</real>
+		</dict>
+		<key>EA2BEDBD-CBC5-448D-A743-BD7F093F5029</key>
+		<dict>
+			<key>xpos</key>
+			<real>3975</real>
+			<key>ypos</key>
+			<real>2870</real>
 		</dict>
 		<key>EA2BFB99-3D0F-4F51-84A7-4D317A08A79A</key>
 		<dict>
