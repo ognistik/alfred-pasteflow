@@ -7429,7 +7429,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0.3</string>
+	<string>1.0.4</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-pasteflow</string>
 </dict>
