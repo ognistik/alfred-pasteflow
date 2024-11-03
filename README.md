@@ -19,8 +19,6 @@ Thanks to Alfred's triggers, clipboard features, and actions, PasteFlow is a fle
 
 * This workflow uses Alfred’s Clipboard History. You do not need to use Alfred as your main clipboard manager, but you must have this feature activated.
 
-* This workflow utilizes Python 3 to filter its menus. If you don't have it, it may prompt you to install Xcode Command Line Tools for this, or you can install it by running `xcode-select --install` in Terminal. Python is a widely used programming language recognized for its safety and reliability, commonly utilized in Alfred workflows, Homebrew, and more.
-
 ---
 ## HOW TO USE PASTEFLOW?
 If you're already familiar with paste stacks, you can start using PasteFlow right away with its default settings. Here's how to get started:
