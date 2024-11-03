@@ -5999,9 +5999,9 @@ export session_var=2
 **A Paste Stack &amp; Paste Queue for Alfred | Pin &amp; Reuse Text.**
 ![](assets/images/pasteflow-s.png)
 
-[~ Visit on Github~ ](https://github.com/ognistik/alfred-pasteflow) | [~ Video Overview ~](https://youtu.be/2TWJGcTVy3A)
+[~ Visit on Github~ ](https://github.com/ognistik/alfred-pasteflow) | [~ Video Overview ~](https://youtu.be/2TWJGcTVy3A) | [~Buy me a Coffe~](https://buymeacoffee.com/afadingthought)
 
-*Updating? [Read what's new.](https://github.com/ognistik/alfred-pasteflow/releases/latest)*
+***Updating? [Read what's new.](https://github.com/ognistik/alfred-pasteflow/releases/latest)***
 
 
 ## WHAT IS IT?
@@ -7620,7 +7620,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0.4</string>
+	<string>1.0.5</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-pasteflow</string>
 </dict>
