@@ -478,7 +478,7 @@ function run(argv) {
                     action: item,
                     text: {
                         'copy': item,
-                        'largetype': item,
+                        'largetype': item.length > 1300 ? item.substring(0, 1300) + '...' : item
                     },
                     variables: {
                         theAction: theAction === 'inputPasteItem' ? 'pasteItem' : 'copyItem'

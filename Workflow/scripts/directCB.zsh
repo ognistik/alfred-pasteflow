@@ -27,7 +27,12 @@ fi
     ),
     'text', JSON_OBJECT(
       'copy', item,
-      'largetype', item
+      'largetype', CASE 
+        WHEN length(item) > 1300 
+        THEN substr(item, 1, 1300) || '...'
+        ELSE item
+      END
+
     ),
     'variables', JSON_OBJECT(
       'clipFilter', 'close'
@@ -56,4 +61,4 @@ fi
     WHERE dataType IS 0
     ORDER BY ts
     DESC
-    LIMIT 30)"
+    LIMIT 50)"

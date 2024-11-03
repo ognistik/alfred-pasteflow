@@ -129,7 +129,7 @@ function run(argv) {
             action: theText,
             text: {
                 'copy': theText,
-                'largetype': theText,
+                'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
             },
             variables: { theAction: 'inputAddClipRange' },
             mods: { 'cmd': {valid: true, variables: {theAction: 'inputAddClipRange', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' & add X number of recent items.'},
@@ -153,7 +153,7 @@ function run(argv) {
             action: theText,
             text: {
                 'copy': theText,
-                'largetype': theText,
+                'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
             },
             variables: { theAction: '!addSplitClip' },
             mods: { 
@@ -175,7 +175,7 @@ function run(argv) {
             action: theText,
             text: {
                 'copy': theText,
-                'largetype': theText,
+                'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
             },
             variables: { theAction: 'inputPasteClipRange' },
             mods: {
@@ -212,7 +212,7 @@ function run(argv) {
                 action: theText,
                 text: {
                     'copy': theText,
-                    'largetype': theText,
+                    'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
                 },
                 variables: { theAction: 'pasteNext' },
                 mods: {
@@ -251,7 +251,7 @@ function run(argv) {
                 action: theText,
                 text: {
                     'copy': theText,
-                    'largetype': theText,
+                    'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
                 },
                 variables: { theAction: 'pasteStack' },
                 mods: {
@@ -280,7 +280,7 @@ function run(argv) {
                 action: theText,
                 text: {
                     'copy': theText,
-                    'largetype': theText,
+                    'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
                 },
                 variables: { theAction: 'inputPasteItem' },
                 mods: { 'cmd': {valid: true, variables: {theAction: 'inputCopyItem' }, subtitle: 'Choose a ' + behavior + ' item to copy.'}}
@@ -297,7 +297,7 @@ function run(argv) {
             action: theText,
             text: {
                 'copy': theText,
-                'largetype': theText,
+                'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
             },
             variables: { theAction: 'config' }
         });
@@ -313,7 +313,7 @@ function run(argv) {
                 action: theText,
                 text: {
                     'copy': theText,
-                    'largetype': theText,
+                    'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
                 },
                 variables: { theAction: 'viewStack' }
             });
@@ -328,7 +328,7 @@ function run(argv) {
                 action: theText,
                 text: {
                     'copy': theText,
-                    'largetype': theText,
+                    'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
                 },
                 variables: { theAction: 'clearList' }
             });
@@ -343,7 +343,7 @@ function run(argv) {
                 action: theText,
                 text: {
                     'copy': theText,
-                    'largetype': theText,
+                    'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
                 },
                 variables: { theAction: 'textEditListX' }
             });
@@ -358,7 +358,7 @@ function run(argv) {
                 action: theText,
                 text: {
                     'copy': theText,
-                    'largetype': theText,
+                    'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
                 },
                 variables: { theAction: 'invert' }
             });
@@ -374,7 +374,7 @@ function run(argv) {
                     action: theText,
                     text: {
                         'copy': theText,
-                        'largetype': theText,
+                        'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
                     },
                     variables: { theAction: 'inputKeep' }
                 });
@@ -391,7 +391,7 @@ function run(argv) {
                     action: theText,
                     text: {
                         'copy': theText,
-                        'largetype': theText,
+                        'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
                     },
                     variables: { theAction: 'resetNext' }
                 });
