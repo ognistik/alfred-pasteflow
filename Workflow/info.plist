@@ -7840,6 +7840,8 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<string>noUpdate</string>
 		</dict>
 	</array>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
 	<string>1.1.0</string>
 	<key>webaddress</key>
