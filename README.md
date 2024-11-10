@@ -27,6 +27,7 @@ If you're already familiar with paste stacks, you can start using PasteFlow righ
    - Select text and use Pasteflow actions on them.
    - Set up your preferred hotkeys (green color-coded hotkeys are the most basic/essential).
    - Use PasteFlow's keyword to add items from your Clipboard to your stack.
+   - Use the `:Add` option in the main menu.
 
 2. **Process your saved items:**
    The easiest way to do this is to set up a hotkey (in green), but you can also use PasteFlow's keyword directly on Alfred's bar.
@@ -36,7 +37,7 @@ If you're already familiar with paste stacks, you can start using PasteFlow righ
 3. **View & edit your stack:**
    - Set up hotkeys (red-coded hotkeys show your entire list)
    - Enter "Selective Mode" from Alfred's Bar using PasteFlow's keyword
-   - Use Textview Mode (type `:View` with PasteFlow's keyword)
+   - Use Text View Mode (type `:View` with PasteFlow's keyword)
 
 That's all you need to get started! But if you want to explore more, PasteFlow has lots of other useful and powerful features.
 
@@ -64,8 +65,8 @@ PasteFlow is packed with features to make your workflow smoother:
 
 * **Large Text View**: In the main menu, press CMD L on any item to see your list in large text. You can also copy it (CMD C) or use Alfred's universal actions on it.
 * **Selective Mode Viewing**: In Selective Mode, CMD L shows the full content of an item. Copy or use universal actions here too.
-* **Hidden Menu**: Type `:` in Alfred's bar (with PasteFlow's keyword) to reveal extra options like inverting your list order, clearing it, or editing all its raw contents. Many of these are also directly available in Textview Mode (`:View`). [***Read all about the main menu.***](#the-main-menu)
-* **Powerful Selective Mode**: Edit individual items, move them around, remove them, or process them in any order. Some modifier combos let you tweak the whole list without entering Textview Mode. [***Read all about Selective Mode.***](#selective-mode)
+* **Hidden Menu**: Type `:` in Alfred's bar (with PasteFlow's keyword) to reveal extra options like inverting your list order, clearing it, or editing all its raw contents. Many of these are also directly available in Text View Mode (`:View`). [***Read all about the main menu.***](#the-main-menu)
+* **Powerful Selective Mode**: Edit individual items, move them around, remove them, or process them in any order. Some modifier combos let you tweak the whole list without entering Text View Mode. [***Read all about Selective Mode.***](#selective-mode)
 * **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. [***Read all about Universal Actions***](#universal-actions)
 * **Multiple Control Methods**: Use Alfred's bar directly, keyboard shortcuts ([color-coded for easy remembering](#custom-hotkeys)), or send arguments to the external trigger. [***Read all about the external trigger.***](#the-external-trigger)
   
@@ -98,7 +99,7 @@ You can use PasteFlow as a temporary text holder or a more permanent list. Here'
 * **Clear and Add**: In the main menu, hold CMD while selecting 'Add to List from Clipboard' or 'Split & Add to List'. This clears the list before adding new items.
 * **Main Menu Option**: Type `:Clear` in the main menu.
 * **Hotkey**: Set up a keyboard shortcut (yellow color-coded) to clear your list.
-* **In Textview Mode**: In Textview Mode (`:View` from main menu), use CMD + CTRL + OPT + Return.
+* **In Text View Mode**: In Text View Mode (`:View` from main menu), use CMD + CTRL + OPT + Return.
 * **In Selective Mode**: 
   - Clear individual items: Hold CTRL while pressing return (items are removed, not pasted or copied)
   - Clear entire list: Use CTRL + CMD + Return
@@ -155,18 +156,19 @@ The main menu is your control center for PasteFlow. Here's some things you can d
 
 </details>
 
-There's also a "secret" menu with extra options for your entire list. Just type `:` to access it. These actions are straightforward and don't have modifier combinations.
+There's also a "secret" menu with extra options for your entire list. Just type `:` to access it. These actions are straightforward and*—with the exception of `:Add`—*don't have modifier combinations.
 
 <details>
   <summary><b>👇️ The "Secret" Menu Options:</b></summary>
 
 * Configuration: Adjust your PasteFlow settings
-* View Stack/Queue (Textview Mode): See your list in Alfred's Textview
+* View Stack/Queue (Text View Mode): See your list in Alfred's Text View
 * Clear Stack/Queue: Empty your list
-* Edit (Raw Contents of List in Textview Mode): Make changes to your entire list
+* Edit (Raw Contents of List in Text View Mode): Make changes to your entire list
 * Invert: Flip the order of your list
 * Keep & Trim (Keep X amount of items): Slim down your list to a specific number of items
 * Reset Next Item Index: Start processing from the beginning again
+* Add: Manually add items to your paste stack. You can use Text View with the OPT modifier to add multiple items at once (using PasteFlow's bullet)
 
 <p align="center">
   <img width="600" src="Workflow/assets/images/003.jpg">
@@ -228,7 +230,7 @@ These are the must-haves for most users. They let you add items to your list, pr
 ### Red: Full List Views
 Two options for seeing your entire list:
 * "Selective" mode: Process and edit items one by one
-* "Textview" mode: Get a clean overview of your whole paste stack/queue
+* "Text View" mode: Get a clean overview of your whole paste stack/queue
 
 ### Yellow: Handy Extras
 Not essential, but nice to have:
@@ -252,6 +254,34 @@ If you zoom out in Alfred's workflow editor (CMD + Hyphen), you'll notice the ho
 * Workflow actions
 
 *Note: PasteFlow offers a lot of processing actions, and when combined with different settings, the preset hotkey list could grow huge. Some features, like inverting inserts or processing, are for more advanced users—so I didn't include those as hotkeys. If you're looking for customization beyond the available hotkeys, I recommend learning to use [the external trigger.](#the-external-trigger)*
+
+---
+## PASTEFLOW'S BULLET
+
+PasteFlow uses a special bullet character to separate items in your list. This bullet is essential for the workflow to recognize where each item begins. While it's not easy to type directly (most users won't need to, anyways), **there's a convenient yellow-coded snippet you can set up to quickly insert it when needed.**
+
+<details>
+  <summary><b>👇️ This bullet becomes particularly useful when:</b></summary>
+
+1. **Editing in Text View Mode**: Access this mode by:
+   - Setting up a custom hotkey
+   - Directly using `:Edit` from the main menu
+   - Switching from view (`:View` in the main menu) to edit mode using the OPT modifier
+
+2. **Creating or Editing Lists**: Once in Text View Mode, you'll see each item starting with this bullet. You can:
+   - Edit existing items
+   - Start a new list (if your list is currently empty) by beginning each line with the bullet
+   - Add multiple items at once by using bullets to separate them
+
+3. **Adding Items**: When using `:Add` from the main menu:
+   - Regular input adds a single item
+   - Holding OPT opens Text View Mode where you can add multiple items using bullets
+
+</details>
+
+👉 [Watch Demo Video](https://ishortn.ink/pf110)
+
+While using the bullet isn't always necessary, it's a helpful tool for managing and organizing your list, especially in more advanced workflows.
 
 ---
 ## UNIVERSAL ACTIONS
@@ -388,7 +418,7 @@ Only `theAction` is required.
 | `inputPasteItem`      | Open "Selective View" with paste as default                  |
 | `inputCopyItem`       | Open "Selective View" with copy as default                   |
 | `config`              | Open PasteFlow's configuration                               |
-| `viewStack`           | Open your list in Textview Mode                              |
+| `viewStack`           | Open your list in Text View Mode                              |
 | `clearList`           | Clear your list                                              |
 | `textEditListX`       | Edit the raw contents of your list                           |
 | `invert`              | Invert the order of items in your list                       |

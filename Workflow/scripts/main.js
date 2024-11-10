@@ -302,6 +302,27 @@ function run(argv) {
             variables: { theAction: 'config' }
         });
 
+        items.push({
+            uid: 'manualAdd',
+            type: 'default',
+            autocomplete: ':Add',
+            title: ':Add',
+            subtitle: 'Add to your ' + behavior + ' manually.',
+            arg: theText,
+            action: theText,
+            text: {
+                'copy': theText,
+                'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
+            },
+            variables: { theAction: 'inputManual' },
+            mods: { 'alt': {valid: true, variables: {theAction: 'textEditManual' }, subtitle: 'Add to your ' + behavior + ' using text view.'},
+                    'cmd': {valid: true, variables: {theAction: 'inputManual', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' before adding.'},
+                    'ctrl': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? {valid: true, variables: {theAction: 'inputManual', addNext: '1'}, subtitle: 'Force insert in "next" position.'} :  {valid: false},
+                    'cmd+alt': {valid: true, variables: {theAction: 'textEditManual', clearStack: '1'}, subtitle: 'Clear your ' + behavior + ' and add using text view.'},
+                    'ctrl+alt': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? {valid: true, variables: {theAction: 'textEditManual', addNext: '1'}, subtitle: 'Add to your ' + behavior + ' using text view and force insert in "next" position.'} :  {valid: false},
+        }
+        });
+
         if (theStack) {
             items.push({
                 uid: 'viewStack',

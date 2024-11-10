@@ -12,12 +12,20 @@ function run(argv) {
     var afterAll = $.getenv('afterAll');
     var timeout = $.getenv('timeout');
     var noTimeout = $.getenv('noTimeout');
+    var pasteOrder = $.getenv('pasteOrder');
 
     //Those cases where the stack has to be reset
     try {
         clearStack = $.getenv('clearStack');
     } catch (error) {
         clearStack = '0';
+    }
+
+    //Those cases where the user wants to add to the stack in the "next" position ALWAYS.
+    try {
+        addNext = Number($.getenv('addNext'));
+    } catch (error) {
+        addNext = 0;
     }
 
     // Let's Uppercase this
@@ -93,7 +101,6 @@ function run(argv) {
         theAction = 'viewStack';
 
         //Now we prepare our array
-        //let items = theStack.split('✈Ͽ ').slice(1);
         if (theStack !== '') {
             let rawQuery = theStack;
             theStack = [];
@@ -125,6 +132,117 @@ function run(argv) {
         tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
         $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
 
+
+    } else if (theAction === 'VaddManual') {
+        //In this case we are ADDING query to the Stack... and it comes from the Text View in theResult variable.
+        query = theResult;
+
+        //Let's change theAction to display this
+        theAction = 'viewStack';
+
+        //Now we prepare our array
+        if (theStack !== '') {
+            let rawQuery = theStack;
+            theStack = [];
+
+            // Split the rawQuery into lines
+            let lines = rawQuery.split('\n');
+            let currentItem = '';
+            
+            for (let line of lines) {
+                if (line.startsWith('✈Ͽ ')) {
+                    if (currentItem) {
+                        theStack.push(currentItem.trim());
+                    }
+                    currentItem = line.slice(3); // Remove the '✈Ͽ ' prefix
+                } else {
+                    currentItem += '\n' + line;
+                }
+            }
+
+            // Add the last item
+            if (currentItem) {
+                theStack.push(currentItem.trim());
+            }
+        } else {
+            theStack = [];
+        }
+
+        //This Now we prepare the items that will be added
+        if (query !== '') {
+            let rawQuery = query;
+            query = [];
+
+            // Split the rawQuery into lines
+            let lines = rawQuery.split('\n');
+            let currentItem = '';
+            
+            for (let line of lines) {
+                if (line.startsWith('✈Ͽ ')) {
+                    if (currentItem) {
+                        query.push(currentItem.trim());
+                    }
+                    currentItem = line.slice(3); // Remove the '✈Ͽ ' prefix
+                } else {
+                    currentItem += '\n' + line;
+                }
+            }
+
+            // Add the last item
+            if (currentItem) {
+                query.push(currentItem.trim());
+            }
+        } else {
+            query = [];
+        }
+
+        //For the stack, new items should go either at the "next" position if grabbing from the top, or at the very top (the most recent) position otherwise (user expects oldest first)
+        if (behavior === 'stack') {
+            if (pasteOrder === 'recFirst' ) {
+                theStack.splice(nextItem - 1, 0, ...query);
+            } else if (pasteOrder === 'recLast' && addNext === 1) {
+                //This is a "secret" action option for single items only... for now. Force insert at next position.
+                //We reverse for the nextItem count to make sense... counting from back to front
+                theStack.reverse();
+                //The problem is that when splitting, for the queue behavior (or in this case, grabbing from bottom of stack) the Split items are already in the correct order
+                //And when I invert theStack again a few lines below, this will get inverted too, so we fix here...
+                if (theAction === 'addSplitClip') {
+                    query.reverse ();
+                }
+                //This counts the nextItem from the end to the front (since it's inverted)
+                theStack.splice(nextItem - 1, 0, ...query);
+                //We invert back
+                theStack.reverse();
+            } else {
+                //grabbing from the bottom user expects the oldest first... so new items should go at the very top, which is the opposite, always
+                theStack.unshift(...query);
+            }
+        } else {
+            //For the queue, new items should go at the "next" position if grabbing from the bottom (most recent)
+            if (pasteOrder === 'recLast' ) {
+                //We reverse for the nextItem count to make sense... counting from back to front
+                theStack.reverse();
+                //The problem is that when splitting, for the queue behavior the Split items are already in the correct order
+                //And when I invert theStack again a few lines below, this will get inverted too, so we fix here...
+                if (theAction === 'addSplitClip') {
+                    query.reverse ();
+                }
+                //This counts the nextItem from the end to the front (since it's inverted)
+                theStack.splice(nextItem - 1, 0, ...query);
+                //We invert back
+                theStack.reverse();
+            } else if (pasteOrder == 'recFirst' && addNext == 1) {
+                //I copy this one from the stack nextItem behavior... which is the same for this case. Again, this is a "secret" action for single items only.
+                theStack.splice(nextItem - 1, 0, ...query);
+            } else {
+                //or top position (user expects not to see until end)
+                theStack.push(...query);
+            }  
+        }
+
+        //Now that we have cleaned up trailing empty line breaks, we save in file
+        tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
+        $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
 
     } else if (theAction === 'Vinvert'){
         //This  means theStack needs to be inverted, saved, and then showed...

@@ -140,10 +140,21 @@ function run(argv) {
             return JSON.stringify({
                 variables: {
                     theAction: 'editView',
+                    emptyStack: ''
                 },
                 response: theStack,
                 footer: "⌘↩ Save & Close • ⌥↩ Save & View • ⎋: Cancel",
             });
         }
+    }
+
+    if (theAction === 'textEditManual'){
+        return JSON.stringify({
+            variables: {
+                theAction: 'addManual',
+            },
+            response: query !== '' ? query : '',
+            footer: "⌘↩ Save & Close • ⌥↩ Save & View • ⎋: Cancel",
+        });
     }
 }

@@ -152,7 +152,9 @@ function run(argv) {
     }
 
     if (theAction.startsWith('add')) {
-
+        if (theResult !== '' && theAction === 'addManual') {
+            query = theResult;
+        }
         //Whether the behavior is to split or not, IF we are adding to the stack we want to make query an array before we do an insert
         if (theAction === 'addSplitClip') {
             //Let's split and make this an array.
@@ -243,6 +245,44 @@ function run(argv) {
         theStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
         $.NSString.stringWithString(theStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
     } else if (theAction === 'editView'){
+        //This  means theStack was edited and has to replace the one in file. But let's do that at the end of this condition
+        theStack = theResult;
+
+        //This should reset nextView index to avoid issues
+        $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
+
+        //Now we prepare our array
+        if (theStack !== '') {
+            let rawQuery = theStack;
+            theStack = [];
+
+            // Split the rawQuery into lines
+            let lines = rawQuery.split('\n');
+            let currentItem = '';
+            
+            for (let line of lines) {
+                if (line.startsWith('✈Ͽ ')) {
+                    if (currentItem) {
+                        theStack.push(currentItem.trim());
+                    }
+                    currentItem = line.slice(3); // Remove the '✈Ͽ ' prefix
+                } else {
+                    currentItem += '\n' + line;
+                }
+            }
+
+            // Add the last item
+            if (currentItem) {
+                theStack.push(currentItem.trim());
+            }
+        } else {
+            theStack = [];
+        }
+
+        //Now that we have cleaned up trailing empty line breaks, we save in file
+        tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
+        $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
+
         //In this case theStack was simply updated above, we just notify the user
         return JSON.stringify({
             alfredworkflow: {

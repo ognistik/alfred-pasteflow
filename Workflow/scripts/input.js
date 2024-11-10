@@ -358,7 +358,7 @@ function run(argv) {
                 valid: false,
                 type: 'default',
                 title: 'Please Insert a Number',
-                subtitle: (addNext === 1 ? '"Next" Position Forced | ' : '') + '⌘↩ Clear ' + behaviorUp + ' Before Adding' + (addNext === 1 ? '' : (behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? ' • ⌃↩ Insert in "Next" Position' : '')),
+                subtitle: '',
             });
         }
     }
@@ -567,6 +567,30 @@ function run(argv) {
                 } 
 
                 items.push(itemObject);
+            });
+        }
+    }
+
+    if (theAction === 'inputManual') {
+        if ( query !== '') {
+            items.push({
+                type: 'default',
+                title: 'Add to your ' + behavior + ' manually.',
+                subtitle: (addNext === 1 ? '"Next" Position Insert Forced | ' : '') + '⌘↩ Clear ' + behaviorUp + ' Before Adding • ⌥↩ Add Using Textview' + (addNext === 1 ? '' : (behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? ' • ⌃↩ Insert in "Next" Position' : '')),
+                arg: query,
+                variables: { theAction: 'addManual' },
+                mods: { 'cmd': {valid: true, variables: {theAction: 'addManual', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' before adding.'},
+                        'ctrl': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? {valid: true, variables: {theAction: 'addManual', addNext: '1'}, subtitle: 'Force insert in "next" position.'} :  {valid: false},
+                        'alt': {valid: true, variables: {theAction: 'textEditManual' }, subtitle: 'Add using text view.'},
+                        'cmd+alt': {valid: true, variables: {theAction: 'textEditManual', clearStack: '1'}, subtitle: 'Clear your ' + behavior + ' and add using text view.'},
+                        'ctrl+alt': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? {valid: true, variables: {theAction: 'textEditManual', addNext: '1'}, subtitle: 'Add to your ' + behavior + ' using text view and force insert in "next" position.'} :  {valid: false},
+                    }});
+        } else {
+            items.push({
+                valid: false,
+                type: 'default',
+                title: 'Type to add to your ' + behavior,
+                subtitle: ''
             });
         }
     }
