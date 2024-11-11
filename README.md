@@ -409,6 +409,8 @@ Only `theAction` is required.
 | `inputAddClipRange`   | Input a number of clipboard items to insert in your list     |
 | `!addCurrentClip`     | Add current clipboard to your list (Use `c!` prefix to trigger CMD + C first) |
 | `!addSplitClip`       | Split current clipboard by newlines and add as individual items (Use `c!` prefix to trigger CMD + C first) |
+| `inputManual`         | Add manually by typing in Alfred's bar.                      |
+| `textEditManual`      | Add manually using Text View (can add multiple items).       |
 | `inputPasteClipRange` | Input a number of clipboard items to merge and paste (doesn't affect stack/queue) |
 | `inputCopyClipRange`  | Input a number of clipboard items to merge and copy (doesn't affect stack/queue) |
 | `pasteNext`           | Paste the item in "next" position                            |
