@@ -576,7 +576,7 @@ function run(argv) {
             items.push({
                 type: 'default',
                 title: 'Add to your ' + behavior + ' manually.',
-                subtitle: (addNext === 1 ? '"Next" Position Insert Forced | ' : '') + '⌘↩ Clear ' + behaviorUp + ' Before Adding • ⌥↩ Add Using Textview' + (addNext === 1 ? '' : (behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? ' • ⌃↩ Insert in "Next" Position' : '')),
+                subtitle: (addNext === 1 ? '"Next" Position Insert Forced | ' : '') + '⌘↩ Clear ' + behaviorUp + ' Before Adding • ⌥↩ Add Using Text View' + (addNext === 1 ? '' : (behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? ' • ⌃↩ Insert in "Next" Position' : '')),
                 arg: query,
                 variables: { theAction: 'addManual' },
                 mods: { 'cmd': {valid: true, variables: {theAction: 'addManual', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' before adding.'},
