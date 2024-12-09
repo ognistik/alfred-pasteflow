@@ -481,6 +481,8 @@ Here’s how some commands would look in action:
 * `pasteNext,0,1,0,8` will paste the previous item instead of the next one. It will also play the "Pop" sound.
 * `c!!addSplitClip,1` will grab (CMD + C) selected text, split it by newlines, and clear your current list before adding the individual items.
 
+For some inspiration, [take a look at my key bindings setup for PastefFlow](https://gist.github.com/ognistik/873a313f8c316677f06084f0eba74a79).
+
 ---
 ## Closing & Tips
 
