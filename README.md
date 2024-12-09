@@ -5,7 +5,7 @@
     <img width="300" src="Workflow/assets/images/pasteflow.png">
   </a>
 </p>
-<p align="center"><em><a href="https://youtu.be/2TWJGcTVy3A">~ Video Overview & Setup ~</a> | <a href="https://youtu.be/7V67ic6Tc6s">~ V2 Update Video: Rich Text & Files ~</a></em></p>
+<p align="center"><em><a href="https://youtu.be/2TWJGcTVy3A">~ Video Overview & Setup ~</a> | <a href="https://youtu.be/7V67ic6Tc6s">~ V2 Video Update: Rich Text & Files ~</a></em></p>
 
 ## WHAT IS PASTEFLOW?
 PasteFlow is a handy paste stack (or paste queue) for [Alfred](https://alfredapp.com/). It lets you create a list of pinned items (plain text, rich text, files, or special clipboard data) that you can organize, edit, and use in different ways.
