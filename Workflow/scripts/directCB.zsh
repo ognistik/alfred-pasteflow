@@ -16,9 +16,27 @@ fi
 
 /usr/bin/sqlite3 \
   "${HOME}/Library/Application Support/Alfred/Databases/clipboard.alfdb" \
-  "SELECT JSON_OBJECT('items', JSON_GROUP_ARRAY(JSON_OBJECT(
+  "WITH clipboard_data AS (
+    SELECT 
+      item,
+      dataType,
+      dataHash,
+      ts
+    FROM clipboard
+    WHERE dataType IN (0, 1, 2)
+    ORDER BY ts DESC
+    LIMIT 50
+  )
+  SELECT JSON_OBJECT('items', JSON_GROUP_ARRAY(JSON_OBJECT(
     'title', item,
-    'arg', item,
+    'arg', COALESCE(
+      CASE 
+        -- dataType 0 is text, 1 is files like images stored in Alfred folder, and 2 is plist which reference other files
+        WHEN dataType IN (1, 2) THEN '✈Ͽ ' || dataHash || '::' || item
+        ELSE item
+      END,
+      item
+    ),
     'type', 'default',
     'autocomplete', item,
     'action', item,
@@ -32,7 +50,6 @@ fi
         THEN substr(item, 1, 1300) || '...'
         ELSE item
       END
-
     ),
     'variables', JSON_OBJECT(
       'clipFilter', 'close'
@@ -55,10 +72,4 @@ fi
       )
     ),
     'subtitle', '↩ Add & Close • ⌘↩ Add & Loop • ⌃↩ Add in \"Next\" & Close • ⌘⌃↩ Add in \"Next\" & Loop')))
-  AS JSON_RESULT FROM (
-    SELECT item
-    FROM clipboard
-    WHERE dataType IS 0
-    ORDER BY ts
-    DESC
-    LIMIT 50)"
+  AS JSON_RESULT FROM clipboard_data"

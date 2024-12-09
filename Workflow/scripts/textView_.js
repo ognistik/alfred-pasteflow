@@ -324,16 +324,53 @@ function run(argv) {
     }
 
     //Now we process the actions
-    if (theAction === 'viewStack'){
+    if (theAction === 'viewStack') {
         itemCount = theStack.length;
-        //theStack = theStack.map(item => `\`\`\`\n${item}\n\`\`\``).join('\n---\n');
-        theStack = theStack.map((item, index) => `## Item ${index + 1}\n${item}\n`).join('\n---\n');
+        theStack = theStack.map((item, index) => {
+            let processedItem = item;
+            
+            if (item.startsWith('✈Ͽ ')) {
+                if (item.includes('::')) {
+                    const colonIndex = item.indexOf('::');
+                    const pathSection = item.substring(3, colonIndex).trim();
+                    const textAfterColon = item.substring(colonIndex + 2).trim();
+                    
+                    // Check for quoted paths before ::
+                    const quotedPaths = pathSection.match(/"[^"]+"/g) || [];
+                    
+                    if (quotedPaths.length > 0) {
+                        // Check if paths are images
+                        const imageExtensions = /\.(jpg|jpeg|png|gif|webp|svg)$/i;
+                        const paths = quotedPaths.map(p => p.replace(/"/g, ''));
+                        
+                        const isImage = paths.some(path => imageExtensions.test(path));
+                        
+                        if (isImage) {
+                            // Convert image paths to markdown and add text below
+                            const imageMarkdown = paths
+                                .filter(path => imageExtensions.test(path))
+                                .map(path => `![](${path})`)
+                                .join('\n');
+                            processedItem = `${imageMarkdown}\n\n${textAfterColon}`;
+                        } else {
+                            processedItem = textAfterColon;
+                        }
+                    } else {
+                        processedItem = textAfterColon;
+                    }
+                } else if (item.includes(';;')) {
+                    const semicolonIndex = item.indexOf(';;');
+                    processedItem = item.substring(semicolonIndex + 2).trim();
+                }
+            }
+            
+            return `## Item ${index + 1}\n${processedItem}\n`;
+        }).join('\n---\n');
+        
         return JSON.stringify({
-            variables: {
-            },
-            //response: 'this is\n---\na tet',
+            variables: {},
             response: '# PasteFlow • ' + itemCount + (itemCount === 1 ? ' Item' : ' Items') + '\n---\n' + theStack + '\n---',
-            footer: "↩ • Close • ⌘↩ Merge & Copy • ⌘⌥↩ Merge & Paste • ⌥↩ Edit • ⌘⌥⌃↩ Clear Contents • ⇧↩ Invert Contents",
-    });
+            footer: "↩ • Close • ⌘↩ Merge & Copy • ⌘⌥↩ Merge & Paste • ⌥↩ Edit • ⌘⌃↩ Clear Contents • ⇧↩ Invert Contents",
+        });
     }
 }

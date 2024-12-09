@@ -13,6 +13,10 @@ function run(argv) {
     var timeout = $.getenv('timeout');
     var noTimeout = $.getenv('noTimeout');
 
+    //This will allow us to trash raw items later... or do shell scripts
+    var app = Application.currentApplication();
+    app.includeStandardAdditions = true;
+
     //Those cases where the stack has to be reset
     try {
         clearStack = $.getenv('clearStack');
@@ -33,10 +37,16 @@ function run(argv) {
 
     var theStackPath = thePath + '/flowList.txt';
     var nextItemPath = thePath + '/nextItem.txt';
+    var rawCBPath = thePath + '/cbData';
 
     //Make empty stack if none exists
     if (!fm.fileExistsAtPath(theStackPath)) {
         $.NSString.stringWithString('').writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
+    }
+
+    //Make richCB path if it doesn't exist
+    if (!fm.fileExistsAtPath(rawCBPath)) {
+        fm.createDirectoryAtPathWithIntermediateDirectoriesAttributesError($(rawCBPath), true, $(), $());
     }
 
     var nextItem = 1;
@@ -66,6 +76,12 @@ function run(argv) {
             $.NSString.stringWithString('').writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
             nextItem = 1;
             $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
+            //We trash any raw clipboard files
+            try {
+                app.doShellScript(`if [ "$(ls -A "${rawCBPath}")" ]; then mv "${rawCBPath}"/* ~/.Trash/; fi`);
+            } catch (error) {
+                // Silently fail or handle error as needed
+            }
         }
     }
 
@@ -75,6 +91,14 @@ function run(argv) {
         $.NSString.stringWithString('').writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
         nextItem = 1;
         $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
+        //We trash any raw clipboard files
+        try {
+            app.doShellScript(`if [ "$(ls -A "${rawCBPath}")" ]; then mv "${rawCBPath}"/* ~/.Trash/; fi`);
+        } catch (error) {
+            // Silently fail or handle error as needed
+        }
+        //We reset this, which has already been processed.
+        clearStack = '0';
     } else {
         //Otherwise, we split theStack and place it back in theStack as an array
         //let items = theStack.split('✈Ͽ ').slice(1);
@@ -114,15 +138,25 @@ function run(argv) {
     }
 
     //Now we process the actions
-    if (theAction === 'textEditItemP' || theAction === 'textEditItemC'){
+    if (theAction === 'textEditItemP' || theAction === 'textEditItemC') {
+        let response = theStack[Number(query)];
+        
+        if (response.startsWith('✈Ͽ ')) {
+            if (response.includes('"::')) {
+                response = response.split('::')[1];
+            } else if (response.includes('";;')) {
+                response = response.split(';;')[1];
+            }
+        }
+    
         return JSON.stringify({
             variables: {
                 theAction: theAction === 'textEditItemP' ? 'IeditinputPasteItem' : 'IeditinputCopyItem',
                 theIndex: query
             },
-            response: theStack[Number(query)],
+            response: response,
             footer: "⌘↩ Save • ⎋: Cancel",
-    });
+        });
     }
 
     if (theAction === 'textEditListP' || theAction === 'textEditListC' || theAction === 'textEditListX'){

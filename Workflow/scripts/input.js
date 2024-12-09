@@ -12,6 +12,11 @@ function run(argv) {
     var noTimeout = $.getenv('noTimeout');
     var pasteOrder = $.getenv('pasteOrder');
     var afterSelect = $.getenv('afterSelect');
+    let item;
+
+    //This will allow us to trash raw items later... or do shell scripts
+    var app = Application.currentApplication();
+    app.includeStandardAdditions = true;
     
     try {
 		invOrder = Number($.getenv('invOrder'));
@@ -60,10 +65,16 @@ function run(argv) {
 
     var theStackPath = thePath + '/flowList.txt';
     var nextItemPath = thePath + '/nextItem.txt';
+    var rawCBPath = thePath + '/cbData';
 
     //Make empty stack if none exists
     if (!fm.fileExistsAtPath(theStackPath)) {
         $.NSString.stringWithString('').writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
+    }
+
+    //Make richCB path if it doesn't exist
+    if (!fm.fileExistsAtPath(rawCBPath)) {
+        fm.createDirectoryAtPathWithIntermediateDirectoriesAttributesError($(rawCBPath), true, $(), $());
     }
 
     var nextItem = 1;
@@ -93,6 +104,12 @@ function run(argv) {
             $.NSString.stringWithString('').writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
             nextItem = 1;
             $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
+            //We trash any raw clipboard files
+            try {
+                app.doShellScript(`if [ "$(ls -A "${rawCBPath}")" ]; then mv "${rawCBPath}"/* ~/.Trash/; fi`);
+            } catch (error) {
+                // Silently fail or handle error as needed
+            }
         }
     }
 
@@ -102,6 +119,12 @@ function run(argv) {
         $.NSString.stringWithString('').writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
         nextItem = 1;
         $.NSString.stringWithString('1').writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
+        //We trash any raw clipboard files
+        try {
+            app.doShellScript(`if [ "$(ls -A "${rawCBPath}")" ]; then mv "${rawCBPath}"/* ~/.Trash/; fi`);
+        } catch (error) {
+            // Silently fail or handle error as needed
+        }
         //We reset this, which has already been processed.
         clearStack = '0';
     } else {
@@ -148,8 +171,22 @@ function run(argv) {
         //First we clear this for it to still display the items next
         theAction = theAction.slice(5);
 
-        //Now we replace the index with the edited version
-        theStack[theIndex] = theResult;
+        // Get the current item from the stack
+        let currentItem = theStack[theIndex];
+
+        // Check if this is a special case item
+        if (currentItem.startsWith('✈Ͽ ')) {
+            if (currentItem.includes('::')) {
+                // Replace everything after :: with the new result
+                theStack[theIndex] = currentItem.split('::')[0] + '::' + theResult;
+            } else if (currentItem.includes(';;')) {
+                // Replace everything after ;; with the new result 
+                theStack[theIndex] = currentItem.split(';;')[0] + ';;' + theResult;
+            }
+        } else {
+            // Normal case - replace entire item
+            theStack[theIndex] = theResult;
+        }
 
         //We save back into our file with a temp variable
         tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
@@ -232,6 +269,83 @@ function run(argv) {
     if (theAction.startsWith("inputClearItem")) {
         //First we clear this for it to still display the items next
         theAction = theAction.slice(14);
+
+        // Check if item starts with plane symbol and contains ;; for raw file path
+        item = theStack[theIndex];
+        if (item.startsWith('✈Ͽ ') && item.includes(';;')) {
+            // Extract file path between ✈Ͽ and ;;
+            const filePath = item.match(/✈Ͽ "(.*?)";/)[1];
+            
+            // Trash the file
+            try {
+                app.doShellScript(`mv "${filePath}" ~/.Trash/`);
+            } catch (error) {
+                // Silently fail or handle error as needed
+            }
+        }
+
+        //Now we remove the item
+        theStack.splice(theIndex, 1);
+
+        //We prepare the nextItem
+        if (afterSelect === '1') {
+            //nextItem = 1;
+        } else {
+            if (pasteOrder === 'recFirst') {
+                nextItem = theIndex + 1;
+            } else {
+                nextItem = (theStack.length + 1) - theIndex;
+            }
+        }
+
+        if (afterAll === 'restart' && nextItem > theStack.length) {
+            nextItem = 1;
+        }
+
+    //We save back into our files with temp variables
+        tempItem = (parseInt(nextItem)).toString();
+        tempStack = theStack.map(item => `✈Ͽ ${item}`).join('\n');
+        $.NSString.stringWithString(tempItem).writeToFileAtomicallyEncodingError(nextItemPath, true, $.NSUTF8StringEncoding, $());
+        $.NSString.stringWithString(tempStack).writeToFileAtomicallyEncodingError(theStackPath, true, $.NSUTF8StringEncoding, $());
+    }
+
+    //Now let's TRASH file Items
+    if (theAction.startsWith("inputTrashItem")) {
+        //First we clear this for it to still display the items next
+        theAction = theAction.slice(14);
+
+        // Check if item starts with plane symbol and contains :: for File path
+        item = theStack[theIndex];
+        if (item.startsWith('✈Ͽ ') && item.includes('"::')) {
+            // Extract paths between ✈Ͽ and :: that are in double quotes
+            const pathSection = item.substring(item.indexOf('✈Ͽ ') + 3, item.indexOf('::'));
+            const paths = pathSection.match(/"([^"]+)"/g);
+            
+            if (paths) {
+                paths.forEach(path => {
+                    // Remove the quotes and move to trash
+                    const cleanPath = path.replace(/"/g, '');
+                    try {
+                        app.doShellScript(`mv "${cleanPath}" ~/.Trash/`);
+                    } catch (error) {
+                        // Silently fail or handle error as needed
+                    }
+                });
+            }
+        }
+
+        // Check if item starts with plane symbol and contains ;; for raw file path
+        if (item.startsWith('✈Ͽ ') && item.includes(';;')) {
+            // Extract file path between ✈Ͽ and ;;
+            const filePath = item.match(/✈Ͽ "(.*?)";/)[1];
+            
+            // Trash the file
+            try {
+                app.doShellScript(`mv "${filePath}" ~/.Trash/`);
+            } catch (error) {
+                // Silently fail or handle error as needed
+            }
+        }
 
         //Now we remove the item
         theStack.splice(theIndex, 1);
@@ -452,6 +566,7 @@ function run(argv) {
     if (theAction === 'inputPasteItem' || theAction === 'inputCopyItem') {
         //I need to prepare this to "mark" or identify nextItem
         let theIndex;
+
         // If grabbing from the bottom, we do a calculation to get the equivalent index
         if (pasteOrder === 'recLast') {
             theIndex = theStack.length - (nextItem - 1) - 1;
@@ -470,30 +585,37 @@ function run(argv) {
         } else {
             theStack.forEach((item, index) => {
                 let itemObject = {
-                    type: 'default',
+                    type: 'file',
                     title: item,
                     autocomplete: item,
                     subtitle: `↩ ` + (theAction === 'inputPasteItem' ? `Paste` : `Copy`) + ' • ⌘↩ ' + (theAction === 'inputPasteItem' ? `Copy` : `Paste`) + ' • ⌥↩ Edit Item • ⌃↩ Clear Item • ⇧↩ Move Up • fn↩ Move Down',
-                    arg: index,
+                    arg: item,
                     action: item,
                     text: {
                         'copy': item,
                         'largetype': item.length > 1300 ? item.substring(0, 1300) + '...' : item
                     },
                     variables: {
-                        theAction: theAction === 'inputPasteItem' ? 'pasteItem' : 'copyItem'
+                        theAction: theAction === 'inputPasteItem' ? 'pasteItem' : 'copyItem',
+                        theIndex: index.toString()
                     },
                     mods: {
                         cmd: {
                             subtitle: (theAction === 'inputPasteItem' ? `Copy` : `Paste`) + ' Item',
                             variables: {
-                                theAction: theAction === 'inputPasteItem' ? 'copyItem' : 'pasteItem'
+                                theAction: theAction === 'inputPasteItem' ? 'copyItem' : 'pasteItem',
+                                theIndex: index.toString()
                             }
                         },
                         alt: {
                             subtitle: 'Edit Item',
                             variables: {
-                                theAction: 'textEditItem' + (theAction === 'inputPasteItem' ? 'P' : 'C')
+                                theAction: 'inputEditItem' + (theAction === 'inputPasteItem' ? 'P' : 'C'),
+                                theIndex: index.toString(),
+                                editItem: item.startsWith('✈Ͽ ') ? 
+                                    (item.includes('"::') ? item.split('::')[1] : 
+                                    item.includes('";;') ? item.split(';;')[1] : 
+                                    item) : item
                             }
                         },
                         'alt+cmd': {
@@ -505,31 +627,49 @@ function run(argv) {
                         ctrl: {
                             subtitle: 'Clear Item',
                             variables: {
-                                theAction: 'inputClearItem' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem')
+                                theAction: 'inputClearItem' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem'),
+                                theIndex: index.toString()
                             }
                         },
-                        'alt+ctrl+cmd': {
+                        'ctrl+alt': {
+                            subtitle: 'Clear Item & Trash Referenced File',
+                            variables: {
+                                theAction: 'inputTrashItem' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem'),
+                                theIndex: index.toString()
+                            }
+                        },
+                        'ctrl+cmd': {
                             subtitle: 'Clear ' + behaviorUp,
                             variables: {
                                 theAction: 'clearList'
                             }
                         },
+                        'alt+ctrl+cmd': {
+                            subtitle: 'Clear ' + behaviorUp + ' & trash any files in it',
+                            variables: {
+                                theAction: 'trashFiles',
+                                theIndex: index.toString()
+                            },
+                        },
                         'shift+cmd': {
                             subtitle: 'Set as Next Item',
                             variables: {
-                                theAction: 'inputSetN' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem')
+                                theAction: 'inputSetN' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem'),
+                                theIndex: index.toString()
                             }
                         },
                         shift:{
                             subtitle: 'Move Up',
                             variables: {
-                                theAction: 'inputMoveU' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem')
+                                theAction: 'inputMoveU' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem'),
+                                theIndex: index.toString()
                             }
                         },
                         fn: {
                             subtitle: 'Move Down',
                             variables: {
-                                theAction: 'inputMoveD' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem')
+                                theAction: 'inputMoveD' + (theAction === 'inputPasteItem' ? 'inputPasteItem' : 'inputCopyItem'),
+                                theIndex: index.toString()
                             }
                         },
                         'fn+cmd': {
@@ -545,6 +685,46 @@ function run(argv) {
                             }
                         }
                     }
+                }
+
+                // Check if item matches the special format
+                if (item.startsWith('✈Ͽ ') && item.includes('::')) {
+                    const colonIndex = item.indexOf('::');
+                    const quotedPart = item.substring(3, colonIndex).trim();
+                    const title = item.substring(colonIndex + 2).trim();
+                    
+                    // Extract items between quotes
+                    const matches = quotedPart.match(/"([^"]*)"/g);
+                    const splits = matches ? matches.map(m => m.slice(1, -1)) : [];
+                
+                    itemObject.title = title;
+                    itemObject.autocomplete = title;
+                    itemObject.action = splits.length > 1 ? splits : splits[0];
+                    itemObject.quicklookurl = splits[0];
+                    itemObject.arg = splits[0];
+                    itemObject.text = {
+                        'copy': title,
+                        'largetype': title
+                    };
+                }
+
+                if (item.startsWith('✈Ͽ ') && item.includes(';;')) {
+                    const colonIndex = item.indexOf(';;');
+                    const quotedPart = item.substring(3, colonIndex).trim();
+                    const title = item.substring(colonIndex + 2).trim();
+                    
+                    // Extract items between quotes
+                    const matches = quotedPart.match(/"([^"]*)"/g);
+                    const splits = matches ? matches.map(m => m.slice(1, -1)) : [];
+                
+                    itemObject.title = title;
+                    itemObject.autocomplete = title;
+                    itemObject.action = splits.length > 1 ? splits : splits[0];
+                    itemObject.quicklookurl = splits[0];
+                    itemObject.text = {
+                        'copy': title,
+                        'largetype': title
+                    };
                 }
 
                 //This sets the icon for next item and already processed items
@@ -595,5 +775,30 @@ function run(argv) {
         }
     }
 
+    if (theAction === 'inputEditItemP' || theAction === 'inputEditItemC') {
+        let currentItem = theStack[theIndex].startsWith('✈Ͽ ') ? 
+    (theStack[theIndex].includes('"::') ? theStack[theIndex].split('::')[1] : 
+     theStack[theIndex].includes('";;') ? theStack[theIndex].split(';;')[1] : 
+     theStack[theIndex]) : theStack[theIndex];
+        if ( query !== '') {
+            items.push({
+                type: 'default',
+                title: 'You are editing "' + currentItem + '"',
+                subtitle: '↩ Save • ⌥↩ Edit Using Text View',
+                variables: { theResult: query,
+                    theAction: theAction === 'inputEditItemP' ? 'IeditinputPasteItem' : 'IeditinputCopyItem',
+                 },
+                mods: { 'alt': {valid: true, variables: {theAction: theAction === 'inputEditItemP' ? 'textEditItemP' : 'textEditItemC' }, subtitle: 'Edit using text view.'},}});
+        } else {
+            items.push({
+                valid: false,
+                type: 'default',
+                title: 'Type to edit your selected item',
+                subtitle: ''
+            });
+        }
+    }
+
     return JSON.stringify({ items: items });
+    
 }

@@ -166,11 +166,29 @@ function run(argv) {
         });
 
         items.push({
+            uid: 'addCBData',
+            type: 'default',
+            autocomplete: 'Add Current Clipboard as RAW Data',
+            title: 'Add Current Clipboard as RAW Data',
+            subtitle: 'Save & reuse rich text or special clipboard data types.',
+            arg: theText,
+            action: theText,
+            text: {
+                'copy': theText,
+                'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
+            },
+            variables: { theAction: 'addRawClip' },
+            mods: { 'cmd': {valid: true, variables: {theAction: 'addRawClip', clearStack: '1'}, subtitle: 'Clear ' + behavior + ' before adding current clipboard data.'},
+                    'ctrl': behavior === 'stack' && pasteOrder === 'recLast' || behavior === 'queue' && pasteOrder === 'recFirst' ? {valid: true, variables: {theAction: 'addRawClip', addNext: '1'}, subtitle: 'Add current clipboard data in "next" position.'} : {valid: false}
+                }
+        });
+
+        items.push({
             uid: 'pasteClipboard',
             type: 'default',
             autocomplete: 'Merge & Process Clipboard',
             title: 'Merge & Process Clipboard',
-            subtitle: 'Merge & paste multiple clipboard items at once. ' + (behavior === 'stack' ? 'Recent at the top.' : 'Recent at the bottom.'),
+            subtitle: 'Merge & paste multiple clipboard items as plain text. ' + (behavior === 'stack' ? 'Recent at the top.' : 'Recent at the bottom.'),
             arg: theText,
             action: theText,
             text: {
@@ -180,15 +198,15 @@ function run(argv) {
             variables: { theAction: 'inputPasteClipRange' },
             mods: {
                 cmd: {
-                    subtitle: 'Merge & copy multiple clipboard items at once. ' + (behavior === 'stack' ? 'Recent at the top.' : 'Recent at the bottom.'),
+                    subtitle: 'Merge & copy multiple clipboard items as plain text. ' + (behavior === 'stack' ? 'Recent at the top.' : 'Recent at the bottom.'),
                     variables: { theAction: 'inputCopyClipRange' }
                 },
                 alt: {
-                    subtitle: 'Merge & paste multiple clipboard items at once. ' + (behavior === 'stack' ? 'Recent at the bottom.' : 'Recent at the top.'),
+                    subtitle: 'Merge & paste multiple clipboard items as plain text. ' + (behavior === 'stack' ? 'Recent at the bottom.' : 'Recent at the top.'),
                     variables: { theAction: 'inputPasteClipRange', invOrder: '1' }
                 },
                 'cmd+alt': {
-                    subtitle: 'Merge & copy multiple clipboard items at once. ' + (behavior === 'stack' ? 'Recent at the bottom.' : 'Recent at the top.'),
+                    subtitle: 'Merge & copy multiple clipboard items as plain text. ' + (behavior === 'stack' ? 'Recent at the bottom.' : 'Recent at the top.'),
                     variables: { theAction: 'inputCopyClipRange', invOrder: '1' }
                 }
             }
@@ -224,7 +242,7 @@ function run(argv) {
                                     ? 'oldest first'
                                     : 'recent first'
                             }).`
-                            : `You only have 1 item in your ${behavior}.`,
+                            : `Copy next. You only have 1 item in your paste ${behavior}.`,
                         variables: { theAction: 'copyNext' }
                     },
                     ...(itemCount > 1 ? {
@@ -351,7 +369,12 @@ function run(argv) {
                     'copy': theText,
                     'largetype': theText.length > 1300 ? theText.substring(0, 1300) + '...' : theText
                 },
-                variables: { theAction: 'clearList' }
+                variables: { theAction: 'clearList' },
+                mods: {
+                    cmd: {
+                        subtitle: 'Clear your paste ' + behavior + ' and trash all files in it.',
+                        variables: { theAction: 'trashFiles' }
+                }}
             });
 
             items.push({

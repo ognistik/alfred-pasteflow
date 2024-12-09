@@ -1,5 +1,5 @@
 <h1 align="center">PASTEFLOW</h1>
-<p align="center"><strong>A Paste Stack & Paste Queue for Alfred | Pin & Reuse Text</strong></p>
+<p align="center"><strong>A Paste Stack & Paste Queue for Alfred | Pin & Reuse Text, Files, & Clipboard Data</strong></p>
 <p align="center">
   <a href="https://youtu.be/2TWJGcTVy3A">
     <img width="300" src="Workflow/assets/images/pasteflow.png">
@@ -8,23 +8,23 @@
 <p align="center"><em><a href="https://youtu.be/2TWJGcTVy3A">~ Video Overview & Setup ~</a></em></p>
 
 ## WHAT IS PASTEFLOW?
-PasteFlow is a handy paste stack (or paste queue) for [Alfred](https://alfredapp.com/). It lets you create a list of pinned text items that you can organize, edit, and use in different ways.
+PasteFlow is a handy paste stack (or paste queue) for [Alfred](https://alfredapp.com/). It lets you create a list of pinned items (plain text, rich text, files, or special clipboard data) that you can organize, edit, and use in different ways.
 
-Ever needed to copy text from various places and put it all in one final spot? PasteFlow makes this easy. No more switching back and forth to copy and paste one item at a time. Save time and stay *in flow* by doing all your copying first, then pasting later when you're ready. Since your items are saved in an actual list, you can even take a break, copy other things, and come back to your stack whenever you want.
+Ever needed to copy items from various places and put it all in one final spot? PasteFlow makes this easy. No more switching back and forth to copy and paste one item at a time. Save time and stay *in flow* by doing all your copying first, then pasting later when you're ready. Since your items are saved in an actual list, you can even take a break, copy other things, and come back to your stack whenever you want.
 
 Thanks to Alfred's triggers, clipboard features, and actions, PasteFlow is a flexible tool that can boost your productivity when working with text.
 
 ---
 ## REQUIREMENTS
 
-* This workflow uses Alfred’s Clipboard History. You do not need to use Alfred as your main clipboard manager, but you must have this feature activated.
+* This workflow uses Alfred’s Clipboard History. You do not need to use Alfred as your main clipboard manager, but you must have this feature activated for all file types.
 
 ---
 ## HOW TO USE PASTEFLOW?
 If you're already familiar with paste stacks, you can start using PasteFlow right away with its default settings. Here's how to get started:
 
 1. **Add items to your stack:**
-   - Select text and use Pasteflow actions on them.
+   - Select text or files and use Pasteflow actions on them.
    - Set up your preferred hotkeys (green color-coded hotkeys are the most basic/essential).
    - Use PasteFlow's keyword to add items from your Clipboard to your stack.
    - Use the `:Add` option in the main menu.
@@ -56,18 +56,18 @@ PasteFlow is flexible and adapts to your workflow. Here's how you can set it up:
 * **Selective Processing**: This setting allows for advanced workflows when inserting or processing individual list items. It works together with your chosen processing order. [***Read more about the insertion & processing logic.***](#the-processing-logic)
 * **Auto-Clear Options**: Decide if you want items cleared after processing. You can set this for individual items or the entire list when processed at once. [***Read more about ways to clear your items.***](#clearing-items)
 * **Restart or Stop**: Choose whether to restart processing when you reach the end of your list, or simply stop until you add more items.
-* **Paste Actions**: Optionally, add a line break, comma, space, or press tab after each pasted item from your list.
-* **Merge Formatting**: When processing your entire list at once, choose to merge items with line breaks, commas, or spaces.
+* **Paste Actions**: Optionally, add a line break, comma, space, or press tab after each pasted item from your list. *This feature only applies to plain text items.*
+* **Merge Formatting**: When processing your entire list at once, choose to merge items with line breaks, commas, or spaces. *This feature only applies to plain text items.*
 * **List Lifespan**: Use PasteFlow as a temporary list with a timeout, or keep it indefinitely. For long-term lists, there's a custom save directory.
 
 ### In Action
 PasteFlow is packed with features to make your workflow smoother:
 
-* **Large Text View**: In the main menu, press CMD L on any item to see your list in large text. You can also copy it (CMD C) or use Alfred's universal actions on it.
-* **Selective Mode Viewing**: In Selective Mode, CMD L shows the full content of an item. Copy or use universal actions here too.
+* **Large Text View**: In the main menu, press CMD L on any item to see your entire list in large text. You can also copy it (CMD C) or use Alfred's universal actions on it.
+* **Selective Mode Viewing**: In Selective Mode, CMD L shows the plain text content of an item. You may use Alfred's universal actions here for text or files.
 * **Hidden Menu**: Type `:` in Alfred's bar (with PasteFlow's keyword) to reveal extra options like inverting your list order, clearing it, or editing all its raw contents. Many of these are also directly available in Text View Mode (`:View`). [***Read all about the main menu.***](#the-main-menu)
 * **Powerful Selective Mode**: Edit individual items, move them around, remove them, or process them in any order. Some modifier combos let you tweak the whole list without entering Text View Mode. [***Read all about Selective Mode.***](#selective-mode)
-* **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. [***Read all about Universal Actions***](#universal-actions)
+* **Multi-line Splitting**: Select a multi-line text and automatically split it into individual PasteFlow items. If you select multiple files and "split" them, the files get added as individual items. [***Read all about Universal Actions***](#universal-actions)
 * **Multiple Control Methods**: Use Alfred's bar directly, keyboard shortcuts ([color-coded for easy remembering](#custom-hotkeys)), or send arguments to the external trigger. [***Read all about the external trigger.***](#the-external-trigger)
   
 PasteFlow is designed to be a flexible & powerful clipboard companion. Whether you're a pro or just getting started with paste stacks and clipboard managers, it's here to make your copy/paste tasks more efficient. Feel free to read below for more detailed information on all the features, and do not forget to [check out some tips and ideas that you may also find useful.](#closing--tips)
@@ -99,11 +99,12 @@ You can use PasteFlow as a temporary text holder or a more permanent list. Here'
 * **Clear and Add**: In the main menu, hold CMD while selecting 'Add to List from Clipboard' or 'Split & Add to List'. This clears the list before adding new items.
 * **Main Menu Option**: Type `:Clear` in the main menu.
 * **Hotkey**: Set up a keyboard shortcut (yellow color-coded) to clear your list.
-* **In Text View Mode**: In Text View Mode (`:View` from main menu), use CMD + CTRL + OPT + Return.
+* **In Text View Mode**: In Text View Mode (`:View` from main menu), use CMD + CTRL + Return.
 * **In Selective Mode**: 
   - Clear individual items: Hold CTRL while pressing return (items are removed, not pasted or copied)
   - Clear entire list: Use CTRL + CMD + Return
-* **External Trigger**: Use the `clearList` argument to clear the list. You can also set a second argument to `1` to clear the list before adding new items.
+  - Clear entire list and trash any files in it: Use CTRL + OPT + CMD + Return
+* **External Trigger**: Use the `clearList` argument to clear the list. You can also set a second argument to `1` to clear the list before adding new items. If you want not only to clear your list but trash any referenced files in it, use `trashFiles`
 </details>
 
 ---
@@ -111,8 +112,8 @@ You can use PasteFlow as a temporary text holder or a more permanent list. Here'
 The main menu is your control center for PasteFlow. Here's some things you can do without even actioning any menu option:
 
 * See your list in large text with CMD L
-* Copy your entire list at once with CMD C
-* Use Alfred's Universal Actions on your full list
+* Copy your entire list (in plain text) at once with CMD C
+* Use Alfred's Universal Actions on your full list text
 
 *Note: Pasteflow's menus are populated dynamically. For example, you won't see some processing options if your list is empty, the "Next Item" processing option won't be available if all items have been processed and the list isn't set to restart, or you will not have the "insert in next position" modifier [if it makes no difference](#advanced-insertion-and-processing)...*
 
@@ -136,6 +137,11 @@ The main menu is your control center for PasteFlow. Here's some things you can d
   * CTRL: Split current clipboard by newlines and insert in "next" position
   * CTRL + OPT: Split current clipboard by newlines, flip the order, and insert in "next" position
 
+* Add Current Clipboard as RAW Data
+  * CMD: Clear list before adding current clipboard data.
+  * CTRL: Add current clipboard data in "next" position.
+  *NOTE: This feature is experimental. Not all apps support adding or retrieving items from the user's clipboard in the same way. It's suggested you do some testing as restoration behavior may vary depending on the application.*
+
 * Next Item (Pastes by Default)
   * CMD: Copy the next item instead of pasting
   * OPT: Paste the next item, but reverse the usual processing order
@@ -156,14 +162,14 @@ The main menu is your control center for PasteFlow. Here's some things you can d
 
 </details>
 
-There's also a "secret" menu with extra options for your entire list. Just type `:` to access it. These actions are straightforward and*—with the exception of `:Add`—*don't have modifier combinations.
+There's also a "secret" menu with extra options for your entire list. Just type `:` to access it. These actions are straightforward and*—with the exception of `:Add` and `:Clear`—*don't have modifier combinations.
 
 <details>
   <summary><b>👇️ The "Secret" Menu Options:</b></summary>
 
 * Configuration: Adjust your PasteFlow settings
 * View Stack/Queue (Text View Mode): See your list in Alfred's Text View
-* Clear Stack/Queue: Empty your list
+* Clear Stack/Queue: Empty your list. Use CMD to also trash any referenced files in your list
 * Edit (Raw Contents of List in Text View Mode): Make changes to your entire list
 * Invert: Flip the order of your list
 * Keep & Trim (Keep X amount of items): Slim down your list to a specific number of items
@@ -191,7 +197,7 @@ If you've set PasteFlow to keep processed items, you'll have some visual cues on
 
 Just like in the main menu, Selective Mode lets you do a few things with each item:
 * See the item in large text with CMD L
-* Copy the item with CMD C
+* Copy the item in plain text with CMD C
 * Use Alfred's Universal Actions on any item
 
 <details>
@@ -209,7 +215,9 @@ Just like in the main menu, Selective Mode lets you do a few things with each it
   <summary><b>👇️ Advanced Modifier Combos</b></summary>
 
 * CMD + OPT: Edit your entire list
-* CMD + CTRL + OPT: Clear your whole list
+* CMD + CTRL: Clear your whole list
+* CMD + CTRL + OPT: Clear your whole list and trash any files referenced in it
+* CTRL + OPT: Clear item and trash referenced file (if any)
 * CMD + FN: Invert the order of your entire list
 * FN + SHIFT: Start processing from the beginning again
 * CMD + SHIFT: Choose which item to process next (great for advanced insertion or processing)
@@ -236,6 +244,7 @@ Two options for seeing your entire list:
 Not essential, but nice to have:
 * Split selected text and add each line as individual items to your list
 * Add a range of recent clipboard items
+* Add selected text as rich text
 * Paste next item inline with a snippet
 * Quickly clear your list
 * Jump to PasteFlow's configuration
@@ -285,13 +294,13 @@ While using the bullet isn't always necessary, it's a helpful tool for managing 
 
 ---
 ## UNIVERSAL ACTIONS
-PasteFlow comes with two powerful universal actions, each with additional modifier options to fine-tune your workflow:
+PasteFlow comes with a few powerful universal actions, each with additional modifier options to fine-tune your workflow:
 
 <p align="center">
   <img width="600" src="Workflow/assets/images/005.jpg">
 </p>
 
-### Add to List
+### Add to List | Add as Rich Text
 This action adds your selected text to your PasteFlow list. 
 
 <details>
@@ -317,6 +326,8 @@ This action splits your selected text into separate items and adds them to your 
 * **CTRL + OPT**: Splits, inverts the order, then forces insertion into the "next" position
   
 </details>
+
+There's similar options for adding files to your list. You can add multiple files as one item, or split a group of files into individual items that can be processed separately. 
 
 These universal actions give you quick, flexible ways to add content to your PasteFlow list, right from any text you're working with.
 
@@ -391,12 +402,12 @@ Remember, PasteFlow uses visual cues with icon changes to help you understand th
 ---
 ## THE EXTERNAL TRIGGER
 
-The external trigger in PasteFlow allows you to use every feature without sacrificing a single keyboard shortcut. Whether you're using Keyboard Maestro, BetterTouchTool, or other 3rd party apps, you can trigger PasteFlow actions using AppleScript or Alfred's URL scheme by sending arguments.
+The external trigger in PasteFlow allows you to use EVERY feature without sacrificing a single hotkey within the workflow. If you're using Keyboard Maestro, BetterTouchTool, or other 3rd party apps, you can trigger PasteFlow actions by using AppleScript or Alfred's URL scheme by sending arguments.
 
-The external trigger is `cmd` and can receive 4 arguments, comma-separated (without spaces):
+The external trigger is `cmd` and can receive 5 arguments, comma-separated (without spaces):
 
 ```
-theAction,clearList,invertOrder,insertNext
+theAction,clearList,invertOrder,insertNext,theSound
 ```
 
 Only `theAction` is required. 
@@ -406,49 +417,69 @@ Only `theAction` is required.
 
 | Argument Content      | Description                                                  |
 |-----------------------|--------------------------------------------------------------|
-| `inputAddClipRange`   | Input a number of clipboard items to insert in your list     |
-| `!addCurrentClip`     | Add current clipboard to your list (Use `c!` prefix to trigger CMD + C first) |
-| `!addSplitClip`       | Split current clipboard by newlines and add as individual items (Use `c!` prefix to trigger CMD + C first) |
-| `inputManual`         | Add manually by typing in Alfred's bar                      |
-| `textEditManual`      | Add manually using Text View (you can add multiple items at once)       |
-| `inputPasteClipRange` | Input a number of clipboard items to merge and paste (doesn't affect stack/queue) |
-| `inputCopyClipRange`  | Input a number of clipboard items to merge and copy (doesn't affect stack/queue) |
-| `pasteNext`           | Paste the item in "next" position                            |
-| `copyNext`            | Copy the item in "next" position                             |
-| `pasteStack`          | Merge and paste your entire list                             |
-| `copyStack`           | Merge and copy your entire list                              |
-| `inputPasteItem`      | Open "Selective View" with paste as default                  |
-| `inputCopyItem`       | Open "Selective View" with copy as default                   |
-| `config`              | Open PasteFlow's configuration                               |
-| `viewStack`           | Open your list in Text View Mode                              |
-| `clearList`           | Clear your list                                              |
-| `textEditListX`       | Edit the raw contents of your list                           |
-| `invert`              | Invert the order of items in your list                       |
-| `inputKeep`           | Input a number of items to keep                              |
-| `resetNext`           | Reset the index of your "next" item back to 1                |
-| `clipFilter`          | Add manually from recent clipboard items                     |
+| `inputAddClipRange`   | Present you with Alfred to **input a number of clipboard items to insert** in your list     |
+| `!addCurrentClip`     | **Add current clipboard** to your list (Use `c!` prefix to trigger CMD + C first) |
+| `addRawClip`          | Adds a **snapshot of your current clipboard**. Experimental feature. Useful for rich text or special clipboard types (Use `c!` prefix to trigger CMD + C first) |
+| `c!!addRichText`      | Adds **selected text as rich text**. Similar to `addRawClip` but will include selected text as item title                             |
+| `!addSplitClip`       | **Split current clipboard by newlines and add** as individual items (Use `c!` prefix to trigger CMD + C first) |
+| `inputManual`         | **Add manually** by typing in Alfred's bar                      |
+| `textEditManual`      | **Add manually using Text View** (you can add multiple items at once)       |
+| `inputPasteClipRange` | Present you with Alfred to input a number of **clipboard items to merge and paste** (doesn't affect stack/queue) |
+| `inputCopyClipRange`  | Present you with Alfred to input a number of **clipboard items to merge and copy** (doesn't affect stack/queue) |
+| `pasteNext`           | **Paste the item in "next"** position                            |
+| `copyNext`            | **Copy the item in "next"** position                             |
+| `pasteStack`          | **Merge and paste** your entire list                             |
+| `copyStack`           | **Merge and copy** your entire list                              |
+| `inputPasteItem`      | Open **"Selective View" with paste** as default                  |
+| `inputCopyItem`       | Open **"Selective View" with copy** as default                   |
+| `config`              | Open **PasteFlow's configuration**                               |
+| `viewStack`           | Open your list in **Text View Mode**                              |
+| `clearList`           | **Clear** your list                                              |
+| `trashFiles`          | **Clear your list and trash** any files in it (use carefully)     |
+| `textEditListX`       | **Edit the raw contents** of your list                           |
+| `invert`              | **Invert the order of items** in your list                       |
+| `inputKeep`           | Present you with Alfred to **input a number of items to keep**                              |
+| `resetNext`           | **Reset the index of your "next" item** back to 1                |
+| `clipFilter`          | **Add manually directly** from recent clipboard items                     |
 
 </details>
 
 ### Additional Arguments
 
 <details>
-  <summary><b>👇️ These arguments need to be `0` for false, or `1` for true:</b></summary>
+  <summary><b>👇️ These arguments, if included, need to be `0` for false, or `1` for true:</b></summary>
 
 
 | Argument | Description |
 |----------|-------------|
-| `clearList` | Clear your stack/queue before adding items (Use with `inputAddClipRange`, `!addCurrentClip`, and `!addSplitClip`) |
+| `clearList` | Clear your stack/queue before adding items (Use with `inputAddClipRange`, `!addCurrentClip`, , `addRawClip` , `c!!addRichText` and `!addSplitClip`) |
 | `invertOrder` | Process list in opposite direction of configuration setting (Affects `pasteNext`, `copyNext`, `inputCopyClipRange`, `inputPasteClipRange`, `pasteStack`, `copyStack`, `!addSplitClip`) |
 | `insertNext` | Force insertion of items in the "next" position |
 </details>
 
-Remember the `invertOrder` argument doesn't affect adding a range of clipboard items to your list. It's recommended to set your list behavior to match this and customize the rest as needed.
+<details>
+  <summary><b>👇️ The fifth possible argument, can to be a number from 1 to 9. This will trigger a custom system sound:</b></summary>
+
+
+| Argument | Sound |
+|----------|-------------|
+| `1` | Frog |
+| `2` | Blow |
+| `3` | Glass |
+| `4` | Purr |
+| `5` | Bottle |
+| `6` | Funk |
+| `7` | Morse |
+| `8` | Pop |
+| `9` | Submarine |
+</details>
+
+Remember, the `invertOrder` argument doesn't affect adding a range of clipboard items to your list. It's recommended to set your list behavior to match this and customize the rest as needed.
 
 Here’s how some commands would look in action:
-* `c!!addCurrentClip,0,0,1` will copy selected text and force insert it in the “next” position. It’s useful to have as an option if your list behaves as “queue” and you are processing it top-to-bottom.
-* `pasteNext,0,1,0` will paste the previous item instead of the next one.
-* `c!!addSplitClip,1` will copy selected text, split it by newlines, clear your current list, and insert it the split items in a new one.
+* `c!!addCurrentClip,0,0,1,5` will copy selected text and force insert it in the “next” position, it will play the "Bottle" sound.
+* `pasteNext,0,1,0,8` will paste the previous item instead of the next one. It will also play the "Pop" sound.
+* `c!!addSplitClip,1` will grab (CMD + C) selected text, split it by newlines, and clear your current list before adding the individual items.
 
 ---
 ## Closing & Tips
@@ -462,15 +493,15 @@ Phew! Thank you for making it this far. After diving into this project, I've got
 
 * Alfred's snippets feature also opens up some more possibilities. You can stash your current stack on your clipboard, save it as a snippet, clear your list, start a fresh one, and then bring back your old items from the snippet later on.
 
-* I love using PasteFlow with [Quill](https://github.com/zeitlings/alfred-quill). It's an awesome workflow that with lets you process your list or individual items with transformations. You can this directly from Alfred's bar, sending your list or items with Alfred actions to Quill before pasting.
+* I love using PasteFlow with [Quill](https://github.com/zeitlings/alfred-quill). It's an awesome workflow that with lets you process your list or individual items with transformations. You can use this directly from Alfred's bar, sending your list or items—if they are plain text—to Quill before pasting (by using Alfred's actions).
 
 * There's this fantastic [Sequential Paste](https://alfred.app/workflows/vitor/sequential-paste/) workflow that partly inspired PasteFlow. I still use it when I need to paste something I thought was on my clipboard, but turns out it's one item behind.
+
+* Do you need rich text snippets, or save raw clipboard data in something more permanent aside from Pasteflow? The ["Rich Text Snippets"](https://alfred.app/workflows/alfredapp/rich-snippets/) workflow does just that.
 
 * Here's an idea that I haven't had the chance to put into practice: use that custom path feature for your stack to save it in your Shortcuts folder. Then you could whip up a Shortcut to view, edit, or add items right from your phone. This basically would mean having a cross-platform paste stack.
 
 * I've got to give a shout-out to [CleanClip's](https://cleanclip.cc/) paste stack/queue. It's the only one I've seen that can be both a stack and a queue, and it sparked the idea of adding split lists as individual items.
 </details>
 
-Now, I know PasteFlow isn't perfect. You can't see your stack/queue in real-time while processing, and it doesn't keep rich text formatting (that's an Alfred's Clipboard Manager limitation). I know I am biased but I've got to say, I think PasteFlow is pretty good and should hit the spot for most users, whether you're just dipping your toes in or diving into the deep end.
-
-If PasteFlow's making your life easier, how about [buying me a coffee](https://www.buymeacoffee.com/afadingthought)? I'd be over the moon grateful!
+**If PasteFlow's making your life easier, how about [buying me a coffee](https://www.buymeacoffee.com/afadingthought)? I'd be over the moon grateful!**
