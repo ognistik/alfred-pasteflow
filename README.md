@@ -1,5 +1,5 @@
 <h1 align="center">PASTEFLOW</h1>
-<p align="center"><strong>A Paste Stack & Paste Queue for Alfred | Pin & Reuse Text, Files, & Clipboard Data</strong></p>
+<p align="center"><strong>A Paste Stack & Paste Queue for Alfred | Pin & Reuse Text, Files, & More</strong></p>
 <p align="center">
   <a href="https://youtu.be/2TWJGcTVy3A">
     <img width="300" src="Workflow/assets/images/pasteflow.png">
