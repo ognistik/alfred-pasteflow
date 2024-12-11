@@ -1344,6 +1344,31 @@
 				<false/>
 			</dict>
 		</array>
+		<key>6815AA98-223E-47B6-B922-980687332E47</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B32D0F08-89A4-4A62-A3BF-4081E5F6EF6C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>DC5D548E-37EB-4069-AB12-DC52BE08365F</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>E7B108BC-0A05-4FF4-8F7E-33C54958134D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>68747AA4-24C2-4B65-8A11-3341FABDA116</key>
 		<array>
 			<dict>
@@ -2984,7 +3009,7 @@
 				<false/>
 			</dict>
 		</array>
-		<key>E8831327-FF8E-4CA5-97C4-D2B82455B6F5</key>
+		<key>E7B108BC-0A05-4FF4-8F7E-33C54958134D</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -2993,11 +3018,12 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
-				<key>sourceoutputuid</key>
-				<string>DC5D548E-37EB-4069-AB12-DC52BE08365F</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+		</array>
+		<key>E8831327-FF8E-4CA5-97C4-D2B82455B6F5</key>
+		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>E57A980C-244C-4C03-A4D7-E390EA0D0378</string>
@@ -3007,6 +3033,18 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>D8939795-FDF0-4DB6-8B00-30DB04D8CFCA</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>6815AA98-223E-47B6-B922-980687332E47</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>DC5D548E-37EB-4069-AB12-DC52BE08365F</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -3413,7 +3451,7 @@
 	<key>createdby</key>
 	<string>Robert J. P. Oberg</string>
 	<key>description</key>
-	<string>A Paste Stack for Alfred | Pin &amp; Reuse Text, Files, &amp; Clipboard Data</string>
+	<string>A Paste Stack for Alfred | Pin &amp; Reuse Text, Files, &amp; More</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -6645,6 +6683,38 @@ export query="$1"
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:theIndex}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string></string>
+						<key>outputlabel</key>
+						<string>passArgument</string>
+						<key>uid</key>
+						<string>DC5D548E-37EB-4069-AB12-DC52BE08365F</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>passIndex</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>6815AA98-223E-47B6-B922-980687332E47</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string>{var:thePath}</string>
 				<key>passthroughargument</key>
@@ -6721,6 +6791,23 @@ export query="$1"
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
 			<string>45FD830F-F9B2-4F6D-B8B2-1EC7BA280040</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{var:theIndex}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>E7B108BC-0A05-4FF4-8F7E-33C54958134D</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -8953,12 +9040,12 @@ export session_var=2
 	</array>
 	<key>readme</key>
 	<string># PASTEFLOW
-**A Paste Stack &amp; Paste Queue for Alfred | Pin &amp; Reuse Text.**
+**A Paste Stack &amp; Paste Queue for Alfred | Pin &amp; Reuse Text, Files, &amp; More.**
 ![](assets/images/pasteflow-s.png)
 
 [~ Visit on Github~ ](https://github.com/ognistik/alfred-pasteflow) | [~ Video Overview ~](https://youtu.be/2TWJGcTVy3A) | [~Buy me a Coffe~](https://buymeacoffee.com/afadingthought)
 
-***V2 is a BIG UPDATE! [Check this video](https://youtu.be/7V67ic6Tc6s) | [Read the Details](https://github.com/ognistik/alfred-pasteflow/releases/latest/) ***
+***V2 is a BIG UPDATE! [Check this video](https://youtu.be/7V67ic6Tc6s) | [Read the Details](https://github.com/ognistik/alfred-pasteflow/releases/latest/)***
 
 
 ## WHAT IS IT?
@@ -9404,7 +9491,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>3196CEC3-0D66-4605-BE8A-4BE093C29B38</key>
 		<dict>
 			<key>xpos</key>
-			<real>2600</real>
+			<real>2555</real>
 			<key>ypos</key>
 			<real>2805</real>
 		</dict>
@@ -9822,6 +9909,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<real>2395</real>
 			<key>ypos</key>
 			<real>595</real>
+		</dict>
+		<key>6815AA98-223E-47B6-B922-980687332E47</key>
+		<dict>
+			<key>xpos</key>
+			<real>2610</real>
+			<key>ypos</key>
+			<real>2825</real>
 		</dict>
 		<key>68747AA4-24C2-4B65-8A11-3341FABDA116</key>
 		<dict>
@@ -10602,6 +10696,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<key>ypos</key>
 			<real>2805</real>
 		</dict>
+		<key>E7B108BC-0A05-4FF4-8F7E-33C54958134D</key>
+		<dict>
+			<key>xpos</key>
+			<real>2720</real>
+			<key>ypos</key>
+			<real>2850</real>
+		</dict>
 		<key>E8831327-FF8E-4CA5-97C4-D2B82455B6F5</key>
 		<dict>
 			<key>xpos</key>
@@ -11275,7 +11376,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>2.0.0</string>
+	<string>2.0.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-pasteflow</string>
 </dict>
