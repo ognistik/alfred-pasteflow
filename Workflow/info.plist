@@ -1292,6 +1292,21 @@
 				<false/>
 			</dict>
 		</array>
+		<key>5FC99077-FEA9-476A-99C4-C91E43EFFB76</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A58F6BED-EAF7-4F0B-A379-FBD408ECC3DB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>819EA5D4-B489-4553-91D2-3712C8EED496</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>62EB27DC-0257-436D-9C7D-2151243DA542</key>
 		<array>
 			<dict>
@@ -2797,7 +2812,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>A58F6BED-EAF7-4F0B-A379-FBD408ECC3DB</string>
+				<string>5FC99077-FEA9-476A-99C4-C91E43EFFB76</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -5383,6 +5398,38 @@ fi</string>
 			<string>alfred.workflow.automation.task</string>
 			<key>uid</key>
 			<string>0E109347-1B00-468A-B8FC-8BBE78DD4609</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>1</integer>
+						<key>matchstring</key>
+						<string></string>
+						<key>outputlabel</key>
+						<string></string>
+						<key>uid</key>
+						<string>819EA5D4-B489-4553-91D2-3712C8EED496</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>5FC99077-FEA9-476A-99C4-C91E43EFFB76</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -8360,7 +8407,7 @@ export session_var=2
 			<key>config</key>
 			<dict>
 				<key>seconds</key>
-				<string>.3</string>
+				<string>0</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.delay</string>
@@ -9203,7 +9250,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>0EE0E6E3-873A-46C7-8ED9-086B0F5B1B43</key>
 		<dict>
 			<key>xpos</key>
-			<real>2470</real>
+			<real>2465</real>
 			<key>ypos</key>
 			<real>2805</real>
 		</dict>
@@ -9270,7 +9317,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>19D17956-079D-4FB8-A13E-7698441C026D</key>
 		<dict>
 			<key>xpos</key>
-			<real>2985</real>
+			<real>3015</real>
 			<key>ypos</key>
 			<real>2655</real>
 		</dict>
@@ -9313,7 +9360,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>21D11A24-49D9-4FB6-87B7-B1B09CFFA7DF</key>
 		<dict>
 			<key>xpos</key>
-			<real>3095</real>
+			<real>3125</real>
 			<key>ypos</key>
 			<real>2675</real>
 		</dict>
@@ -9742,7 +9789,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>4B1A351C-89B0-449C-A8EB-0B4E53362FB4</key>
 		<dict>
 			<key>xpos</key>
-			<real>3185</real>
+			<real>3215</real>
 			<key>ypos</key>
 			<real>2640</real>
 		</dict>
@@ -9873,6 +9920,13 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<real>2000</real>
 			<key>ypos</key>
 			<real>385</real>
+		</dict>
+		<key>5FC99077-FEA9-476A-99C4-C91E43EFFB76</key>
+		<dict>
+			<key>xpos</key>
+			<real>2860</real>
+			<key>ypos</key>
+			<real>2670</real>
 		</dict>
 		<key>62EB27DC-0257-436D-9C7D-2151243DA542</key>
 		<dict>
@@ -10185,7 +10239,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>93D55C70-D07F-457D-AEA1-8C8FF66D6594</key>
 		<dict>
 			<key>xpos</key>
-			<real>3345</real>
+			<real>3375</real>
 			<key>ypos</key>
 			<real>2670</real>
 		</dict>
@@ -10319,7 +10373,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>A58F6BED-EAF7-4F0B-A379-FBD408ECC3DB</key>
 		<dict>
 			<key>xpos</key>
-			<real>2880</real>
+			<real>2910</real>
 			<key>ypos</key>
 			<real>2660</real>
 		</dict>
@@ -10568,7 +10622,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>CFFF6D78-46F1-416F-AFCC-B149F94FFF47</key>
 		<dict>
 			<key>xpos</key>
-			<real>2820</real>
+			<real>2810</real>
 			<key>ypos</key>
 			<real>2670</real>
 		</dict>
@@ -10657,7 +10711,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 		<key>DAB449D0-9B31-4487-9332-AD93F62CF259</key>
 		<dict>
 			<key>xpos</key>
-			<real>3045</real>
+			<real>3075</real>
 			<key>ypos</key>
 			<real>2685</real>
 		</dict>
