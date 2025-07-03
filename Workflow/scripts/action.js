@@ -913,11 +913,27 @@ function run(argv) {
                 toValue: '0',
                 inWorkflow: 'com.pasteflow.aft'
             });
+            Application('com.runningwithcrayons.Alfred').setConfiguration('addSound', {
+                toValue: '1',
+                inWorkflow: 'com.pasteflow.aft'
+            });
+            Application('com.runningwithcrayons.Alfred').setConfiguration('lastSound', {
+                toValue: '8',
+                inWorkflow: 'com.pasteflow.aft'
+            });
             theTog = "Do Not Disturb Setting is OFF";
             theSound = "3";
         } else {
             Application('com.runningwithcrayons.Alfred').setConfiguration('dnd', {
                 toValue: '1',
+                inWorkflow: 'com.pasteflow.aft'
+            });
+            Application('com.runningwithcrayons.Alfred').setConfiguration('addSound', {
+                toValue: '0',
+                inWorkflow: 'com.pasteflow.aft'
+            });
+            Application('com.runningwithcrayons.Alfred').setConfiguration('lastSound', {
+                toValue: '0',
                 inWorkflow: 'com.pasteflow.aft'
             });
             theTog = "Do Not Disturb Setting is ON",

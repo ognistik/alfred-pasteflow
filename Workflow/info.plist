@@ -9673,7 +9673,7 @@ PasteFlow is designed to be a flexible &amp; powerful clipboard companion. Wheth
 			<key>note</key>
 			<string>Add Selected Text as Rich Text</string>
 			<key>xpos</key>
-			<real>220</real>
+			<real>260</real>
 			<key>ypos</key>
 			<real>115</real>
 		</dict>
