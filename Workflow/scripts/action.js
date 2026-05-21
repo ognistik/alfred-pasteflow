@@ -706,7 +706,7 @@ function run(argv) {
                     arg: theArg,
                     variables: {
                         theResult: theResult,
-                        theAction: "pasteItem",
+                        theAction: theAction === 'copyStack' ? 'copyItem' : 'pasteItem',
                         singleClear: groupClear
                     }
                 }
@@ -885,7 +885,7 @@ function run(argv) {
                 toValue: '0',
                 inWorkflow: 'com.pasteflow.aft'
             });
-            theTog = "Sincle Clear Setting is OFF";
+            theTog = "Single Clear Setting is OFF";
             theSound = "5";
         } else {
             Application('com.runningwithcrayons.Alfred').setConfiguration('singleClear', {

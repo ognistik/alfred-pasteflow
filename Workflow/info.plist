@@ -6717,19 +6717,6 @@ export query="$1"
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>seconds</key>
-				<string>.3</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.delay</string>
-			<key>uid</key>
-			<string>D0BB6BA4-102D-4C01-BE2A-775F0C196660</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -6756,6 +6743,19 @@ export query="$1"
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>6815AA98-223E-47B6-B922-980687332E47</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>seconds</key>
+				<string>.3</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.delay</string>
+			<key>uid</key>
+			<string>D0BB6BA4-102D-4C01-BE2A-775F0C196660</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
